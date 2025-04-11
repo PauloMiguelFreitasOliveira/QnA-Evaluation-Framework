@@ -1,0 +1,17 @@
+[
+  {
+    "model": "distilbert-base-uncased-distilled-squad",
+    "retrieval_method": "BM25",
+    "dataset": "ms_marco",
+    "metrics": {
+      "exact_match": 2.388,
+      "f1_score": 9.28755474678913,
+      "rouge_l": 0.09809161343401986,
+      "bleu": 0.023564989814261323,
+      "MAP": 0.2350310914981154,
+      "NDCG": 0.3238607111534839,
+      "MRR": 0.237364243085417
+    },
+    "date": "2025-04-11 02:14:59"
+  }
+]
