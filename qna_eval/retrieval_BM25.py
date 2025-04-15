@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 from rank_bm25 import BM25Okapi
 import pytrec_eval
+import torch
 import numpy as np
 import json
 import sys
@@ -19,6 +20,10 @@ from logging_utils.save_results import save_evaluation_results
 
 with open("..\datasets\ms_marco.json", "r", encoding="utf-8") as f:
     ms_marco_data = json.load(f)
+
+NUM_EXAMPLES = int(os.getenv("NUM_EXAMPLES", 10000))
+
+ms_marco_data = ms_marco_data[:NUM_EXAMPLES]
 
 query_passage_pairs = []
 
@@ -39,7 +44,9 @@ def bm25_rerank(query, passages):
     scores = bm25.get_scores(tokenized_query)
     return scores
 
-qa_pipeline = pipeline("question-answering", model="distilbert-base-uncased-distilled-squad")
+model_name = "distilbert-base-uncased-distilled-squad"
+device = 0 if torch.cuda.is_available() else -1
+qa_pipeline = pipeline("question-answering", model=model_name, device=device)
 
 squad_metric = evaluate.load("squad")
 rouge_metric = evaluate.load("rouge")
@@ -49,6 +56,8 @@ references = []
 predictions = []
 qrel = {}
 run = {}
+
+
 
 # Evaluation loop
 for entry in query_passage_pairs:
@@ -63,6 +72,13 @@ for entry in query_passage_pairs:
     best_idx = np.argmax(bm25_scores)
     top_context = passages[best_idx]
 
+    if query_id == "some_specific_query_id":
+        print("\nQuestion:", question)
+        ranked = sorted(zip(passages, bm25_scores), key=lambda x: x[1], reverse=True)
+        for i, (p, score) in enumerate(ranked[:5]):
+            print(f"Rank {i+1} | Score: {score:.2f} | Passage: {p[:100]}")
+
+
     # Get model answer
     result = qa_pipeline(question=question, context=top_context)
     predicted_answer = result["answer"]
@@ -74,6 +90,10 @@ for entry in query_passage_pairs:
     # Build qrel and run for pytrec_eval (top10 ranking)
     qrel[query_id] = {str(i): entry["is_selected"][i] for i in range(len(passages))}
     run[query_id] = {str(i): float(bm25_scores[i]) for i in range(len(passages))}
+
+assert len(bm25_scores) == len(passages)
+assert not any(np.isnan(bm25_scores))
+
 
 # Metric results
 squad_results = squad_metric.compute(predictions=predictions, references=references)
@@ -89,7 +109,7 @@ bleu_results = bleu_metric.compute(
 print(f"\n🎯 QA Metrics")
 print(f"Exact Match: {squad_results['exact_match']}")
 print(f"F1 Score: {squad_results['f1']}")
-print(f"ROUGE-l F1 Score: {rouge_results['rouge1'] * 10:.2f}")
+print(f"ROUGE-l F1 Score: {rouge_results['rouge1'] :.4f}")
 print(f"BLEU Score: {bleu_results['bleu']}")
 
 # Retrieval metrics
@@ -107,7 +127,7 @@ print(f"Normalized DCG (NDCG):            {mean_metrics['ndcg']:.4f}")
 print(f"Mean Reciprocal Rank (MRR):       {mean_metrics['recip_rank']:.4f}")    
 
 save_evaluation_results(
-    model_name="distilbert-base-uncased-distilled-squad",
+    model_name=model_name,
     retrieval_method="BM25",
     dataset_name="ms_marco",
     squad_results=squad_results,
@@ -115,3 +135,15 @@ save_evaluation_results(
     bleu_results=bleu_results,
     mean_metrics=mean_metrics
 )
+
+query = "capital of France"
+passages = [
+    "Paris is the capital of France.",
+    "France has many beautiful cities including Lyon and Marseille.",
+    "The Eiffel Tower is a famous landmark."
+]
+
+scores = bm25_rerank(query, passages)
+
+print(scores)
+

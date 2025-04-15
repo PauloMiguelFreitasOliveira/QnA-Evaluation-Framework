@@ -10,35 +10,52 @@ def save_evaluation_results(
     rouge_results,
     bleu_results,
     mean_metrics,
-    path="results/evaluation_results.json"
+    results_path="results/evaluation_results.json"
 ):
-    results = {
-        "model": model_name,
-        "retrieval_method": retrieval_method,
-        "dataset": dataset_name,
-        "metrics": {
-            "exact_match": squad_results["exact_match"],
-            "f1_score": squad_results["f1"],
-            "rouge_l": rouge_results["rouge1"],
-            "bleu": bleu_results["bleu"],
-            "MAP": mean_metrics["map"],
-            "NDCG": mean_metrics["ndcg"],
-            "MRR": mean_metrics["recip_rank"]
-        },
-        "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    }
+    os.makedirs(os.path.dirname(results_path), exist_ok=True)
 
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-
-    if os.path.exists(path):
-        with open(path, "r", encoding="utf-8") as f:
-            existing_results = json.load(f)
+    # Load existing results with format filtering
+    if os.path.exists(results_path):
+        with open(results_path, "r", encoding="utf-8") as f:
+            try:
+                existing_results = json.load(f)
+                existing_results = [
+                    entry for entry in existing_results
+                    if "model_name" in entry and "metrics" in entry
+                ]
+            except json.JSONDecodeError:
+                print("⚠️ Corrupt or invalid JSON file. Starting fresh.")
+                existing_results = []
     else:
         existing_results = []
 
-    existing_results.append(results)
+    # Trim unwanted BLEU fields
+    bleu_trimmed = {
+        "bleu": bleu_results["bleu"],
+        "precisions": bleu_results["precisions"]
+    }
 
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(existing_results, f, indent=2, ensure_ascii=False)
+    # Build new entry
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    new_entry = {
+        "timestamp": timestamp,
+        "model_name": model_name,
+        "retrieval_method": retrieval_method,
+        "dataset_name": dataset_name,
+        "metrics": {
+            "squad": squad_results,
+            "rouge": rouge_results,
+            "bleu": bleu_trimmed,
+            "retrieval": mean_metrics
+        }
+    }
 
-    print(f"\n Saved results to {path}")
+    if new_entry not in existing_results:
+        existing_results.append(new_entry)
+    else:
+        print("⚠️ Duplicate evaluation, not saving.")
+
+    with open(results_path, "w", encoding="utf-8") as f:
+        json.dump(existing_results, f, indent=4)
+
+    print(f"✅ Saved evaluation results to {results_path}")
