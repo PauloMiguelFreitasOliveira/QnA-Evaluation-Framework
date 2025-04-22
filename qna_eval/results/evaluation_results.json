@@ -222,5 +222,165 @@
                 "recip_rank": 0.3047519841269841
             }
         }
+    },
+    {
+        "timestamp": "2025-04-21 23:43:42",
+        "model_name": "distilbert-base-uncased-distilled-squad",
+        "retrieval_method": "Hybrid",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 3.5,
+                "f1": 14.434835687597143
+            },
+            "rouge": {
+                "rouge1": 0.15086645048039943,
+                "rouge2": 0.08587086690311772,
+                "rougeL": 0.14590970973773004,
+                "rougeLsum": 0.14552928606746482
+            },
+            "bleu": {
+                "bleu": 0.0579758885118709,
+                "precisions": [
+                    0.2305681422098292,
+                    0.15175179400590966,
+                    0.13544891640866874,
+                    0.13106490233144297
+                ]
+            },
+            "retrieval": {
+                "map": 0.28754444444444444,
+                "ndcg": 0.3419439164002607,
+                "recip_rank": 0.2880702380952381
+            }
+        }
+    },
+    {
+        "timestamp": "2025-04-22 00:58:00",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "Hybrid",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 4.6,
+                "f1": 14.326854688820964
+            },
+            "rouge": {
+                "rouge1": 0.14952567953598736,
+                "rouge2": 0.08955596001101981,
+                "rougeL": 0.14699720525443183,
+                "rougeLsum": 0.14712811014346142
+            },
+            "bleu": {
+                "bleu": 0.04862214346583055,
+                "precisions": [
+                    0.25582834743140087,
+                    0.18325968286976865,
+                    0.17100494233937397,
+                    0.1670120182345628
+                ]
+            },
+            "retrieval": {
+                "map": 0.28754444444444444,
+                "ndcg": 0.3419439164002607,
+                "recip_rank": 0.2880702380952381
+            }
+        }
+    },
+    {
+        "timestamp": "2025-04-22 01:21:08",
+        "model_name": "mrm8488/bert-small-finetuned-squadv2",
+        "retrieval_method": "Hybrid",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 3.7,
+                "f1": 12.555386651939205
+            },
+            "rouge": {
+                "rouge1": 0.13054711165192429,
+                "rouge2": 0.06842234135239246,
+                "rougeL": 0.12746879618259038,
+                "rougeLsum": 0.1267010979762895
+            },
+            "bleu": {
+                "bleu": 0.0319694129056709,
+                "precisions": [
+                    0.20024420024420025,
+                    0.11905978538579458,
+                    0.10068203962325431,
+                    0.09161554192229039
+                ]
+            },
+            "retrieval": {
+                "map": 0.28751111111111105,
+                "ndcg": 0.34191327078013417,
+                "recip_rank": 0.2880369047619048
+            }
+        }
+    },
+    {
+        "timestamp": "2025-04-22 01:49:02",
+        "model_name": "allenai/longformer-base-4096",
+        "retrieval_method": "Hybrid",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 0.0,
+                "f1": 4.96515580821027
+            },
+            "rouge": {
+                "rouge1": 0.05794905016658326,
+                "rouge2": 0.020185393357303426,
+                "rougeL": 0.05401915305239002,
+                "rougeLsum": 0.05382926729722421
+            },
+            "bleu": {
+                "bleu": 0.02566594501071059,
+                "precisions": [
+                    0.13606340819022458,
+                    0.04314938971978683,
+                    0.03501628664495114,
+                    0.032806804374240585
+                ]
+            },
+            "retrieval": {
+                "map": 0.28754444444444444,
+                "ndcg": 0.3419439164002607,
+                "recip_rank": 0.2880702380952381
+            }
+        }
+    },
+    {
+        "timestamp": "2025-04-22 02:18:52",
+        "model_name": "ahotrod/electra_large_discriminator_squad2_512",
+        "retrieval_method": "Hybrid",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 4.7,
+                "f1": 16.964508690101546
+            },
+            "rouge": {
+                "rouge1": 0.17370933929483295,
+                "rouge2": 0.11314812408481434,
+                "rougeL": 0.16772546199561666,
+                "rougeLsum": 0.16848317897010096
+            },
+            "bleu": {
+                "bleu": 0.08155701187793964,
+                "precisions": [
+                    0.2387858851674641,
+                    0.16473277074542897,
+                    0.14510050251256282,
+                    0.13666162380231972
+                ]
+            },
+            "retrieval": {
+                "map": 0.28751111111111105,
+                "ndcg": 0.34191327078013417,
+                "recip_rank": 0.2880369047619048
+            }
+        }
     }
 ]
