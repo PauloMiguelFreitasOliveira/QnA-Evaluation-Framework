@@ -115,7 +115,7 @@ if __name__ == '__main__':
 
 
 
-    print(f"\n🎯 QA Metrics")
+    print(f"\n QA Metrics")
     print(f"Exact Match: {squad_results['exact_match']:.2f}")
     print(f"F1 Score: {squad_results['f1']:.2f}")
     print(f"ROUGE-l F1 Score: {rouge_results['rouge1']:.4f}")
@@ -130,7 +130,7 @@ if __name__ == '__main__':
         for metric in ['map', 'ndcg', 'recip_rank']
     }
 
-    print(f"\n📊 DPR Ranking Evaluation")
+    print(f"\n DPR Ranking Evaluation")
     print(f"Mean Average Precision (MAP):     {mean_metrics['map']:.4f}")
     print(f"Normalized DCG (NDCG):            {mean_metrics['ndcg']:.4f}")
     print(f"Mean Reciprocal Rank (MRR):       {mean_metrics['recip_rank']:.4f}")

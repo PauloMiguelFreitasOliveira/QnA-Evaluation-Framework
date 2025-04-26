@@ -382,5 +382,302 @@
                 "recip_rank": 0.2880369047619048
             }
         }
+    },
+    {
+        "timestamp": "2025-04-23 00:12:47",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/contriever",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 1.6,
+                "f1": 6.22
+            },
+            "rouge": {
+                "rouge1": 0.0676,
+                "rouge2": 0.0376,
+                "rougeL": 0.0645,
+                "rougeLsum": 0.0645
+            },
+            "bleu": {
+                "bleu": 0.0,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.2052105158730159,
+                "ndcg": 0.2983797091740714,
+                "recip_rank": 0.20662103174603175
+            }
+        }
+    },
+    {
+        "timestamp": "2025-04-23 00:55:15",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/contriever-msmarco",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 1.8,
+                "f1": 7.01
+            },
+            "rouge": {
+                "rouge1": 0.0766,
+                "rouge2": 0.042,
+                "rougeL": 0.0722,
+                "rougeLsum": 0.0722
+            },
+            "bleu": {
+                "bleu": 0.0,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.2106001984126984,
+                "ndcg": 0.3020953971442298,
+                "recip_rank": 0.21333373015873017
+            }
+        }
+    },
+    {
+        "timestamp": "2025-04-23 01:52:36",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "intfloat/e5-large-v2",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 1.6,
+                "f1": 8.41
+            },
+            "rouge": {
+                "rouge1": 0.0935,
+                "rouge2": 0.0519,
+                "rougeL": 0.0884,
+                "rougeLsum": 0.0884
+            },
+            "bleu": {
+                "bleu": 0.0,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.25371388888888885,
+                "ndcg": 0.3372312533062316,
+                "recip_rank": 0.255159126984127
+            }
+        }
+    },
+    {
+        "timestamp": "2025-04-23 21:13:12",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 2.8,
+                "f1": 10.71
+            },
+            "rouge": {
+                "rouge1": 0.1155,
+                "rouge2": 0.0693,
+                "rougeL": 0.1112,
+                "rougeLsum": 0.1112
+            },
+            "bleu": {
+                "bleu": 0.0442,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.3033990079365079,
+                "ndcg": 0.3762409185160118,
+                "recip_rank": 0.30559087301587307
+            }
+        }
+    },
+    {
+        "timestamp": "2025-04-23 23:07:30",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 3.7,
+                "f1": 11.26
+            },
+            "rouge": {
+                "rouge1": 0.1215,
+                "rouge2": 0.0783,
+                "rougeL": 0.1178,
+                "rougeLsum": 0.1178
+            },
+            "bleu": {
+                "bleu": 0.0487,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.3033990079365079,
+                "ndcg": 0.3762409185160118,
+                "recip_rank": 0.30559087301587307
+            }
+        }
+    },
+    {
+        "timestamp": "2025-04-23 23:46:21",
+        "model_name": "ahotrod/electra_large_discriminator_squad2_512",
+        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 2.8,
+                "f1": 13.22
+            },
+            "rouge": {
+                "rouge1": 0.1449,
+                "rouge2": 0.0961,
+                "rougeL": 0.1381,
+                "rougeLsum": 0.1381
+            },
+            "bleu": {
+                "bleu": 0.055,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.3033990079365079,
+                "ndcg": 0.3762409185160118,
+                "recip_rank": 0.30559087301587307
+            }
+        }
+    },
+    {
+        "timestamp": "2025-04-24 01:43:45",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "Capreolus/electra-base-msmarco",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 1.4,
+                "f1": 7.12
+            },
+            "rouge": {
+                "rouge1": 0.0777,
+                "rouge2": 0.0383,
+                "rougeL": 0.0726,
+                "rougeLsum": 0.0726
+            },
+            "bleu": {
+                "bleu": 0.0261,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.14321646825396825,
+                "ndcg": 0.24788690565200794,
+                "recip_rank": 0.14438531746031746
+            }
+        }
+    },
+    {
+        "timestamp": "2025-04-26 15:40:07",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "timpal0l/mdeberta-v3-base-squad2",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 2.0,
+                "f1": 8.33
+            },
+            "rouge": {
+                "rouge1": 0.0905,
+                "rouge2": 0.0454,
+                "rougeL": 0.085,
+                "rougeLsum": 0.085
+            },
+            "bleu": {
+                "bleu": 0.0346,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.16710496031746033,
+                "ndcg": 0.2681179174980397,
+                "recip_rank": 0.1694666666666667
+            }
+        }
+    },
+    {
+        "timestamp": "2025-04-26 19:47:50",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 3.7,
+                "f1": 11.26
+            },
+            "rouge": {
+                "rouge1": 0.1215,
+                "rouge2": 0.0783,
+                "rougeL": 0.1178,
+                "rougeLsum": 0.1178
+            },
+            "bleu": {
+                "bleu": 0.0487,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.3033990079365079,
+                "ndcg": 0.3762409185160118,
+                "recip_rank": 0.30559087301587307
+            }
+        }
+    },
+    {
+        "timestamp": "2025-04-26 20:33:41",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 3.6,
+                "f1": 11.21
+            },
+            "rouge": {
+                "rouge1": 0.1205,
+                "rouge2": 0.0774,
+                "rougeL": 0.1167,
+                "rougeLsum": 0.1167
+            },
+            "bleu": {
+                "bleu": 0.0481,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.3033990079365079,
+                "ndcg": 0.3762409185160118,
+                "recip_rank": 0.30559087301587307
+            }
+        }
+    },
+    {
+        "timestamp": "2025-04-26 22:51:08",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 5.3,
+                "f1": 15.21
+            },
+            "rouge": {
+                "rouge1": 0.1628,
+                "rouge2": 0.0989,
+                "rougeL": 0.1585,
+                "rougeLsum": 0.1585
+            },
+            "bleu": {
+                "bleu": 0.0581,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.3033990079365079,
+                "ndcg": 0.3762409185160118,
+                "recip_rank": 0.30559087301587307
+            }
+        }
     }
 ]

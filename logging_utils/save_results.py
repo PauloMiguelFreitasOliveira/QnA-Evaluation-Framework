@@ -10,7 +10,7 @@ def save_evaluation_results(
     rouge_results,
     bleu_results,
     mean_metrics,
-    results_path="results/evaluation_results.json"
+    results_path="qna_eval/results/evaluation_results.json"
 ):
     os.makedirs(os.path.dirname(results_path), exist_ok=True)
 
@@ -50,12 +50,13 @@ def save_evaluation_results(
         }
     }
 
-    if new_entry not in existing_results:
+    # Check if the new entry already exists in the results (avoid duplicates)
+    existing_entry = next((entry for entry in existing_results if entry["model_name"] == model_name and entry["dataset_name"] == dataset_name and entry["retrieval_method"] == retrieval_method and entry["timestamp"] == timestamp), None)
+
+    if existing_entry is None:
         existing_results.append(new_entry)
+        with open(results_path, "w", encoding="utf-8") as f:
+            json.dump(existing_results, f, indent=4)
+        print(f"✅ Saved evaluation results to {results_path}")
     else:
-        print("⚠️ Duplicate evaluation, not saving.")
-
-    with open(results_path, "w", encoding="utf-8") as f:
-        json.dump(existing_results, f, indent=4)
-
-    print(f"✅ Saved evaluation results to {results_path}")
+        print("⚠️ Duplicate evaluation detected, not saving.")
