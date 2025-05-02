@@ -4,8 +4,9 @@ import json
 from qna_eval.retriever import retrieve_top_k
 from qna_eval.reader import load_reader, extract_answers
 from qna_eval.dataset_loader import load_dataset_file
-from qna_eval.evaluator import evaluate_retrieval, evaluate_qa
+from qna_eval.evaluator import evaluate_retrieval, evaluate_qa, evaluate_contextual
 from logging_utils.save_results import save_evaluation_results
+from qna_eval.retriever_bm25 import retrieve_top_k_bm25
 
 
 def main():
@@ -21,9 +22,14 @@ def main():
     # Load dataset
     dataset = load_dataset_file(args.dataset, args.limit, args.max_context_per_query)
     queries = dataset["queries"]
+    context_pool = dataset.get("context_pool")
 
     # Retrieve top-K passages (retriever logic is inside retrieve_top_k)
-    results = retrieve_top_k(args.retriever_model, queries, top_k=args.top_k)
+    if args.retriever_model.lower() == "bm25":
+        results = retrieve_top_k_bm25(queries, top_k=args.top_k, context_pool=context_pool)
+    else:
+        results = retrieve_top_k(args.retriever_model, queries, top_k=args.top_k, context_pool=context_pool)
+
 
     # Prepare retrieval metrics inputs
     qrel = {r["query_id"]: r["qrel"] for r in results}
@@ -31,7 +37,7 @@ def main():
 
     # Evaluate retrieval
     retrieval_metrics = evaluate_retrieval(qrel, run)
-    print("\n🔍 Retrieval Metrics:")
+    print("\n Retrieval Metrics:")
     print(retrieval_metrics)
 
     # Initialize QA metrics
@@ -46,8 +52,14 @@ def main():
         # Evaluate QA (pass model name to evaluator)
         qa_metrics = evaluate_qa(queries, predictions, args.reader_model)
 
-        print("\n🧠 QA Metrics:")
+        print("\n QA Metrics:")
         print(qa_metrics)
+
+        # Evaluate contextual metrics
+        contextual_metrics = evaluate_contextual(results)
+
+        print("\n Contextual Metrics:")
+        print(contextual_metrics)
 
 
     # Prepare arguments for save_results.py
@@ -74,7 +86,8 @@ def main():
         squad_results=squad_results,
         rouge_results=rouge_results,
         bleu_results=bleu_results,
-        mean_metrics=retrieval_metrics
+        mean_metrics=retrieval_metrics,
+        contextual_results=contextual_metrics
     )
 
     results_path = os.path.join("results", "evaluation_results.json")

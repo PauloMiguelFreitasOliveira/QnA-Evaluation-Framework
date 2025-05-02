@@ -679,5 +679,389 @@
                 "recip_rank": 0.30559087301587307
             }
         }
+    },
+    {
+        "timestamp": "2025-04-30 12:02:54",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 5.3,
+                "f1": 15.21
+            },
+            "rouge": {
+                "rouge1": 0.1628,
+                "rouge2": 0.0989,
+                "rougeL": 0.1585,
+                "rougeLsum": 0.1585
+            },
+            "bleu": {
+                "bleu": 0.0581,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.3033990079365079,
+                "ndcg": 0.3762409185160118,
+                "recip_rank": 0.30559087301587307
+            },
+            "contextual": {
+                "contextual_precision": 0.0,
+                "contextual_recall": 0.0,
+                "contextual_relevancy": 0.0
+            }
+        }
+    },
+    {
+        "timestamp": "2025-04-30 13:45:07",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 5.3,
+                "f1": 15.21
+            },
+            "rouge": {
+                "rouge1": 0.1628,
+                "rouge2": 0.0989,
+                "rougeL": 0.1585,
+                "rougeLsum": 0.1585
+            },
+            "bleu": {
+                "bleu": 0.0581,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.3033990079365079,
+                "ndcg": 0.3762409185160118,
+                "recip_rank": 0.30559087301587307
+            },
+            "contextual": {
+                "contextual_precision": 0.0,
+                "contextual_recall": 0.0,
+                "contextual_relevancy": 0.0
+            }
+        }
+    },
+    {
+        "timestamp": "2025-04-30 16:49:40",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 5.3,
+                "f1": 15.21
+            },
+            "rouge": {
+                "rouge1": 0.1628,
+                "rouge2": 0.0989,
+                "rougeL": 0.1585,
+                "rougeLsum": 0.1585
+            },
+            "bleu": {
+                "bleu": 0.0581,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.3033990079365079,
+                "ndcg": 0.3762409185160118,
+                "recip_rank": 0.30559087301587307
+            },
+            "contextual": {
+                "contextual_precision": 0.0645,
+                "contextual_recall": 0.643,
+                "contextual_relevancy": 0.0645
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-01 20:41:57",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+        "dataset_name": "squad_formatted",
+        "metrics": {
+            "squad": {
+                "exact_match": 75.0,
+                "f1": 80.82
+            },
+            "rouge": {
+                "rouge1": 0.8053,
+                "rouge2": 0.519,
+                "rougeL": 0.8053,
+                "rougeLsum": 0.8053
+            },
+            "bleu": {
+                "bleu": 0.4958,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.7814285714285714,
+                "ndcg": 0.8356802724092056,
+                "recip_rank": 0.7814285714285714
+            },
+            "contextual": {
+                "contextual_precision": 0.1111,
+                "contextual_recall": 1.0,
+                "contextual_relevancy": 0.1111
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-01 21:51:05",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+        "dataset_name": "squad_formatted",
+        "metrics": {
+            "squad": {
+                "exact_match": 69.0,
+                "f1": 75.91
+            },
+            "rouge": {
+                "rouge1": 0.7571,
+                "rouge2": 0.5211,
+                "rougeL": 0.7571,
+                "rougeLsum": 0.7571
+            },
+            "bleu": {
+                "bleu": 0.4276,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.7078154761904761,
+                "ndcg": 0.7786554817881872,
+                "recip_rank": 0.7078154761904761
+            },
+            "contextual": {
+                "contextual_precision": 0.1,
+                "contextual_recall": 1.0,
+                "contextual_relevancy": 0.1
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-01 22:52:52",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+        "dataset_name": "squad_formatted",
+        "metrics": {
+            "squad": {
+                "exact_match": 75.0,
+                "f1": 80.82
+            },
+            "rouge": {
+                "rouge1": 0.8053,
+                "rouge2": 0.519,
+                "rougeL": 0.8053,
+                "rougeLsum": 0.8053
+            },
+            "bleu": {
+                "bleu": 0.4958,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.782312641723356,
+                "ndcg": 0.8437973837554814,
+                "recip_rank": 0.8089285714285714
+            },
+            "contextual": {
+                "contextual_precision": 0.1589,
+                "contextual_recall": 1.43,
+                "contextual_relevancy": 0.1589
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-01 23:21:58",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+        "dataset_name": "squad_formatted",
+        "metrics": {
+            "squad": {
+                "exact_match": 75.0,
+                "f1": 80.82
+            },
+            "rouge": {
+                "rouge1": 0.8053,
+                "rouge2": 0.519,
+                "rougeL": 0.8053,
+                "rougeLsum": 0.8053
+            },
+            "bleu": {
+                "bleu": 0.4958,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.782312641723356,
+                "ndcg": 0.8437973837554814,
+                "recip_rank": 0.8089285714285714
+            },
+            "contextual": {
+                "contextual_precision": 0.1589,
+                "contextual_recall": 1.43,
+                "contextual_relevancy": 0.1589
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-02 01:21:43",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+        "dataset_name": "squad_formatted",
+        "metrics": {
+            "squad": {
+                "exact_match": 65.0,
+                "f1": 75.67
+            },
+            "rouge": {
+                "rouge1": 0.75,
+                "rouge2": 0.375,
+                "rougeL": 0.75,
+                "rougeLsum": 0.75
+            },
+            "bleu": {
+                "bleu": 0.4776,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.8923530842222792,
+                "ndcg": 0.9247072009273699,
+                "recip_rank": 0.828125
+            },
+            "contextual": {
+                "contextual_precision": 0.775,
+                "contextual_recall": 7.75,
+                "contextual_relevancy": 0.775
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-02 01:39:02",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+        "dataset_name": "squad_formatted",
+        "metrics": {
+            "squad": {
+                "exact_match": 58.0,
+                "f1": 59.33
+            },
+            "rouge": {
+                "rouge1": 0.5933,
+                "rouge2": 0.26,
+                "rougeL": 0.5933,
+                "rougeLsum": 0.5933
+            },
+            "bleu": {
+                "bleu": 0.4468,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.7374742537548772,
+                "ndcg": 0.8293948352557416,
+                "recip_rank": 0.6615973748473749
+            },
+            "contextual": {
+                "contextual_precision": 0.64,
+                "contextual_recall": 6.4,
+                "contextual_relevancy": 0.64
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-02 03:46:17",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+        "dataset_name": "squad_formatted",
+        "metrics": {
+            "squad": {
+                "exact_match": 57.0,
+                "f1": 60.38
+            },
+            "rouge": {
+                "rouge1": 0.6016,
+                "rouge2": 0.3554,
+                "rougeL": 0.6016,
+                "rougeLsum": 0.6016
+            },
+            "bleu": {
+                "bleu": 0.3818,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.7565469313194768,
+                "ndcg": 0.8499664727019709,
+                "recip_rank": 0.7194946976325395
+            },
+            "contextual": {
+                "contextual_precision": 0.708,
+                "contextual_recall": 7.08,
+                "contextual_relevancy": 0.708
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-02 03:54:11",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "bm25",
+        "dataset_name": "squad_formatted",
+        "metrics": {
+            "squad": {
+                "exact_match": 70.0,
+                "f1": 91.33
+            },
+            "rouge": {
+                "rouge1": 0.9,
+                "rouge2": 0.65,
+                "rougeL": 0.9,
+                "rougeLsum": 0.9
+            },
+            "bleu": {
+                "bleu": 0.3976,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 1.0,
+                "ndcg": 1.0,
+                "recip_rank": 1.0
+            },
+            "contextual": {
+                "contextual_precision": 1.0,
+                "contextual_recall": 10.0,
+                "contextual_relevancy": 1.0
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-02 04:13:28",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "bm25",
+        "dataset_name": "squad_formatted",
+        "metrics": {
+            "squad": {
+                "exact_match": 47.0,
+                "f1": 51.8
+            },
+            "rouge": {
+                "rouge1": 0.5291,
+                "rouge2": 0.3114,
+                "rougeL": 0.5291,
+                "rougeLsum": 0.5291
+            },
+            "bleu": {
+                "bleu": 0.3225,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.6520204193997928,
+                "ndcg": 0.7783579825756006,
+                "recip_rank": 0.5894373585485015
+            },
+            "contextual": {
+                "contextual_precision": 0.568,
+                "contextual_recall": 5.68,
+                "contextual_relevancy": 0.568
+            }
+        }
     }
 ]
