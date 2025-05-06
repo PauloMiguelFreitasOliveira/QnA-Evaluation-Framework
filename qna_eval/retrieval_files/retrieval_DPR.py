@@ -18,7 +18,7 @@ if __name__ == '__main__':
     NUM_EXAMPLES = int(os.getenv("NUM_EXAMPLES", 1000))
     ms_marco_data = ms_marco_data[:NUM_EXAMPLES]
 
-    # Flatten entries into query-passage structure
+    # Turns entries into query-passage structure
     query_passage_pairs = []
     for entry in ms_marco_data:
         query_passage_pairs.append({

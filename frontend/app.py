@@ -70,3 +70,29 @@ ax.set_xticklabels(df['model_name'], rotation=30, ha='right')  # Rotate x-labels
 ax.grid(axis='y', linestyle='--', alpha=0.7)
 
 st.pyplot(fig)
+
+# Retrieval Metrics Comparison
+st.subheader("📈 Retrieval Metrics by Method")
+
+# Group by retrieval method and average the scores
+retrieval_df = df.groupby('retrieval_method')[['map', 'ndcg', 'avg_precision']].mean().reset_index()
+
+# Plot grouped bar chart
+fig2, ax2 = plt.subplots(figsize=(12, 6))
+
+bar_width = 0.25
+x = range(len(retrieval_df))
+
+ax2.bar([i - bar_width for i in x], retrieval_df['map'], width=bar_width, label='MAP', color='mediumseagreen')
+ax2.bar(x, retrieval_df['ndcg'], width=bar_width, label='nDCG', color='steelblue')
+ax2.bar([i + bar_width for i in x], retrieval_df['avg_precision'], width=bar_width, label='Avg Precision', color='orange')
+
+ax2.set_xlabel("Retrieval Method", fontsize=12)
+ax2.set_ylabel("Score", fontsize=12)
+ax2.set_title("Retrieval Metrics by Retrieval Method", fontsize=16)
+ax2.set_xticks(list(x))
+ax2.set_xticklabels(retrieval_df['retrieval_method'], rotation=30, ha='right')
+ax2.legend()
+ax2.grid(axis='y', linestyle='--', alpha=0.6)
+
+st.pyplot(fig2)

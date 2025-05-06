@@ -1,12 +1,20 @@
+"""
+Implements sparse retrieval using the BM25 algorithm.
+Ranks passages from a context pool based on token overlap with the query.
+"""
+
 from rank_bm25 import BM25Okapi
 import numpy as np
 
+# Checks if any answer is present in the given passage
 def is_relevant(passage, answers):
     return any(ans.lower() in passage.lower() for ans in answers)
 
+# Splits a string into lowercase tokens (words)
 def tokenize(text):
     return text.lower().split()
 
+# Retrieves top-k passages using BM25 ranking from a context pool
 def retrieve_top_k_bm25(queries, top_k, context_pool=None):
     assert context_pool is not None, "BM25 requires a context pool."
     

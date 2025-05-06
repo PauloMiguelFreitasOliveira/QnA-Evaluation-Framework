@@ -1063,5 +1063,69 @@
                 "contextual_relevancy": 0.568
             }
         }
+    },
+    {
+        "timestamp": "2025-05-06 01:50:44",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 10.0,
+                "f1": 28.07
+            },
+            "rouge": {
+                "rouge1": 0.2847,
+                "rouge2": 0.1861,
+                "rougeL": 0.2769,
+                "rougeLsum": 0.2769
+            },
+            "bleu": {
+                "bleu": 0.1031,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.5173928571428571,
+                "ndcg": 0.6336019018171587,
+                "recip_rank": 0.5165595238095239
+            },
+            "contextual": {
+                "contextual_precision": 0.1027,
+                "contextual_recall": 1.02,
+                "contextual_relevancy": 0.1027
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-06 02:17:32",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+        "dataset_name": "ms_marco",
+        "metrics": {
+            "squad": {
+                "exact_match": 8.3,
+                "f1": 25.33
+            },
+            "rouge": {
+                "rouge1": 0.2738,
+                "rouge2": 0.1686,
+                "rougeL": 0.2668,
+                "rougeLsum": 0.2668
+            },
+            "bleu": {
+                "bleu": 0.0924,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.5010214285714285,
+                "ndcg": 0.6220035037188316,
+                "recip_rank": 0.5040777777777777
+            },
+            "contextual": {
+                "contextual_precision": 0.1067,
+                "contextual_recall": 1.065,
+                "contextual_relevancy": 0.1067
+            }
+        }
     }
 ]

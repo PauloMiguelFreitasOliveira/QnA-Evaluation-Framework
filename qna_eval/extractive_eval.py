@@ -1,3 +1,7 @@
+"""
+Runs extractive QA evaluation using SQuAD metrics, BLEU, and ROUGE.
+"""
+
 import torch
 from transformers import AutoTokenizer, AutoModelForQuestionAnswering
 from tqdm import tqdm
@@ -9,7 +13,7 @@ from nltk.tokenize import word_tokenize
 # Load SQuAD metric for extractive QA
 squad_metric = load("squad")
 
-
+# Performs extractive QA inference using a huggingface reader.
 def extract_answer(model, tokenizer, question, context, device="cpu"):
     inputs = tokenizer(question, context, return_tensors="pt", truncation=True).to(device)
     with torch.no_grad():
@@ -21,13 +25,8 @@ def extract_answer(model, tokenizer, question, context, device="cpu"):
         return tokenizer.decode(tok_ids, skip_special_tokens=True)
     return ""
 
-
+# Main extractive QA evaluation: SQuAD (EM/F1), BLEU, and ROUGE.
 def evaluate_extractive_model(predictions, ground_truth_dict, model_name=None, device=None, top_k=None):
-    """
-    predictions: list of {"query_id": str, "answer": str}
-    ground_truth_dict: { query_id: [list of true answer strings] }
-    """
-    # Prepare for SQuAD metric
     preds_for_metric = [
         {"id": p["query_id"], "prediction_text": p["answer"]}
         for p in predictions
@@ -39,7 +38,6 @@ def evaluate_extractive_model(predictions, ground_truth_dict, model_name=None, d
             "id": p["query_id"],
             "answers": {
                 "text": gold_answers,
-                # dummy start positions
                 "answer_start": [0] * len(gold_answers)
             }
         })

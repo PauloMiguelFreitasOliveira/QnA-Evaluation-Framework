@@ -1,14 +1,17 @@
+"""
+Implements dense retrieval using HuggingFace transformer models.
+Encodes queries and passages to compute similarity scores and return top-k relevant results.
+"""
+
 import torch
 import numpy as np
 from transformers import AutoTokenizer, AutoModel
 
-
+# Returns 'cuda' if available, otherwise 'cpu'
 def get_device():
     return torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-
-
-
+# Encodes a list of queries into vector embeddings using the model
 def encode_queries(queries, tokenizer, model, device):
     embeddings = []
     for query in queries:
@@ -23,7 +26,7 @@ def encode_queries(queries, tokenizer, model, device):
         embeddings.append(output / np.linalg.norm(output))
     return np.array(embeddings)
 
-
+# Encodes a list of passages into vector embeddings using the model
 def encode_passages(passages, tokenizer, model, device):
     embeddings = []
     for passage in passages:
@@ -38,10 +41,11 @@ def encode_passages(passages, tokenizer, model, device):
         embeddings.append(output / np.linalg.norm(output))
     return np.array(embeddings)
 
+# Checks if any answer string appears in the passage (case-insensitive)
 def is_relevant(passage, answers):
     return any(ans.lower() in passage.lower() for ans in answers)
 
-
+# Retrieves top-k most similar passages for each query using dense vector similarity
 def retrieve_top_k(model_name, queries, top_k, context_pool=None):
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModel.from_pretrained(model_name)
@@ -82,7 +86,7 @@ def retrieve_top_k(model_name, queries, top_k, context_pool=None):
             "answers": item["answers"],
             "top_passages": top_passages,
             "scores": [float(scores[i]) for i in top_indices],
-            "top_relevance": top_relevance,  # ✅ added
+            "top_relevance": top_relevance,
             "qrel": {str(i): int(candidates[i]["is_selected"]) for i in range(len(passages))},
             "run": {str(i): float(scores[i]) for i in range(len(passages))}
         })

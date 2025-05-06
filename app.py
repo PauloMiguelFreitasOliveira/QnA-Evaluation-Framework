@@ -1,3 +1,11 @@
+"""
+Main execution script for QnA Evaluation Framework
+
+This CLI-based pipeline currently evaluates both retriever and extractive reader models on a given dataset,
+calculates standard QA metrics, and saves results to a logging file.
+"""
+
+
 import argparse
 import os
 import json
@@ -10,7 +18,8 @@ from qna_eval.retriever_bm25 import retrieve_top_k_bm25
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    # Argument parser for CLI usage
+    parser = argparse.ArgumentParser(description="Evaluate Retriever and Reader Models on QnA Datasets")
     parser.add_argument('--retriever_model', required=True, help='Retriever model name or path')
     parser.add_argument('--reader_model', default=None, help='Reader (extractive QA) model name')
     parser.add_argument('--dataset', required=True, help='Dataset name')
@@ -24,7 +33,7 @@ def main():
     queries = dataset["queries"]
     context_pool = dataset.get("context_pool")
 
-    # Retrieve top-K passages (retriever logic is inside retrieve_top_k)
+    # Retrieve top-K passages using chosen retriever
     if args.retriever_model.lower() == "bm25":
         results = retrieve_top_k_bm25(queries, top_k=args.top_k, context_pool=context_pool)
     else:
@@ -42,23 +51,20 @@ def main():
 
     # Initialize QA metrics
     qa_metrics = {}
+    contextual_metrics = {}
+
     if args.reader_model:
-        # Load reader
         reader = load_reader(args.reader_model)
-        
         predictions = extract_answers(reader, results, separator=" [SEP] ")
-
-
-        # Evaluate QA (pass model name to evaluator)
+        
+        # Evaluate SQuAD-style and ROUGE/bleu metrics
         qa_metrics = evaluate_qa(queries, predictions, args.reader_model)
-
-        print("\n QA Metrics:")
+        print("\n🧠 QA Metrics:")
         print(qa_metrics)
 
-        # Evaluate contextual metrics
+        # Evaluate contextual relevance (e.g. score vs. relevance)
         contextual_metrics = evaluate_contextual(results)
-
-        print("\n Contextual Metrics:")
+        print("\n🧩 Contextual Metrics:")
         print(contextual_metrics)
 
 
@@ -75,7 +81,7 @@ def main():
     }
     bleu_results = {
         "bleu": qa_metrics.get("bleu", 0.0),
-        "precisions": []  # not computed in this pipeline
+        "precisions": []
     }
 
     # Save everything
@@ -90,6 +96,7 @@ def main():
         contextual_results=contextual_metrics
     )
 
+    # Verification
     results_path = os.path.join("results", "evaluation_results.json")
     print("\n✅ Saved. Verifying file:")
     if os.path.exists(results_path):
