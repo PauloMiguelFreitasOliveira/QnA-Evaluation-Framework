@@ -1127,5 +1127,315 @@
                 "contextual_relevancy": 0.1067
             }
         }
+    },
+    {
+        "timestamp": "2025-05-06 14:12:07",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "bm25",
+        "dataset_name": "squad_formatted",
+        "metrics": {
+            "squad": {
+                "exact_match": 47.0,
+                "f1": 51.8
+            },
+            "rouge": {
+                "rouge1": 0.5291,
+                "rouge2": 0.3114,
+                "rougeL": 0.5291,
+                "rougeLsum": 0.5291
+            },
+            "bleu": {
+                "bleu": 0.3225,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.6520204193997928,
+                "ndcg": 0.7783579825756006,
+                "recip_rank": 0.5894373585485015
+            },
+            "contextual": {
+                "contextual_precision": 0.568,
+                "contextual_recall": 5.68,
+                "contextual_relevancy": 0.568
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-06 14:18:14",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "bm25",
+        "dataset_name": "squad_formatted",
+        "metrics": {
+            "squad": {
+                "exact_match": 47.0,
+                "f1": 52.72
+            },
+            "rouge": {
+                "rouge1": 0.5362,
+                "rouge2": 0.3319,
+                "rougeL": 0.5362,
+                "rougeLsum": 0.5362
+            },
+            "bleu": {
+                "bleu": 0.3121,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.6249315613145677,
+                "ndcg": 0.7816942400256413,
+                "recip_rank": 0.6049520150384795
+            },
+            "contextual": {
+                "contextual_precision": 0.585,
+                "contextual_recall": 5.85,
+                "contextual_relevancy": 0.585
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-10 22:17:23",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "bm25",
+        "dataset_name": "squad_formatted",
+        "num_entries": 2000,
+        "metrics": {
+            "squad": {
+                "exact_match": 61.1,
+                "f1": 67.83
+            },
+            "rouge": {
+                "rouge1": 0.6784,
+                "rouge2": 0.4113,
+                "rougeL": 0.6781,
+                "rougeLsum": 0.6781
+            },
+            "bleu": {
+                "bleu": 0.4321,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.507150933533951,
+                "ndcg": 0.6663189375690404,
+                "recip_rank": 0.6767914509967216
+            },
+            "contextual": {
+                "contextual_precision": 0.123,
+                "contextual_recall": 1.23,
+                "contextual_relevancy": 0.123
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-12 00:47:17",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "bm25",
+        "dataset_name": "kroshan/BioASQ",
+        "num_entries": 100,
+        "metrics": {
+            "squad": {
+                "exact_match": 15.0,
+                "f1": 55.0
+            },
+            "rouge": {
+                "rouge1": 0.5417,
+                "rouge2": 0.04,
+                "rougeL": 0.5417,
+                "rougeLsum": 0.5417
+            },
+            "bleu": {
+                "bleu": 0.2079,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.7183243682471827,
+                "ndcg": 0.8784120773952866,
+                "recip_rank": 0.8886666666666667
+            },
+            "contextual": {
+                "contextual_precision": 0.647,
+                "contextual_recall": 6.47,
+                "contextual_relevancy": 0.647
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-12 14:10:59",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+        "dataset_name": "kroshan/BioASQ",
+        "num_entries": 150,
+        "metrics": {
+            "squad": {
+                "exact_match": 23.33,
+                "f1": 24.22
+            },
+            "rouge": {
+                "rouge1": 0.2422,
+                "rouge2": 0.1067,
+                "rougeL": 0.2422,
+                "rougeLsum": 0.2422
+            },
+            "bleu": {
+                "bleu": 0.1996,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.7637208258954366,
+                "ndcg": 0.8786686819158153,
+                "recip_rank": 0.8957142857142858
+            },
+            "contextual": {
+                "contextual_precision": 0.6547,
+                "contextual_recall": 6.5467,
+                "contextual_relevancy": 0.6547
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-12 18:42:44",
+        "model_name": "ahotrod/electra_large_discriminator_squad2_512",
+        "retrieval_method": "bm25",
+        "dataset_name": "kroshan/BioASQ",
+        "num_entries": 1000,
+        "metrics": {
+            "squad": {
+                "exact_match": 44.8,
+                "f1": 47.09
+            },
+            "rouge": {
+                "rouge1": 0.4857,
+                "rouge2": 0.2803,
+                "rougeL": 0.4857,
+                "rougeLsum": 0.4857
+            },
+            "bleu": {
+                "bleu": 0.3726,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.5599596935189479,
+                "ndcg": 0.7689281303802147,
+                "recip_rank": 0.7916190165305566
+            },
+            "contextual": {
+                "contextual_precision": 0.5145,
+                "contextual_recall": 5.145,
+                "contextual_relevancy": 0.5145
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-13 12:26:48",
+        "model_name": "ahotrod/electra_large_discriminator_squad2_512",
+        "retrieval_method": "bm25",
+        "dataset_name": "kroshan/BioASQ",
+        "num_entries": 200,
+        "metrics": {
+            "squad": {
+                "exact_match": 46.67,
+                "f1": 57.08
+            },
+            "rouge": {
+                "rouge1": 0.5708,
+                "rouge2": 0.2083,
+                "rougeL": 0.5708,
+                "rougeLsum": 0.5708
+            },
+            "bleu": {
+                "bleu": 0.4481,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.6467578997200985,
+                "ndcg": 0.8166577729158425,
+                "recip_rank": 0.8333223905723907
+            },
+            "contextual": {
+                "contextual_precision": 0.5583,
+                "contextual_recall": 5.5833,
+                "contextual_relevancy": 0.5583
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-13 14:28:59",
+        "model_name": "deepset/roberta-base-squad2",
+        "retrieval_method": "bm25",
+        "dataset_name": "kroshan/BioASQ",
+        "num_entries": 200,
+        "metrics": {
+            "squad": {
+                "exact_match": 41.67,
+                "f1": 47.04
+            },
+            "rouge": {
+                "rouge1": 0.4704,
+                "rouge2": 0.1583,
+                "rougeL": 0.4704,
+                "rougeLsum": 0.4704
+            },
+            "bleu": {
+                "bleu": 0.4212,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.6467578997200985,
+                "ndcg": 0.8166577729158425,
+                "recip_rank": 0.8333223905723907
+            },
+            "contextual": {
+                "contextual_precision": 0.5583,
+                "contextual_recall": 5.5833,
+                "contextual_relevancy": 0.5583
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-15 01:11:01",
+        "model_name": "google/flan-t5-base",
+        "retrieval_method": "Generative",
+        "dataset_name": "ms_marco",
+        "num_entries": 191,
+        "metrics": {
+            "squad": {
+                "exact_match": 1.05,
+                "f1": 11.06
+            },
+            "rouge": {
+                "rouge1": 0.1303,
+                "rouge2": 0.0278,
+                "rougeL": 0.1202,
+                "rougeLsum": 0.1202
+            },
+            "bleu": {
+                "bleu": 0.0199,
+                "precisions": []
+            },
+            "retrieval": {}
+        }
+    },
+    {
+        "timestamp": "2025-05-15 01:26:40",
+        "model_name": "google/flan-t5-base",
+        "retrieval_method": "Generative",
+        "dataset_name": "ms_marco",
+        "num_entries": 191,
+        "metrics": {
+            "squad": {
+                "exact_match": 1.05,
+                "f1": 11.06
+            },
+            "rouge": {
+                "rouge1": 0.1303,
+                "rouge2": 0.0278,
+                "rougeL": 0.1202,
+                "rougeLsum": 0.1202
+            },
+            "bleu": {
+                "bleu": 0.0199,
+                "precisions": []
+            },
+            "retrieval": {}
+        }
     }
 ]

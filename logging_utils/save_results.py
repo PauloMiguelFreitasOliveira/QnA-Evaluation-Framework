@@ -11,6 +11,7 @@ def save_evaluation_results(
     bleu_results,
     mean_metrics,
     contextual_results=None,
+    num_entries=None,
     results_path="qna_eval/results/evaluation_results.json"
 ):
     os.makedirs(os.path.dirname(results_path), exist_ok=True)
@@ -43,6 +44,7 @@ def save_evaluation_results(
         "model_name": model_name,
         "retrieval_method": retrieval_method,
         "dataset_name": dataset_name,
+        "num_entries": num_entries,
         "metrics": {
             "squad": squad_results,
             "rouge": rouge_results,
@@ -55,7 +57,7 @@ def save_evaluation_results(
         new_entry["metrics"]["contextual"] = contextual_results
 
     # Check if the new entry already exists in the results (avoid duplicates)
-        existing_entry = next((
+    existing_entry = next((
         entry for entry in existing_results
         if entry["model_name"] == model_name
         and entry["dataset_name"] == dataset_name

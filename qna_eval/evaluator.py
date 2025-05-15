@@ -18,9 +18,9 @@ semantic_model = SentenceTransformer("all-MiniLM-L6-v2")
 
 
 # Runs extractive QA evaluation (EM, F1, BLEU, ROUGE).
-def evaluate_qa(queries, predictions, model_name):
+def evaluate_qa(queries, predictions):
     gt = {q["query_id"]: q["answers"] for q in queries}
-    return evaluate_extractive_model(predictions, gt, model_name)
+    return evaluate_extractive_model(predictions, gt)
 
 # Uses pytrec_eval to compute IR metrics: MAP, NDCG, MRR.
 def evaluate_retrieval(qrel, run):

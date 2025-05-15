@@ -7,8 +7,6 @@ calculates standard QA metrics, and saves results to a logging file.
 
 
 import argparse
-import os
-import json
 from qna_eval.retriever import retrieve_top_k
 from qna_eval.reader import load_reader, extract_answers
 from qna_eval.dataset_loader import load_dataset_file
@@ -58,7 +56,7 @@ def main():
         predictions = extract_answers(reader, results, separator=" [SEP] ")
         
         # Evaluate SQuAD-style and ROUGE/bleu metrics
-        qa_metrics = evaluate_qa(queries, predictions, args.reader_model)
+        qa_metrics = evaluate_qa(queries, predictions)
         print("\n🧠 QA Metrics:")
         print(qa_metrics)
 
@@ -93,20 +91,9 @@ def main():
         rouge_results=rouge_results,
         bleu_results=bleu_results,
         mean_metrics=retrieval_metrics,
-        contextual_results=contextual_metrics
+        contextual_results=contextual_metrics,
+        num_entries=args.limit
     )
-
-    # Verification
-    results_path = os.path.join("results", "evaluation_results.json")
-    print("\n✅ Saved. Verifying file:")
-    if os.path.exists(results_path):
-        with open(results_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        print(f"Total entries in file: {len(data)}")
-        print("Last entry:")
-        print(data[-1]["metrics"])
-    else:
-        print(f"Error: '{results_path}' not found.")
 
 if __name__ == '__main__':
     main()

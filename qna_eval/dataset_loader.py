@@ -6,11 +6,11 @@ Prepares queries, answers, and context passages for evaluation or retrieval task
 
 import os
 import json
-import random
 from datasets import load_dataset
+import re
 
 # Loads a dataset from local JSON or HuggingFace, then formats it for retrieval
-def load_dataset_file(dataset_name, limit, max_contexts_per_query):
+def load_dataset_file(dataset_name, limit, max_contexts_per_query=None):
     dataset_path = os.path.join("datasets", f"{dataset_name}.json")
 
     if os.path.exists(dataset_path):
@@ -29,10 +29,6 @@ def load_dataset_file(dataset_name, limit, max_contexts_per_query):
     if isinstance(raw_data, dict):
         # Convert dictionary entries to a list of dicts with "id" field
         raw_data = [{"id": key, **value} for key, value in raw_data.items()]
-        print(f"Raw data structure (limited): {raw_data[:5]}")
-
-    elif isinstance(raw_data, dict):
-        print(f"Raw data structure (limited): {dict(list(raw_data.items())[:5])}")
 
     formatted_data, context_pool = try_format_dataset(raw_data, limit=limit, max_contexts_per_query=max_contexts_per_query)
     
@@ -40,28 +36,51 @@ def load_dataset_file(dataset_name, limit, max_contexts_per_query):
     if formatted_data is None or context_pool is None:
         raise ValueError("❌ Error in formatting dataset: formatted_data or context_pool is None.")
     
+    # ✅ Print up to 200 entries after deduplication
+    #print("\n🖨️ Showing up to 200 unique formatted entries:\n")
+    #for i, entry in enumerate(formatted_data[:200]):
+    #    print(f"\n🔹 Entry {i+1}:")
+    #    print(f"Query ID: {entry.get('query_id')}")
+    #    print(f"Query: {entry.get('query')}")
+    #    print(f"Answers: {entry.get('answers')}")
+    #    print("Candidates:")
+    #    for c in entry.get("candidates", []):
+    #        print(f"  - Passage: {c.get('passage_text')[:200]}...")  # Truncate long text
+    #        print(f"    Selected: {c.get('is_selected')}")
+    
     return {"queries": formatted_data, "context_pool": context_pool}
 
 # Converts raw dataset entries into standardized format with query, answers, and context
 def try_format_dataset(raw_data, limit, max_contexts_per_query):
     formatted = []
     context_pool = []
+    seen_entries = set()
 
     if isinstance(raw_data, list):
         entries = raw_data
     elif hasattr(raw_data, '__getitem__'): 
         entries = raw_data
-    elif isinstance(raw_data, dict): 
-        entries = [{"query_id": qid, **entry} for qid, entry in raw_data.items()]
     else:
         raise ValueError("❌ Unrecognized dataset structure.")
 
     count = 0
-    for entry in entries:
+    for count, entry in enumerate(entries):
+        ##print(f"\n🔍 Example {count}: {entry}")
         try:
             query_id = str(entry.get("query_id", entry.get("id", count)))
             query = entry.get("query", entry.get("question", None))
             answers_raw = entry.get("answers", [])
+
+                # Parse answer/context if embedded in "text" field
+            if not answers_raw or entry.get("context") is None:
+                text_field = entry.get("text", "")
+                answer_match = re.search(r"<answer>\s*(.*?)\s*<context>", text_field, re.DOTALL)
+                context_match = re.search(r"<context>\s*(.*)", text_field, re.DOTALL)
+
+                if answer_match:
+                    answers_raw = [answer_match.group(1).strip()]
+                if context_match:
+                    entry["context"] = context_match.group(1).strip()
 
             # Normalize answers
             answer_texts = []
@@ -79,27 +98,45 @@ def try_format_dataset(raw_data, limit, max_contexts_per_query):
             candidates = entry.get("candidates", [])
 
             if context is None and candidates:
-                # Find selected passage(s)
                 selected = [c["passage_text"] for c in candidates if c.get("is_selected", 0)]
                 if selected:
-                    context = selected[0]  # Pick first selected passage
+                    context = selected[0]
 
             if not query or not context:
                 print(f"⚠️ Skipping entry {query_id}: Missing query or context.")
                 continue
 
+                        # Deduplication: check if (query, context, answer) is unique
+            is_duplicate = False
+            for ans in answer_texts or [""]:
+                key = (query.strip(), context.strip(), ans.strip())
+                if key in seen_entries:
+                    is_duplicate = True
+                    break
+            if is_duplicate:
+                continue
+
+            # Add to seen set
+            for ans in answer_texts or [""]:
+                key = (query.strip(), context.strip(), ans.strip())
+                seen_entries.add(key)
+
+
             # Only create the context pool if there are 1–3 passages per query
-            if len(candidates) <= 3:
-                # Populate context pool with the first few passages (1–3 max)
-                selected_contexts = [c["passage_text"] for c in candidates[:max_contexts_per_query]]
-                context_pool.extend(selected_contexts)  # Add selected passages
+            if (candidates and len(candidates) <= 3) or (context and not candidates):
+                if candidates:
+                    selected_contexts = [c["passage_text"] for c in candidates[:max_contexts_per_query]]
+                    context_pool.extend([c for c in selected_contexts if c not in context_pool])
+                else:
+                    if context not in context_pool:
+                        context_pool.append(context)
 
             # Save formatted entry with its selected context (or fallback context)
             formatted.append({
                 "query_id": query_id,
                 "query": query,
                 "answers": answer_texts,
-                "candidates": [  # Include all candidates for downstream evaluation
+                "candidates": [
                     {
                         "passage_text": c.get("passage_text", ""),
                         "is_selected": bool(c.get("is_selected", False)),
@@ -120,14 +157,6 @@ def try_format_dataset(raw_data, limit, max_contexts_per_query):
         except Exception as e:
             print(f"❌ Error formatting entry {count}: {str(e)}")
             continue
-
-    # If we have more than 3 passages per entry, return None as the context pool
-    if len(context_pool) > 0 and len(context_pool) > 3:
-        context_pool = None  # No context pool to evaluate ranking correctly
-
-    # If context_pool was not populated, print a message about it
-    if not context_pool:
-        print("⚠️ No valid context pool to evaluate (either empty or more than 3 passages per query).")
 
     if not formatted:
         raise ValueError("❌ Dataset could not be formatted: No valid entries found.")

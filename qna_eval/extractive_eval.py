@@ -26,7 +26,7 @@ def extract_answer(model, tokenizer, question, context, device="cpu"):
     return ""
 
 # Main extractive QA evaluation: SQuAD (EM/F1), BLEU, and ROUGE.
-def evaluate_extractive_model(predictions, ground_truth_dict, model_name=None, device=None, top_k=None):
+def evaluate_extractive_model(predictions, ground_truth_dict):
     preds_for_metric = [
         {"id": p["query_id"], "prediction_text": p["answer"]}
         for p in predictions
