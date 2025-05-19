@@ -103,7 +103,7 @@ def try_format_dataset(raw_data, limit, max_contexts_per_query):
                     context = selected[0]
 
             if not query or not context:
-                print(f"⚠️ Skipping entry {query_id}: Missing query or context.")
+                #print(f"⚠️ Skipping entry {query_id}: Missing query or context.")
                 continue
 
                         # Deduplication: check if (query, context, answer) is unique

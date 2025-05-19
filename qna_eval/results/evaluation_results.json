@@ -1437,5 +1437,113 @@
             },
             "retrieval": {}
         }
+    },
+    {
+        "timestamp": "2025-05-16 16:38:47",
+        "model_name": "openchat/openchat-3.5-0106",
+        "retrieval_method": "Generative",
+        "dataset_name": "ms_marco",
+        "num_entries": 57,
+        "metrics": {
+            "squad": {
+                "exact_match": 0.0,
+                "f1": 11.35
+            },
+            "rouge": {
+                "rouge1": 0.1257,
+                "rouge2": 0.0414,
+                "rougeL": 0.1031,
+                "rougeLsum": 0.1091
+            },
+            "bleu": {
+                "bleu": 0.0178,
+                "precisions": []
+            },
+            "retrieval": {}
+        }
+    },
+    {
+        "timestamp": "2025-05-17 17:26:00",
+        "model_name": "gpt-3.5-turbo",
+        "evaluation_method": "Generative",
+        "dataset_name": "ms_marco",
+        "num_entries": 33,
+        "metrics": {
+            "squad": {
+                "exact_match": 0.0,
+                "f1": 22.56
+            },
+            "rouge": {
+                "rouge1": 0.2454,
+                "rouge2": 0.0952,
+                "rougeL": 0.2051,
+                "rougeLsum": 0.2051
+            },
+            "bleu": {
+                "bleu": 0.0404,
+                "precisions": []
+            },
+            "retrieval": {},
+            "truthfulqa": {
+                "hallucination_rate": 1.0,
+                "misinformation_rate": 1.0
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-17 17:42:09",
+        "model_name": "gpt-3.5-turbo",
+        "evaluation_method": "Generative",
+        "dataset_name": "ms_marco",
+        "num_entries": 152,
+        "metrics": {
+            "squad": {
+                "exact_match": 0.0,
+                "f1": 20.13
+            },
+            "rouge": {
+                "rouge1": 0.2274,
+                "rouge2": 0.0826,
+                "rougeL": 0.1862,
+                "rougeLsum": 0.1897
+            },
+            "bleu": {
+                "bleu": 0.0422,
+                "precisions": []
+            },
+            "retrieval": {},
+            "truthfulqa": {
+                "hallucination_rate": 1.0,
+                "misinformation_rate": 1.0
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-17 18:00:17",
+        "model_name": "gpt-4o-mini",
+        "evaluation_method": "Generative",
+        "dataset_name": "ms_marco",
+        "num_entries": 152,
+        "metrics": {
+            "squad": {
+                "exact_match": 0.0,
+                "f1": 14.42
+            },
+            "rouge": {
+                "rouge1": 0.1656,
+                "rouge2": 0.0554,
+                "rougeL": 0.131,
+                "rougeLsum": 0.1415
+            },
+            "bleu": {
+                "bleu": 0.0233,
+                "precisions": []
+            },
+            "retrieval": {},
+            "truthfulqa": {
+                "hallucination_rate": 0.004,
+                "misinformation_rate": 0.736
+            }
+        }
     }
 ]
