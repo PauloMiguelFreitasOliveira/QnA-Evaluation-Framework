@@ -11,6 +11,7 @@ from transformers import pipeline,AutoTokenizer,AutoModelForSeq2SeqLM,AutoModelF
 from qna_eval.dataset_loader import load_dataset_file
 from qna_eval.extractive_eval import evaluate_extractive_model
 from logging_utils.save_results import save_evaluation_results
+from qna_eval.hallucination_eval import (load_secondary_dataset, generate_multisample, judge_with_llm)
 
 # Load .env into environment
 load_dotenv()
@@ -56,85 +57,23 @@ def generate_local_predictions(pipe, queries, prompt_template: str):
     return preds
 
 
-def generate_openai_predictions(model_name: str, queries, prompt_template: str):
+def generate_openai_predictions(model_name: str, queries, prompt_tpl: str, temperature: float):
     preds = []
-    for ex in tqdm(queries, desc="Generating (OpenAI)" ):
-        prompt = prompt_template.format(question=ex['query'])
+    for ex in tqdm(queries, desc="Generating (OpenAI)"):
+        prompt = prompt_tpl.format(question=ex["query"])
         resp = client.chat.completions.create(
             model=model_name,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0,
+            messages=[{"role":"user","content":prompt}],
+            temperature=temperature,
             max_tokens=128
         )
         ans = resp.choices[0].message.content.strip()
-        preds.append({"query_id": ex['query_id'], "answer": ans})
+        preds.append({"query_id": ex["query_id"], "answer": ans})
     return preds
 
-
-def build_ground_truth_dict(queries):
+def build_ground_truth(queries):
     return {ex["query_id"]: ex.get("answers", []) for ex in queries}
 
-
-_rouge_scorer = rouge_scorer.RougeScorer(["rougeL"], use_stemmer=True)
-
-def compute_truthful_metrics(predictions, ground_truth, threshold=0.2):
-    """
-    Hallucination = fraction of predictions with ZERO Rouge-L overlap vs all refs.
-    Misinformation = fraction with Rouge-L < threshold.
-    """
-    total = len(predictions)
-    if total == 0:
-        return {"hallucination_rate": 0.0, "misinformation_rate": 0.0}
-
-    no_overlap = 0
-    low_overlap = 0
-
-    for p in predictions:
-        preds = p["answer"]
-        refs = ground_truth.get(p["query_id"], [])
-
-        # compute the maximum Rouge-L fmeasure against any reference
-        best_f = 0.0
-        for r in refs:
-            score = _rouge_scorer.score(preds, r)["rougeL"].fmeasure
-            if score > best_f:
-                best_f = score
-
-        if best_f == 0.0:
-            no_overlap += 1
-        if best_f < threshold:
-            low_overlap += 1
-
-    return {
-        "hallucination_rate": round(no_overlap / total, 4),
-        "misinformation_rate": round(low_overlap / total, 4)
-    }
-
-
-def load_secondary_dataset(name: str, limit: int):
-    """
-    Load a generative-only QA JSON (e.g. datasets/<name>.json).
-    Only skips entries missing 'query'.
-    """
-    path = os.path.join("datasets", f"{name}.json")
-    if not os.path.exists(path):
-        raise FileNotFoundError(f"No such file: {path}")
-    with open(path, "r", encoding="utf-8") as f:
-        raw = json.load(f)
-
-    formatted = []
-    for i, ex in enumerate(raw):
-        q = ex.get("query", "").strip()
-        if not q:
-            continue
-        formatted.append({
-            "query_id": ex.get("query_id", str(i)),
-            "query": q,
-            "answers": ex.get("answers", [])
-        })
-        if len(formatted) >= limit:
-            break
-    return formatted
 
 def main():
     parser = argparse.ArgumentParser(description="Run Generative QA + Hallucination Evaluation")
@@ -142,49 +81,85 @@ def main():
     parser.add_argument("--primary_dataset", required=True,help="Primary QA dataset (e.g. ms_marco)")
     parser.add_argument("--secondary_dataset", default="truthfulqa",help="Dataset for hallucination testing, default truthfulqa")
     parser.add_argument("--limit", type=int, default=500,help="Number of examples to evaluate per dataset")
+    parser.add_argument("--n_samples", type=int, default=10, help="How many samples per query for hallucination")
     args = parser.parse_args()
 
-    # Load primary dataset
-    prim = load_dataset_file(args.primary_dataset, args.limit)
-    prim_queries = prim['queries']
+    # decide whether to call OpenAI vs local
+    use_openai = args.model_name.startswith(("gpt-", "gpt4"))
+    prompt_tpl = "Question: {question}"
 
-    # Generate answers for primary
-    if args.model_name.startswith("gpt-") or args.model_name.startswith("gpt4"):
-        prim_preds = generate_openai_predictions(args.model_name, prim_queries, "query: {question}")
+
+    # 1) Primary QA evaluation
+    ds = load_dataset_file(args.primary_dataset, args.limit)
+    prim_qs = ds["queries"]
+    if use_openai:
+        prim_preds = generate_openai_predictions(args.model_name, prim_qs, prompt_tpl, temperature=0.0)
     else:
-        pipe = load_local_generator(args.model_name)
-        prim_preds = generate_local_predictions(pipe, prim_queries, "query: {question}")
+        local_pipe = load_local_generator(args.model_name)
+        prim_preds = generate_local_predictions(local_pipe, prim_qs, prompt_tpl)
 
-    # Evaluate primary QA
-    prim_truth = build_ground_truth_dict(prim_queries)
+    prim_truth   = build_ground_truth(prim_qs)
     prim_metrics = evaluate_extractive_model(prim_preds, prim_truth)
 
-    sec_q = load_secondary_dataset(args.secondary_dataset, args.limit)
 
-    if args.model_name.startswith(("gpt-", "gpt4")):
-        sec_preds = generate_openai_predictions(args.model_name, sec_q, "Question: {question}")
+    # 2) Hallucination on secondary dataset
+    # decide how many queries for multi‐sampling so that limit queries × n_samples ~= args.limit
+    sec_limit = max(1, args.limit // args.n_samples)
+    sec_qs = load_secondary_dataset(args.secondary_dataset, sec_limit)
+
+    if use_openai:
+        # sample with temperature >0 to get diversity
+        sec_preds = generate_openai_predictions(args.model_name, sec_qs, prompt_tpl, temperature=0.7) * args.n_samples
     else:
-        sec_preds = generate_local_predictions(pipe, sec_q, "Question: {question}")
+        local_pipe = load_local_generator(args.model_name)
+        sec_preds = generate_multisample(
+            local_pipe,
+            sec_qs,
+            prompt_tpl,
+            n_samples=args.n_samples,
+            do_sample=True,
+            temperature=0.7,
+            max_new_tokens=128
+        )
 
-    sec_truth       = build_ground_truth_dict(sec_q)
-    truth_metrics   = compute_truthful_metrics(sec_preds, sec_truth)
+    # now have sec_qs (list of queries) and sec_preds (flat list of samples)
+    judgement = judge_with_llm(
+        client,
+        args.model_name,
+        sec_qs,
+        sec_preds,
+        fs_examples=None  # or you could build few-shot examples here
+    )
 
-    # Save combined results
+    # ─── Report & Save ────────────────────────────────────────────────────────────
+    out = {
+        "model_name": args.model_name,
+        "evaluation_method": "Generative",
+        "primary_dataset": args.primary_dataset,
+        "secondary_dataset": args.secondary_dataset,
+        "num_primary": len(prim_qs),
+        "num_secondary": len(sec_qs),
+        "metrics": {
+            "squad":     prim_metrics,
+            "hallucination": judgement
+        }
+    }
+    print(json.dumps(out, indent=2))
+
     save_evaluation_results(
         model_name=args.model_name,
         evaluation_method="Generative",
         dataset_name=args.primary_dataset,
-        squad_results={
-            "exact_match": prim_metrics['exact_match'],
-            "f1": prim_metrics['f1']
-        },
-        rouge_results={k: prim_metrics[k] for k in ['rouge1','rouge2','rougeL','rougeLsum']},
-        bleu_results={"bleu": prim_metrics['bleu'], "precisions": []},
+        squad_results={ "exact_match": prim_metrics["exact_match"],
+                        "f1":          prim_metrics["f1"] },
+        rouge_results={ k: prim_metrics[k]
+                        for k in ["rouge1","rouge2","rougeL","rougeLsum"] },
+        bleu_results={ "bleu": prim_metrics["bleu"], "precisions": [] },
         mean_metrics={},
         contextual_results=None,
-        truth_metrics=truth_metrics,
-        num_entries=len(prim_queries)
+        truth_metrics=judgement,
+        num_entries=len(prim_qs)
     )
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
