@@ -128,38 +128,6 @@
         }
     },
     {
-        "timestamp": "2025-04-14 21:53:30",
-        "model_name": "facebook/dpr-question_encoder-single-nq-base",
-        "retrieval_method": "DPR",
-        "dataset_name": "ms_marco",
-        "metrics": {
-            "squad": {
-                "exact_match": 4.1,
-                "f1": 14.799496351755888
-            },
-            "rouge": {
-                "rouge1": 0.15588100049413173,
-                "rouge2": 0.09318614673957586,
-                "rougeL": 0.15075524784539612,
-                "rougeLsum": 0.15122581187835638
-            },
-            "bleu": {
-                "bleu": 0.05736249484127277,
-                "precisions": [
-                    0.23304562268803947,
-                    0.1586487064357494,
-                    0.13661345197592253,
-                    0.1284433055733504
-                ]
-            },
-            "retrieval": {
-                "map": 0.3028348214285714,
-                "ndcg": 0.3756865441484132,
-                "recip_rank": 0.3047519841269841
-            }
-        }
-    },
-    {
         "timestamp": "2025-04-14 22:33:19",
         "model_name": "deepset/roberta-base-squad2",
         "retrieval_method": "DPR",
@@ -777,38 +745,6 @@
         }
     },
     {
-        "timestamp": "2025-05-01 20:41:57",
-        "model_name": "deepset/roberta-base-squad2",
-        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
-        "dataset_name": "squad_formatted",
-        "metrics": {
-            "squad": {
-                "exact_match": 75.0,
-                "f1": 80.82
-            },
-            "rouge": {
-                "rouge1": 0.8053,
-                "rouge2": 0.519,
-                "rougeL": 0.8053,
-                "rougeLsum": 0.8053
-            },
-            "bleu": {
-                "bleu": 0.4958,
-                "precisions": []
-            },
-            "retrieval": {
-                "map": 0.7814285714285714,
-                "ndcg": 0.8356802724092056,
-                "recip_rank": 0.7814285714285714
-            },
-            "contextual": {
-                "contextual_precision": 0.1111,
-                "contextual_recall": 1.0,
-                "contextual_relevancy": 0.1111
-            }
-        }
-    },
-    {
         "timestamp": "2025-05-01 21:51:05",
         "model_name": "deepset/roberta-base-squad2",
         "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
@@ -841,102 +777,6 @@
         }
     },
     {
-        "timestamp": "2025-05-01 22:52:52",
-        "model_name": "deepset/roberta-base-squad2",
-        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
-        "dataset_name": "squad_formatted",
-        "metrics": {
-            "squad": {
-                "exact_match": 75.0,
-                "f1": 80.82
-            },
-            "rouge": {
-                "rouge1": 0.8053,
-                "rouge2": 0.519,
-                "rougeL": 0.8053,
-                "rougeLsum": 0.8053
-            },
-            "bleu": {
-                "bleu": 0.4958,
-                "precisions": []
-            },
-            "retrieval": {
-                "map": 0.782312641723356,
-                "ndcg": 0.8437973837554814,
-                "recip_rank": 0.8089285714285714
-            },
-            "contextual": {
-                "contextual_precision": 0.1589,
-                "contextual_recall": 1.43,
-                "contextual_relevancy": 0.1589
-            }
-        }
-    },
-    {
-        "timestamp": "2025-05-01 23:21:58",
-        "model_name": "deepset/roberta-base-squad2",
-        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
-        "dataset_name": "squad_formatted",
-        "metrics": {
-            "squad": {
-                "exact_match": 75.0,
-                "f1": 80.82
-            },
-            "rouge": {
-                "rouge1": 0.8053,
-                "rouge2": 0.519,
-                "rougeL": 0.8053,
-                "rougeLsum": 0.8053
-            },
-            "bleu": {
-                "bleu": 0.4958,
-                "precisions": []
-            },
-            "retrieval": {
-                "map": 0.782312641723356,
-                "ndcg": 0.8437973837554814,
-                "recip_rank": 0.8089285714285714
-            },
-            "contextual": {
-                "contextual_precision": 0.1589,
-                "contextual_recall": 1.43,
-                "contextual_relevancy": 0.1589
-            }
-        }
-    },
-    {
-        "timestamp": "2025-05-02 01:21:43",
-        "model_name": "deepset/roberta-base-squad2",
-        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
-        "dataset_name": "squad_formatted",
-        "metrics": {
-            "squad": {
-                "exact_match": 65.0,
-                "f1": 75.67
-            },
-            "rouge": {
-                "rouge1": 0.75,
-                "rouge2": 0.375,
-                "rougeL": 0.75,
-                "rougeLsum": 0.75
-            },
-            "bleu": {
-                "bleu": 0.4776,
-                "precisions": []
-            },
-            "retrieval": {
-                "map": 0.8923530842222792,
-                "ndcg": 0.9247072009273699,
-                "recip_rank": 0.828125
-            },
-            "contextual": {
-                "contextual_precision": 0.775,
-                "contextual_recall": 7.75,
-                "contextual_relevancy": 0.775
-            }
-        }
-    },
-    {
         "timestamp": "2025-05-02 01:39:02",
         "model_name": "deepset/roberta-base-squad2",
         "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
@@ -965,70 +805,6 @@
                 "contextual_precision": 0.64,
                 "contextual_recall": 6.4,
                 "contextual_relevancy": 0.64
-            }
-        }
-    },
-    {
-        "timestamp": "2025-05-02 03:46:17",
-        "model_name": "deepset/roberta-base-squad2",
-        "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
-        "dataset_name": "squad_formatted",
-        "metrics": {
-            "squad": {
-                "exact_match": 57.0,
-                "f1": 60.38
-            },
-            "rouge": {
-                "rouge1": 0.6016,
-                "rouge2": 0.3554,
-                "rougeL": 0.6016,
-                "rougeLsum": 0.6016
-            },
-            "bleu": {
-                "bleu": 0.3818,
-                "precisions": []
-            },
-            "retrieval": {
-                "map": 0.7565469313194768,
-                "ndcg": 0.8499664727019709,
-                "recip_rank": 0.7194946976325395
-            },
-            "contextual": {
-                "contextual_precision": 0.708,
-                "contextual_recall": 7.08,
-                "contextual_relevancy": 0.708
-            }
-        }
-    },
-    {
-        "timestamp": "2025-05-02 03:54:11",
-        "model_name": "deepset/roberta-base-squad2",
-        "retrieval_method": "bm25",
-        "dataset_name": "squad_formatted",
-        "metrics": {
-            "squad": {
-                "exact_match": 70.0,
-                "f1": 91.33
-            },
-            "rouge": {
-                "rouge1": 0.9,
-                "rouge2": 0.65,
-                "rougeL": 0.9,
-                "rougeLsum": 0.9
-            },
-            "bleu": {
-                "bleu": 0.3976,
-                "precisions": []
-            },
-            "retrieval": {
-                "map": 1.0,
-                "ndcg": 1.0,
-                "recip_rank": 1.0
-            },
-            "contextual": {
-                "contextual_precision": 1.0,
-                "contextual_recall": 10.0,
-                "contextual_relevancy": 1.0
             }
         }
     },
@@ -1439,226 +1215,6 @@
         }
     },
     {
-        "timestamp": "2025-05-16 16:38:47",
-        "model_name": "openchat/openchat-3.5-0106",
-        "retrieval_method": "Generative",
-        "dataset_name": "ms_marco",
-        "num_entries": 57,
-        "metrics": {
-            "squad": {
-                "exact_match": 0.0,
-                "f1": 11.35
-            },
-            "rouge": {
-                "rouge1": 0.1257,
-                "rouge2": 0.0414,
-                "rougeL": 0.1031,
-                "rougeLsum": 0.1091
-            },
-            "bleu": {
-                "bleu": 0.0178,
-                "precisions": []
-            },
-            "retrieval": {}
-        }
-    },
-    {
-        "timestamp": "2025-05-17 17:26:00",
-        "model_name": "gpt-3.5-turbo",
-        "evaluation_method": "Generative",
-        "dataset_name": "ms_marco",
-        "num_entries": 33,
-        "metrics": {
-            "squad": {
-                "exact_match": 0.0,
-                "f1": 22.56
-            },
-            "rouge": {
-                "rouge1": 0.2454,
-                "rouge2": 0.0952,
-                "rougeL": 0.2051,
-                "rougeLsum": 0.2051
-            },
-            "bleu": {
-                "bleu": 0.0404,
-                "precisions": []
-            },
-            "retrieval": {},
-            "truthfulqa": {
-                "hallucination_rate": 1.0,
-                "misinformation_rate": 1.0
-            }
-        }
-    },
-    {
-        "timestamp": "2025-05-17 17:42:09",
-        "model_name": "gpt-3.5-turbo",
-        "evaluation_method": "Generative",
-        "dataset_name": "ms_marco",
-        "num_entries": 152,
-        "metrics": {
-            "squad": {
-                "exact_match": 0.0,
-                "f1": 20.13
-            },
-            "rouge": {
-                "rouge1": 0.2274,
-                "rouge2": 0.0826,
-                "rougeL": 0.1862,
-                "rougeLsum": 0.1897
-            },
-            "bleu": {
-                "bleu": 0.0422,
-                "precisions": []
-            },
-            "retrieval": {},
-            "truthfulqa": {
-                "hallucination_rate": 1.0,
-                "misinformation_rate": 1.0
-            }
-        }
-    },
-    {
-        "timestamp": "2025-05-17 18:00:17",
-        "model_name": "gpt-4o-mini",
-        "evaluation_method": "Generative",
-        "dataset_name": "ms_marco",
-        "num_entries": 152,
-        "metrics": {
-            "squad": {
-                "exact_match": 0.0,
-                "f1": 14.42
-            },
-            "rouge": {
-                "rouge1": 0.1656,
-                "rouge2": 0.0554,
-                "rougeL": 0.131,
-                "rougeLsum": 0.1415
-            },
-            "bleu": {
-                "bleu": 0.0233,
-                "precisions": []
-            },
-            "retrieval": {},
-            "truthfulqa": {
-                "hallucination_rate": 0.004,
-                "misinformation_rate": 0.736
-            }
-        }
-    },
-    {
-        "timestamp": "2025-05-19 12:37:03",
-        "model_name": "gpt-3.5-turbo",
-        "evaluation_method": "Generative",
-        "dataset_name": "ms_marco",
-        "num_entries": 152,
-        "metrics": {
-            "squad": {
-                "exact_match": 0.0,
-                "f1": 20.03
-            },
-            "rouge": {
-                "rouge1": 0.2255,
-                "rouge2": 0.0818,
-                "rougeL": 0.1844,
-                "rougeLsum": 0.1875
-            },
-            "bleu": {
-                "bleu": 0.0408,
-                "precisions": []
-            },
-            "retrieval": {},
-            "truthfulqa": {
-                "hallucination_rate": 0.008,
-                "misinformation_rate": 0.472
-            }
-        }
-    },
-    {
-        "timestamp": "2025-05-19 14:39:40",
-        "model_name": "gpt-3.5-turbo",
-        "evaluation_method": "Generative",
-        "dataset_name": "ms_marco",
-        "num_entries": 191,
-        "metrics": {
-            "squad": {
-                "exact_match": 0.0,
-                "f1": 19.1
-            },
-            "rouge": {
-                "rouge1": 0.2115,
-                "rouge2": 0.0741,
-                "rougeL": 0.1708,
-                "rougeLsum": 0.1754
-            },
-            "bleu": {
-                "bleu": 0.0373,
-                "precisions": []
-            },
-            "retrieval": {},
-            "truthfulqa": {
-                "hallucination_rate": 0.0,
-                "misinformation_rate": 1.0
-            }
-        }
-    },
-    {
-        "timestamp": "2025-05-19 15:49:43",
-        "model_name": "gpt-3.5-turbo",
-        "evaluation_method": "Generative",
-        "dataset_name": "ms_marco",
-        "num_entries": 191,
-        "metrics": {
-            "squad": {
-                "exact_match": 0.0,
-                "f1": 19.4
-            },
-            "rouge": {
-                "rouge1": 0.2134,
-                "rouge2": 0.0779,
-                "rougeL": 0.1763,
-                "rougeLsum": 0.1798
-            },
-            "bleu": {
-                "bleu": 0.0408,
-                "precisions": []
-            },
-            "retrieval": {},
-            "truthfulqa": {
-                "PHR": 0.5,
-                "THR": 0.3667
-            }
-        }
-    },
-    {
-        "timestamp": "2025-05-20 01:49:40",
-        "model_name": "gpt-4o-mini",
-        "evaluation_method": "Generative",
-        "dataset_name": "ms_marco",
-        "num_entries": 191,
-        "metrics": {
-            "squad": {
-                "exact_match": 0.0,
-                "f1": 14.19
-            },
-            "rouge": {
-                "rouge1": 0.1615,
-                "rouge2": 0.0534,
-                "rougeL": 0.1246,
-                "rougeLsum": 0.1374
-            },
-            "bleu": {
-                "bleu": 0.0229,
-                "precisions": []
-            },
-            "retrieval": {},
-            "truthfulqa": {
-                "PHR": 0.3,
-                "THR": 0.3
-            }
-        }
-    },
-    {
         "timestamp": "2025-05-20 16:25:59",
         "model_name": "gpt-4o-mini",
         "evaluation_method": "Generative",
@@ -1729,48 +1285,89 @@
         ]
     },
     {
-        "timestamp": "2025-05-20 17:33:13",
-        "model_name": "gpt-4o-mini",
+        "timestamp": "2025-05-21 00:07:06",
+        "model_name": "deepset/roberta-base-squad2",
+        "evaluation_method": "bm25",
+        "dataset_name": "ms_marco",
+        "num_entries": 1000,
+        "metrics": {
+            "squad": {
+                "exact_match": 7.28,
+                "f1": 24.87
+            },
+            "rouge": {
+                "rouge1": 0.2719,
+                "rouge2": 0.1578,
+                "rougeL": 0.2623,
+                "rougeLsum": 0.2623
+            },
+            "bleu": {
+                "bleu": 0.0934,
+                "precisions": []
+            },
+            "retrieval": {
+                "map": 0.22250185184142332,
+                "ndcg": 0.2875827975920454,
+                "recip_rank": 0.2335212341007043
+            },
+            "contextual": {
+                "contextual_precision": 0.0823,
+                "contextual_recall": 0.8212,
+                "contextual_relevancy": 0.0823
+            }
+        }
+    },
+    {
+        "timestamp": "2025-05-21 00:08:54",
+        "model_name": "gpt-3.5-turbo",
         "evaluation_method": "Generative",
         "dataset_name": "ms_marco",
         "num_entries": 125,
         "metrics": {
             "squad": {
                 "exact_match": 0.0,
-                "f1": 14.71
+                "f1": 19.18
             },
             "rouge": {
-                "rouge1": 0.1698,
-                "rouge2": 0.0573,
-                "rougeL": 0.1313,
-                "rougeLsum": 0.143
+                "rouge1": 0.2174,
+                "rouge2": 0.075,
+                "rougeL": 0.1795,
+                "rougeLsum": 0.1827
             },
             "bleu": {
-                "bleu": 0.0231,
+                "bleu": 0.0337,
                 "precisions": []
             },
             "retrieval": {},
             "truthfulqa": {
-                "PHR": 0.3,
-                "THR": 0.3
+                "PHR": 0.6,
+                "THR": 0.55
             }
         },
         "examples": [
             {
-                "query_id": "1174754",
-                "query": "is the colon in the lower intestine",
+                "query_id": "512338",
+                "query": "temperature in saint joe florida",
                 "ground_truth": [
-                    "No, The colon is also called the large intestine."
+                    "67.22\u00b0F"
                 ],
-                "prediction": "Yes, the colon is part of the lower intestine. It is the largest section of the large intestine and is responsible for absorbing water and electrolytes from indigestible food matter, as well as storing and eliminating waste. The colon is divided into several parts: the ascending colon, transverse colon, descending colon, and sigmoid colon, which leads to the rectum."
+                "prediction": "I'm sorry, but I am unable to provide real-time information such as the current temperature in Saint Joe, Florida. I recommend checking a reliable weather website or app for the most up-to-date information."
             },
             {
-                "query_id": "1185868",
-                "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+                "query_id": "758101",
+                "query": "what is in garcinia cambogia",
                 "ground_truth": [
-                    "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+                    "It include garcinia cambogia (a former scientific name), as well as brindleberry, Malabar tamarind, and kudam puli."
                 ],
-                "prediction": "The correct term to fill in the blank is \"Restorative\" justice. Restorative justice is a framework that focuses on repairing the harm caused by criminal behavior through reconciliation between the victim, the offender, and the community."
+                "prediction": "Garcinia cambogia is a tropical fruit that contains a compound called hydroxycitric acid (HCA). This compound is believed to have weight loss and appetite suppressing properties. Garcinia cambogia supplements typically contain extracts from the fruit's rind, which is where the HCA is found."
+            },
+            {
+                "query_id": "434622",
+                "query": "kitty genovese how many times was she stabbed",
+                "ground_truth": [
+                    "She was stabbed eight times in the chest and abdomen and four times in the back."
+                ],
+                "prediction": "Kitty Genovese was stabbed multiple times, specifically 14 times, during the brutal attack that led to her death."
             },
             {
                 "query_id": "742216",
@@ -1778,15 +1375,123 @@
                 "ground_truth": [
                     "It allows passengers to check-in to a flight automatically up to 36 hours prior to the flight's scheduled departure time."
                 ],
-                "prediction": "Early Bird Check-In is a service offered by Southwest Airlines that allows passengers to check in for their flights earlier than the standard check-in time. Typically, Southwest opens check-in 24 hours before a flight's scheduled departure. With Early Bird Check-In, passengers can secure a better boarding position by automatically checking in 36 hours before the flight, which can help them board earlier and have a better choice of seats.\n\nThis service is available for a fee and can be purchased during the booking process or added later. It's particularly useful for travelers who want to ensure they have a good boarding position without having to set an alarm to check in exactly at the"
+                "prediction": "Early Bird Check-In is an optional service offered by Southwest Airlines that allows passengers to secure a better boarding position for their flight. For an additional fee, passengers can purchase Early Bird Check-In, which automatically checks them in 36 hours before their flight, giving them a better chance of getting a higher boarding position and better seat selection. This can be especially helpful for passengers who want to ensure they have overhead bin space for their carry-on luggage or want to sit together with their travel companions."
             },
             {
-                "query_id": "372908",
-                "query": "how to practice for your drivers test",
+                "query_id": "698782",
+                "query": "what is a salary sacrifice pension scheme",
                 "ground_truth": [
-                    "Our DMV practice test tests are simple to use; read the question and click on the row with the correct answer. By using our site and free DMV practice tests you agree to our terms and conditions."
+                    "Your employer might offer a salary sacrifice pension scheme to all salaried workers on the payroll. This type of pension scheme is voluntary, but it may be to your advantage if your financial circumstances are right."
                 ],
-                "prediction": "Practicing for your driver's test is essential to ensure you are well-prepared and confident on the day of the exam. Here are some effective strategies to help you prepare:\n\n1. **Understand the Requirements**: Familiarize yourself with the specific requirements and rules of the driving test in your state or country. This includes knowing the types of maneuvers you will be tested on.\n\n2. **Study the Driver\u2019s Handbook**: Obtain a copy of your local driver\u2019s handbook and study it thoroughly. This will cover traffic laws, road signs, and safe driving practices.\n\n3. **Take a Driver\u2019s Education Course**: If you haven"
+                "prediction": "A salary sacrifice pension scheme is a type of pension arrangement where an employee agrees to give up a portion of their salary in exchange for increased pension contributions from their employer. This means that the employee's take-home pay is reduced, but they benefit from higher pension contributions, which can lead to greater retirement savings in the long run. Salary sacrifice pension schemes can be tax-efficient as the sacrificed salary is not subject to income tax or National Insurance contributions."
+            }
+        ]
+    },
+    {
+        "timestamp": "2025-05-21 00:13:55",
+        "model_name": "gpt-4.1-nano",
+        "evaluation_method": "Generative",
+        "dataset_name": "ms_marco",
+        "num_entries": 125,
+        "metrics": {
+            "squad": {
+                "exact_match": 0.0,
+                "f1": 17.25
+            },
+            "rouge": {
+                "rouge1": 0.197,
+                "rouge2": 0.0693,
+                "rougeL": 0.1558,
+                "rougeLsum": 0.1641
+            },
+            "bleu": {
+                "bleu": 0.0309,
+                "precisions": []
+            },
+            "retrieval": {},
+            "truthfulqa": {
+                "PHR": 0.55,
+                "THR": 0.45
+            }
+        },
+        "examples": [
+            {
+                "query_id": "563205",
+                "query": "what are phish",
+                "ground_truth": [
+                    "Phish is try to obtain financial or other confidential information from Internet users."
+                ],
+                "prediction": "Phish is an American rock band formed in 1983 in Burlington, Vermont. Known for their improvisational style, live performances, and blending of genres such as rock, jazz, funk, and bluegrass, Phish has developed a dedicated fan base and is often associated with the jam band scene. The band consists of members Trey Anastasio (guitar, vocals), Mike Gordon (bass, vocals), Jon Fishman (drums, vocals), and Page McConnell (keyboards, vocals). They are renowned for their elaborate live shows, improvisational jams, and fan culture centered around their concerts."
+            },
+            {
+                "query_id": "574803",
+                "query": "what are the three shields on the buick insig",
+                "ground_truth": [
+                    "The tri-shield buick insignia with distinctive, diagonally arranged red, white and blue shields."
+                ],
+                "prediction": "The Buick insignia features three shields arranged side by side, each representing different aspects of the brand's heritage. The three shields are:\n\n1. **Red Shield**: Symbolizes the American roots of Buick, reflecting strength and vitality.\n2. **Silver/Chrome Shield**: Represents the brand's commitment to innovation and technological advancement.\n3. **Blue Shield**: Signifies the brand's focus on luxury, elegance, and premium quality.\n\nTogether, these three shields embody Buick's heritage, innovation, and luxury."
+            },
+            {
+                "query_id": "467556",
+                "query": "nyu tuition cost",
+                "ground_truth": [
+                    "$43,746 for the 2014-2015 academic year."
+                ],
+                "prediction": "As of the 2023-2024 academic year, the undergraduate tuition and fees at New York University (NYU) are approximately $63,000 per year. Graduate program costs vary depending on the specific school and program. For the most accurate and up-to-date information, please visit NYU's official website or contact their admissions office."
+            },
+            {
+                "query_id": "370420",
+                "query": "how to measure binder size",
+                "ground_truth": [
+                    "The size of our binder depends on your sheet size. Binder size is always measured by the size sheet the binder will hold."
+                ],
+                "prediction": "Measuring binder size typically involves determining its capacity or dimensions to ensure it fits your needs. Here are common methods to measure binder size:\n\n1. **Determine the Capacity (Number of Sheets):**\n   - **Check the Label:** Most binders specify their capacity in terms of the number of sheets they can hold (e.g., 1-inch binder holds approximately 200-225 sheets).\n   - **Estimate Based on Thickness:** If the binder is already filled, measure the thickness of the filled binder spine using a ruler or caliper, then compare it to standard sheet thicknesses to estimate capacity.\n\n2. **Measure the Spine Width:"
+            },
+            {
+                "query_id": "693333",
+                "query": "what is a omurice omelet",
+                "ground_truth": [
+                    "A contemporary Asian dish consisting of an omelette made with fried rice."
+                ],
+                "prediction": "An omurice (short for \"omelette rice\") is a popular Japanese dish that combines a fluffy, thin omelet with fried rice. The dish typically features seasoned rice\u2014often mixed with ingredients like chicken, vegetables, and ketchup\u2014wrapped or topped with a soft, slightly runny omelet. It is usually garnished with additional ketchup, sauce, or herbs. Omurice is a comfort food in Japan, blending Western-style omelet techniques with Japanese flavors and presentation."
+            }
+        ]
+    },
+    {
+        "timestamp": "2025-05-21 00:23:38",
+        "model_name": "gpt-4.1",
+        "evaluation_method": "Generative",
+        "dataset_name": "ms_marco",
+        "num_entries": 125,
+        "metrics": {
+            "squad": {
+                "exact_match": 0.0,
+                "f1": 15.39
+            },
+            "rouge": {
+                "rouge1": 0.1767,
+                "rouge2": 0.0604,
+                "rougeL": 0.138,
+                "rougeLsum": 0.1576
+            },
+            "bleu": {
+                "bleu": 0.0161,
+                "precisions": []
+            },
+            "retrieval": {},
+            "truthfulqa": {
+                "PHR": 0.1,
+                "THR": 0.1
+            }
+        },
+        "examples": [
+            {
+                "query_id": "26191",
+                "query": "are whiskers on cats used for balance",
+                "ground_truth": [
+                    "Yes whiskers are used to help balance as well as feelers to help them judge space and help in the dark."
+                ],
+                "prediction": "**No, whiskers on cats are not used for balance.**\n\n**What are whiskers for?**  \nWhiskers, or *vibrissae*, are specialized, highly sensitive hairs that help cats sense their environment. They detect changes in air currents, help cats judge the width of openings, and allow them to navigate in the dark or tight spaces. Whiskers are deeply embedded in the cat\u2019s body and connected to nerves, making them excellent sensory tools.\n\n**What helps cats balance?**  \nA cat\u2019s sense of balance comes primarily from its **inner ear**, specifically the vestibular apparatus, which helps them orient"
             },
             {
                 "query_id": "759129",
@@ -1794,7 +1499,31 @@
                 "ground_truth": [
                     "It is the ability to think critically about information."
                 ],
-                "prediction": "Information literacy is the ability to recognize when information is needed and to locate, evaluate, and effectively use that information. It encompasses a range of skills and competencies that enable individuals to navigate the vast amount of information available in various formats, including print, digital, and multimedia.\n\nKey components of information literacy include:\n\n1. **Identifying Information Needs**: Understanding what information is required for a specific purpose or task.\n\n2. **Finding Information**: Knowing how to search for and access information from various sources, such as libraries, databases, the internet, and other media.\n\n3. **Evaluating Information**: Assessing the credibility, relevance"
+                "prediction": "**Information literacy** is the ability to recognize when information is needed and to locate, evaluate, and use that information effectively and ethically.\n\nIn more detail, information literacy involves:\n\n- **Identifying** what information you need to solve a problem or answer a question.\n- **Finding** reliable sources of information (books, articles, websites, databases, etc.).\n- **Evaluating** the credibility, accuracy, and relevance of the information and its sources.\n- **Organizing** and **using** the information appropriately to accomplish a specific purpose (such as writing a paper, making a decision, or solving a problem).\n- **Understanding**"
+            },
+            {
+                "query_id": "621519",
+                "query": "what distinguishes a macronutrient from a micronutrient",
+                "ground_truth": [
+                    "Macronutrients mainly include carbohydrates, proteins and fats and also water which are required in large quantities and their main function being the release of energy in body.Whereas, micronutrients mainly comprise vitamins and minerals which are required in minute quantities."
+                ],
+                "prediction": "**Macronutrients** and **micronutrients** are both essential for human health, but they differ in several key ways:\n\n### Macronutrients\n- **Definition:** Nutrients required by the body in large amounts.\n- **Main Types:** Carbohydrates, proteins, and fats.\n- **Function:** Provide energy (calories) and are needed for growth, metabolism, and other bodily functions.\n- **Daily Requirement:** Measured in grams (g) or sometimes hundreds of grams per day.\n\n### Micronutrients\n- **Definition:** Nutrients required by the body in much smaller amounts.\n- **Main Types:** Vitamins and"
+            },
+            {
+                "query_id": "400849",
+                "query": "is a salad considered fiber",
+                "ground_truth": [
+                    "Yes,there is approximately 1 gram of fiber in chicken salad."
+                ],
+                "prediction": "**Yes, a salad is generally considered a source of fiber.**\n\n**Explanation:**\n- **Fiber** is found in plant-based foods, especially vegetables, fruits, legumes, and whole grains.\n- **Salads** are typically made with vegetables (like lettuce, spinach, tomatoes, cucumbers, carrots, etc.), all of which contain dietary fiber.\n- The **amount of fiber** in a salad depends on the ingredients. Leafy greens and raw vegetables are good sources, while added items like croutons or cheese may not contribute much fiber.\n\n**In summary:**  \nA salad is not \"fiber\" itself, but it"
+            },
+            {
+                "query_id": "89186",
+                "query": "causes wilted yellow tomato leaves",
+                "ground_truth": [
+                    "Under-watering and over-watering, nitrogen deficiencies in the soil, a lack of sunlight on the bottom leaves, or a possible disease."
+                ],
+                "prediction": "Wilted, yellow tomato leaves are a common problem and can be caused by several factors. Here are the most common causes:\n\n### 1. **Watering Issues**\n- **Underwatering:** Lack of water causes wilting and yellowing, especially in hot weather.\n- **Overwatering:** Roots can suffocate and rot, leading to yellow, wilted leaves.\n\n### 2. **Nutrient Deficiency**\n- **Nitrogen Deficiency:** Lower leaves turn yellow first.\n- **Magnesium Deficiency:** Yellowing between leaf veins.\n\n### 3. **Disease**\n- **Fusarium or Verticillium"
             }
         ]
     }

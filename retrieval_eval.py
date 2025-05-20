@@ -85,7 +85,7 @@ def main():
     # Save everything
     save_evaluation_results(
         model_name=args.reader_model,
-        retrieval_method=args.retriever_model,
+        evaluation_method=args.retriever_model,
         dataset_name=args.dataset,
         squad_results=squad_results,
         rouge_results=rouge_results,

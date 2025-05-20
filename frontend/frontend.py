@@ -85,6 +85,7 @@ if retrieval_entries:
         rows.append({
             'model': entry['model_name'],
             'method': entry['retrieval_method'],
+            'dataset': entry['dataset_name'],
             'F1': m['squad']['f1'],
             'MAP': m['retrieval'].get('map'),
             'nDCG': m['retrieval'].get('ndcg'),
