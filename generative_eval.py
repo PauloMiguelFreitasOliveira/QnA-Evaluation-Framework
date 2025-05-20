@@ -3,6 +3,7 @@ import os
 import torch
 import json
 from tqdm import tqdm
+import random
 from rouge_score import rouge_scorer
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -131,6 +132,18 @@ def main():
         fs_examples=None  # or you could build few-shot examples here
     )
 
+    sample_idxs = random.sample(range(len(prim_qs)), k=min(5, len(prim_qs)))
+    examples = []
+    for i in sample_idxs:
+        q = prim_qs[i]
+        p = prim_preds[i]
+        examples.append({
+            "query_id": q["query_id"],
+            "query":    q["query"],
+            "ground_truth": q["answers"],
+            "prediction":   p["answer"]
+        })
+
     # ─── Report & Save ────────────────────────────────────────────────────────────
     out = {
         "model_name": args.model_name,
@@ -158,6 +171,7 @@ def main():
         mean_metrics={},
         contextual_results=None,
         truth_metrics=judgement,
+        examples=examples, 
         num_entries=len(prim_qs)
     )
 

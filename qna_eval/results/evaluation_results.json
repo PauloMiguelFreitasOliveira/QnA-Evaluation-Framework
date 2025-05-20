@@ -1657,5 +1657,145 @@
                 "THR": 0.3
             }
         }
+    },
+    {
+        "timestamp": "2025-05-20 16:25:59",
+        "model_name": "gpt-4o-mini",
+        "evaluation_method": "Generative",
+        "dataset_name": "ms_marco",
+        "num_entries": 57,
+        "metrics": {
+            "squad": {
+                "exact_match": 0.0,
+                "f1": 15.41
+            },
+            "rouge": {
+                "rouge1": 0.1754,
+                "rouge2": 0.0625,
+                "rougeL": 0.1398,
+                "rougeLsum": 0.1509
+            },
+            "bleu": {
+                "bleu": 0.0267,
+                "precisions": []
+            },
+            "retrieval": {},
+            "truthfulqa": {
+                "PHR": 0.2,
+                "THR": 0.1
+            }
+        },
+        "examples": [
+            {
+                "query_id": "410717",
+                "query": "is funner a word?",
+                "ground_truth": [
+                    "Yes, funner is a word."
+                ],
+                "prediction": "Yes, \"funner\" is considered a colloquial or informal term used to describe something that is more fun. However, it is often debated among grammarians and language purists, who argue that \"more fun\" is the preferred and more grammatically correct form. In casual conversation, \"funner\" is widely understood and used, but in formal writing, it's advisable to use \"more fun.\""
+            },
+            {
+                "query_id": "534802",
+                "query": "using cpap without prescription",
+                "ground_truth": [
+                    "A motorized oxygen mask doesn't qualify to most as being on the same plane as actual medication, but it really is."
+                ],
+                "prediction": "Using a CPAP (Continuous Positive Airway Pressure) machine without a prescription is not recommended. Here are several reasons why:\n\n1. **Medical Supervision**: CPAP therapy is typically prescribed for individuals diagnosed with obstructive sleep apnea (OSA) or other sleep-related breathing disorders. A healthcare provider can determine the appropriate pressure settings and ensure that the device is suitable for your specific condition.\n\n2. **Potential Risks**: Using a CPAP machine without proper guidance can lead to complications. Incorrect pressure settings may not effectively treat your condition and could potentially worsen your symptoms or lead to other health issues.\n\n3. **Mask Fit and Comfort**"
+            },
+            {
+                "query_id": "33073",
+                "query": "average cost of assisted living in washington state",
+                "ground_truth": [
+                    "$4,625 per month."
+                ],
+                "prediction": "As of my last update in October 2023, the average cost of assisted living in Washington State typically ranges from about $4,000 to $6,000 per month, depending on the location, amenities, and level of care required. Urban areas like Seattle may be on the higher end of that range, while more rural areas may be less expensive. It's important to check for the most current rates and specific facilities, as prices can vary significantly based on individual circumstances and changes in the market."
+            },
+            {
+                "query_id": "524762",
+                "query": "triglycerides what are they",
+                "ground_truth": [
+                    "A triglyceride is an ester derived from glycerol and three to four fatty acids."
+                ],
+                "prediction": "Triglycerides are a type of fat (lipid) found in your blood. They are composed of three fatty acid molecules attached to a glycerol backbone. Triglycerides are the most common form of fat in the body and serve several important functions:\n\n1. **Energy Storage**: Triglycerides store excess energy from the food you eat. When your body needs energy, it can break down triglycerides to release fatty acids, which can be used for fuel.\n\n2. **Insulation and Protection**: They help insulate the body and protect vital organs by providing a cushioning effect.\n\n3. **Transport of Nutrients"
+            },
+            {
+                "query_id": "187582",
+                "query": "fisher price i can play keyboard",
+                "ground_truth": [
+                    "Fisher price of i can play keyboard is $32.99."
+                ],
+                "prediction": "The Fisher-Price \"I Can Play! Keyboard\" is a musical toy designed for young children, typically ages 2 and up. It features a colorful design and is aimed at encouraging early musical exploration and creativity. The keyboard usually includes various sounds, melodies, and interactive features that allow children to play music, learn about different instruments, and engage in imaginative play.\n\nKey features often include:\n\n- **Multiple Keys**: A range of keys that produce different notes and sounds.\n- **Built-in Songs**: Pre-programmed songs that children can play along with or listen to.\n- **Sound Effects**: Various sound effects that can be"
+            }
+        ]
+    },
+    {
+        "timestamp": "2025-05-20 17:33:13",
+        "model_name": "gpt-4o-mini",
+        "evaluation_method": "Generative",
+        "dataset_name": "ms_marco",
+        "num_entries": 125,
+        "metrics": {
+            "squad": {
+                "exact_match": 0.0,
+                "f1": 14.71
+            },
+            "rouge": {
+                "rouge1": 0.1698,
+                "rouge2": 0.0573,
+                "rougeL": 0.1313,
+                "rougeLsum": 0.143
+            },
+            "bleu": {
+                "bleu": 0.0231,
+                "precisions": []
+            },
+            "retrieval": {},
+            "truthfulqa": {
+                "PHR": 0.3,
+                "THR": 0.3
+            }
+        },
+        "examples": [
+            {
+                "query_id": "1174754",
+                "query": "is the colon in the lower intestine",
+                "ground_truth": [
+                    "No, The colon is also called the large intestine."
+                ],
+                "prediction": "Yes, the colon is part of the lower intestine. It is the largest section of the large intestine and is responsible for absorbing water and electrolytes from indigestible food matter, as well as storing and eliminating waste. The colon is divided into several parts: the ascending colon, transverse colon, descending colon, and sigmoid colon, which leads to the rectum."
+            },
+            {
+                "query_id": "1185868",
+                "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+                "ground_truth": [
+                    "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+                ],
+                "prediction": "The correct term to fill in the blank is \"Restorative\" justice. Restorative justice is a framework that focuses on repairing the harm caused by criminal behavior through reconciliation between the victim, the offender, and the community."
+            },
+            {
+                "query_id": "742216",
+                "query": "what is early bird check in southwest",
+                "ground_truth": [
+                    "It allows passengers to check-in to a flight automatically up to 36 hours prior to the flight's scheduled departure time."
+                ],
+                "prediction": "Early Bird Check-In is a service offered by Southwest Airlines that allows passengers to check in for their flights earlier than the standard check-in time. Typically, Southwest opens check-in 24 hours before a flight's scheduled departure. With Early Bird Check-In, passengers can secure a better boarding position by automatically checking in 36 hours before the flight, which can help them board earlier and have a better choice of seats.\n\nThis service is available for a fee and can be purchased during the booking process or added later. It's particularly useful for travelers who want to ensure they have a good boarding position without having to set an alarm to check in exactly at the"
+            },
+            {
+                "query_id": "372908",
+                "query": "how to practice for your drivers test",
+                "ground_truth": [
+                    "Our DMV practice test tests are simple to use; read the question and click on the row with the correct answer. By using our site and free DMV practice tests you agree to our terms and conditions."
+                ],
+                "prediction": "Practicing for your driver's test is essential to ensure you are well-prepared and confident on the day of the exam. Here are some effective strategies to help you prepare:\n\n1. **Understand the Requirements**: Familiarize yourself with the specific requirements and rules of the driving test in your state or country. This includes knowing the types of maneuvers you will be tested on.\n\n2. **Study the Driver\u2019s Handbook**: Obtain a copy of your local driver\u2019s handbook and study it thoroughly. This will cover traffic laws, road signs, and safe driving practices.\n\n3. **Take a Driver\u2019s Education Course**: If you haven"
+            },
+            {
+                "query_id": "759129",
+                "query": "what is information literacy",
+                "ground_truth": [
+                    "It is the ability to think critically about information."
+                ],
+                "prediction": "Information literacy is the ability to recognize when information is needed and to locate, evaluate, and effectively use that information. It encompasses a range of skills and competencies that enable individuals to navigate the vast amount of information available in various formats, including print, digital, and multimedia.\n\nKey components of information literacy include:\n\n1. **Identifying Information Needs**: Understanding what information is required for a specific purpose or task.\n\n2. **Finding Information**: Knowing how to search for and access information from various sources, such as libraries, databases, the internet, and other media.\n\n3. **Evaluating Information**: Assessing the credibility, relevance"
+            }
+        ]
     }
 ]

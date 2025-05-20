@@ -160,5 +160,30 @@ if generative_entries:
         ax4.set_ylabel("Rate")
         ax4.set_xticklabels(ax4.get_xticklabels(), rotation=45, ha='right')
         st.pyplot(fig4)
+
+    st.subheader("Inspect Model Answer Examples")
+    # build a label for each entry
+    labels = [
+        f"{e['model_name']} on {e['dataset_name']} @ {e['timestamp']}"
+        for e in generative_entries
+        if "examples" in e
+    ]
+    if labels:
+        choice = st.selectbox("Pick an evaluation to inspect", labels)
+        # find the matching entry
+        sel = next(e for e in generative_entries
+                   if f"{e['model_name']} on {e['dataset_name']} @ {e['timestamp']}" == choice)
+        for ex in sel["examples"]:
+            with st.expander(f"Q: {ex['query']}", expanded=False):
+                st.write("**Ground truth:**")
+                for ans in ex["ground_truth"]:
+                    st.write(f"- {ans}")
+                st.write("**Model’s answer:**")
+                st.write(f"> {ex['prediction']}")
+
+
 else:
     st.write("No generative evaluations found.")
+
+
+

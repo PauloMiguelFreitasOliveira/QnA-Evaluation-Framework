@@ -1,2 +1,34 @@
+# core ML & NLP
+torch
+transformers
+datasets
+evaluate
+nltk
+rouge-score
+
+# embeddings / re-ranking
+sentence-transformers
+scikit-learn
+rank-bm25
+pytrec_eval
+numpy
+
+# extractive QA
+pytrec_eval
+nltk
+evaluate
+torch
+transformers
+
+# OpenAI API + env support
 openai
 python-dotenv
+
+# front-end & utils
+streamlit
+pandas
+matplotlib
+tqdm
+
+# HF cache & HTTP
+huggingface-hub
