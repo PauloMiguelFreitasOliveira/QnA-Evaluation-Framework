@@ -32,3 +32,6 @@ tqdm
 
 # HF cache & HTTP
 huggingface-hub
+langchain-core
+langchain-ollama
+openai>=1.0.0
