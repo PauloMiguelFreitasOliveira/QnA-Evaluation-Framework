@@ -14,10 +14,8 @@ pytrec_eval
 numpy
 
 # extractive QA
-pytrec_eval
 nltk
 evaluate
-torch
 transformers
 
 # OpenAI API + env support

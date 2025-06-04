@@ -2297,5 +2297,146 @@
                 "prediction": "The term \"conquest\" refers to the act of taking control or possession of a place, usually by force, and thereby extending one's dominion. In historical contexts, it often describes military campaigns undertaken with the aim of expanding empires, acquiring territory, resources, or asserting political power over new regions or peopstatic groups who did not previously have that control. The conquest can also carry cultural implications where one group imposes its culture on another through dominance and assimilation processes following subjugation."
             }
         ]
+    },
+    {
+        "timestamp": "2025-06-04 11:09:50",
+        "model_name": "gpt-4.1",
+        "evaluation_method": "Generative",
+        "dataset_name": "ms_marco",
+        "num_entries": 125,
+        "metrics": {
+            "squad": {
+                "exact_match": 0.0,
+                "f1": 15.21
+            },
+            "rouge": {
+                "rouge1": 0.1757,
+                "rouge2": 0.0602,
+                "rougeL": 0.1385,
+                "rougeLsum": 0.159
+            },
+            "bleu": {
+                "bleu": 0.0164,
+                "precisions": []
+            },
+            "retrieval": {},
+            "truthfulqa": {
+                "PHR": 0.3,
+                "THR": 0.05
+            }
+        },
+        "examples": [
+            {
+                "query_id": "256481",
+                "query": "how long does it take to get SAT scores back?",
+                "ground_truth": [
+                    "Within five to 20 days."
+                ],
+                "prediction": "SAT scores are typically released about **two to three weeks** after the test date. For most SAT test dates, you can expect:\n\n- **Multiple-choice scores**: Available about 13 days after the test.\n- **Essay scores** (if you took the SAT with Essay, which is now discontinued in the U.S.): Usually released a few days after the multiple-choice scores.\n\nYou can check your scores online through your College Board account. For exact release dates for each test, you can visit the [College Board SAT score release schedule](https://satsuite.collegeboard.org/sat/scores/getting-scores).\n\n**"
+            },
+            {
+                "query_id": "626917",
+                "query": "what do you put at purpose for partnership agreement",
+                "ground_truth": [
+                    "1 Partnership name. 2 Business address. 3 Names of Partners. 4 Effective date of agreement. 5 Primary purpose of partnership. 6 Voting requirements for partnership decisions. 7 Specify how costs will be shared among the partners. 8 Specify how profits will be shared among the partners are the key purpose for partnership agreement."
+                ],
+                "prediction": "In a **partnership agreement**, the **\"Purpose\"** section describes the main business activities and objectives of the partnership. This section clarifies what the partnership is formed to do, helping to set expectations and guide decision-making.\n\n### What to Include in the \"Purpose\" Section\n\n- **Nature of the Business:** Clearly state what kind of business the partnership will conduct (e.g., \"to operate a coffee shop,\" \"to provide consulting services,\" \"to buy and sell real estate\").\n- **Scope of Activities:** You can be broad or specific, depending on your needs. Some agreements use general language to allow flexibility, while others"
+            },
+            {
+                "query_id": "498704",
+                "query": "siriusxm cost per month",
+                "ground_truth": [
+                    "$17",
+                    "$14.99"
+                ],
+                "prediction": "SiriusXM offers several subscription plans, and the monthly cost depends on the package you choose. As of June 2024, here are the typical monthly prices for individual plans (before taxes and fees):\n\n1. **Streaming Only Plans (App, Web, Smart Devices):**\n   - **Streaming Platinum:** $10.99/month\n   - **Streaming Music & Entertainment:** $8.99/month\n\n2. **Car + Streaming Plans:**\n   - **Platinum Plan:** $23.99/month (most channels, including Howard Stern, sports, talk, and music)\n   - **Music & Entertainment Plan:** $"
+            },
+            {
+                "query_id": "1185854",
+                "query": "why did stalin want control of eastern europe",
+                "ground_truth": [
+                    "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+                ],
+                "prediction": "**Stalin wanted control of Eastern Europe after World War II for several key reasons:**\n\n### 1. **Security Concerns**\n- **Historical Invasions:** Russia had been invaded multiple times from the West (e.g., by Napoleon in 1812, Germany in World War I, and again by Nazi Germany in World War II). Stalin wanted a buffer zone of friendly, Soviet-controlled states to prevent future invasions.\n- **Strategic Depth:** Controlling Eastern Europe would give the Soviet Union more territory between itself and potential Western aggressors.\n\n### 2. **Spread of Communism**\n- **Ideological Goals:**"
+            },
+            {
+                "query_id": "518239",
+                "query": "the place beyond the pines cast",
+                "ground_truth": [
+                    "It is actually the Native American meaning to the word Schenectady"
+                ],
+                "prediction": "**\"The Place Beyond the Pines\"** (2012) features a notable ensemble cast. Here are the main cast members:\n\n- **Ryan Gosling** as Luke Glanton  \n- **Bradley Cooper** as Avery Cross  \n- **Eva Mendes** as Romina Gutierrez  \n- **Ray Liotta** as Deluca  \n- **Rose Byrne** as Jennifer Cross  \n- **Mahershala Ali** as Kofi  \n- **Dane DeHaan** as Jason (Romina and Luke's son)  \n- **Emory Cohen** as AJ (Avery's son)  \n- **Ben Mendel"
+            }
+        ]
+    },
+    {
+        "timestamp": "2025-06-04 15:53:15",
+        "model_name": "gpt-4o-mini",
+        "evaluation_method": "RAG",
+        "dataset_name": "ms_marco",
+        "num_entries": 57,
+        "metrics": {
+            "squad": {
+                "exact_match": 0.0,
+                "f1": 20.67
+            },
+            "rouge": {
+                "rouge1": 0.2285,
+                "rouge2": 0.1107,
+                "rougeL": 0.189,
+                "rougeLsum": 0.1967
+            },
+            "bleu": {
+                "bleu": 0.0499,
+                "precisions": []
+            },
+            "retrieval": {},
+            "truthfulqa": {
+                "PHR": 0.0351,
+                "THR": 0.0351
+            }
+        },
+        "examples": [
+            {
+                "query_id": "1174759",
+                "query": "is the bachelor legal",
+                "ground_truth": [
+                    "Yes, the bachelor is legal."
+                ],
+                "prediction": "Yes, a Bachelor of Laws (LL.B. or B.L.) is a legitimate undergraduate degree in law. It is recognized in many jurisdictions, particularly in common law countries, as a foundational qualification for those pursuing a career in law. Additionally, programs in legal studies, such as the Bachelor of Arts in Legal Studies mentioned, are also valid and can prepare students for various roles in the legal field, including paralegal positions or further education in law school."
+            },
+            {
+                "query_id": "524762",
+                "query": "triglycerides what are they",
+                "ground_truth": [
+                    "A triglyceride is an ester derived from glycerol and three to four fatty acids."
+                ],
+                "prediction": "Triglycerides are a type of fat (lipid) found in the body, composed of glycerol and three fatty acids. They are the main constituents of body fat in humans and animals, as well as in vegetable oils. Triglycerides serve several important functions, including providing a source of energy for cells, facilitating the transport of fat and glucose in the blood, and acting as a major component of skin oils. While they are essential for various bodily processes, elevated levels of triglycerides can lead to health issues, including an increased risk of heart disease and other metabolic disorders."
+            },
+            {
+                "query_id": "410717",
+                "query": "is funner a word?",
+                "ground_truth": [
+                    "Yes, funner is a word."
+                ],
+                "prediction": "Yes, \"funner\" is considered a word, particularly in informal contexts. It is the comparative form of the adjective \"fun,\" although its usage is often viewed as slang and is generally avoided in formal writing. While it may not be recognized by all dictionaries, it is commonly used in spoken language. In contrast, \"more fun\" is typically preferred in formal writing. Ultimately, the acceptance of \"funner\" can vary depending on the context and audience."
+            },
+            {
+                "query_id": "517120",
+                "query": "the meaning of reverence",
+                "ground_truth": [
+                    "Deep respect."
+                ],
+                "prediction": "Reverence is defined as a deep respect or veneration, often in a sacred or religious context. It involves an attitude of profound awe and respect, typically directed towards God, holy figures, or sacred texts. Reverence can also refer to acts that demonstrate this respect, such as bowing or other gestures of honor. Additionally, it is a title used to address certain members of the clergy, such as \"Your Reverence.\" Overall, reverence encompasses both the feeling of deep respect and the outward expressions of that feeling."
+            },
+            {
+                "query_id": "742216",
+                "query": "what is early bird check in southwest",
+                "ground_truth": [
+                    "It allows passengers to check-in to a flight automatically up to 36 hours prior to the flight's scheduled departure time."
+                ],
+                "prediction": "Early Bird Check-In is a service offered by Southwest Airlines that allows passengers to check in for their flight automatically up to 36 hours before the scheduled departure time. For a small fee, this service aims to secure a better boarding position, although it is important to note that Early Bird Check-In passengers board after Business Select and A-List customers. This means that if there are many Business Select or A-List passengers on a flight, Early Bird Check-In passengers may still end up with a lower boarding position, such as a C boarding position. The service can be purchased online, over the phone, or through the Southwest mobile app, and"
+            }
+        ]
     }
 ]

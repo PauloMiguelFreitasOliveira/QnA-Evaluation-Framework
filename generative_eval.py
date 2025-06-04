@@ -30,6 +30,7 @@ def is_seq2seq(model_name):
     return cfg.is_encoder_decoder
 
 def load_local_generator(model_name: str):
+    """Loads tokenizer, model and chooses pipeline task"""
     tok = AutoTokenizer.from_pretrained(model_name)
     if is_seq2seq(model_name):
         mdl = AutoModelForSeq2SeqLM.from_pretrained(model_name)
@@ -47,7 +48,7 @@ def load_local_generator(model_name: str):
     )
 
 def generate_openai_multisample(model_name, queries, prompt_tpl, n_samples, temp):
-    """One-shot n-sample generation via OpenAI’s `n=` parameter."""
+    """One-shot n-sample generation via OpenAI’s `n` parameter."""
     outs = []
     for ex in tqdm(queries, desc="Generating (OpenAI-multi)"):
         prompt = prompt_tpl.format(question=ex["query"])
@@ -115,9 +116,10 @@ def generate_ollama_predictions(
     return preds
 
 
-
 def build_ground_truth(queries):
+    """returns a dictionary to be used in evaluate_extractive_model"""
     return {ex["query_id"]: ex.get("answers", []) for ex in queries}
+
 
 def main():
     p = argparse.ArgumentParser()
