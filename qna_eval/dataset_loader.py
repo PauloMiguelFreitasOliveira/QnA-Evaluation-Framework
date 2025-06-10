@@ -8,17 +8,21 @@ import os
 import json
 from datasets import load_dataset
 import re
+import sys
+
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 # Loads a dataset from local JSON or HuggingFace, then formats it for retrieval
 def load_dataset_file(dataset_name, limit, max_contexts_per_query=None):
     dataset_path = os.path.join("datasets", f"{dataset_name}.json")
 
     if os.path.exists(dataset_path):
-        print(f"📂 Loading dataset locally from {dataset_path}")
+        print(f" Loading dataset locally from {dataset_path}")
         with open(dataset_path, "r", encoding="utf-8") as f:
             raw_data = json.load(f)
     else:
-        print(f"🌐 Local file not found. Trying to load '{dataset_name}' from HuggingFace...")
+        print(f" Local file not found. Trying to load '{dataset_name}' from HuggingFace...")
         try:
             split_size = min(limit, 1000)
             split_string = f"train[:{split_size}]"
@@ -34,7 +38,7 @@ def load_dataset_file(dataset_name, limit, max_contexts_per_query=None):
     
     # Ensure we're returning a valid dictionary with 'queries' key
     if formatted_data is None or context_pool is None:
-        raise ValueError("❌ Error in formatting dataset: formatted_data or context_pool is None.")
+        raise ValueError(" Error in formatting dataset: formatted_data or context_pool is None.")
     
     # ✅ Print up to 200 entries after deduplication
     #print("\n🖨️ Showing up to 200 unique formatted entries:\n")
@@ -61,7 +65,7 @@ def try_format_dataset(raw_data, limit, max_contexts_per_query):
     elif hasattr(raw_data, '__getitem__'): 
         entries = raw_data
     else:
-        raise ValueError("❌ Unrecognized dataset structure.")
+        raise ValueError(" Unrecognized dataset structure.")
 
     count = 0
     for count, entry in enumerate(entries):
@@ -103,7 +107,7 @@ def try_format_dataset(raw_data, limit, max_contexts_per_query):
                     context = selected[0]
 
             if not query or not context:
-                #print(f"⚠️ Skipping entry {query_id}: Missing query or context.")
+                #print(f" Skipping entry {query_id}: Missing query or context.")
                 continue
 
                         # Deduplication: check if (query, context, answer) is unique
@@ -155,14 +159,14 @@ def try_format_dataset(raw_data, limit, max_contexts_per_query):
                 break
 
         except Exception as e:
-            print(f"❌ Error formatting entry {count}: {str(e)}")
+            print(f" Error formatting entry {count}: {str(e)}")
             continue
 
     if not formatted:
-        raise ValueError("❌ Dataset could not be formatted: No valid entries found.")
+        raise ValueError(" Dataset could not be formatted: No valid entries found.")
 
-    print(f"📦 Number of contexts in the context pool: {len(context_pool) if context_pool else 0}")
+    print(f" Number of contexts in the context pool: {len(context_pool) if context_pool else 0}")
     num_answerable = sum(1 for q in formatted if q["answers"])
-    print(f"✅ Formatted {len(formatted)} entries ({num_answerable} with answers, {len(formatted)-num_answerable} unanswerable).")
+    print(f" Formatted {len(formatted)} entries ({num_answerable} with answers, {len(formatted)-num_answerable} unanswerable).")
 
     return formatted, context_pool

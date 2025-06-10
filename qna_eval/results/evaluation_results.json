@@ -1167,54 +1167,6 @@
         }
     },
     {
-        "timestamp": "2025-05-15 01:11:01",
-        "model_name": "google/flan-t5-base",
-        "retrieval_method": "Generative",
-        "dataset_name": "ms_marco",
-        "num_entries": 191,
-        "metrics": {
-            "squad": {
-                "exact_match": 1.05,
-                "f1": 11.06
-            },
-            "rouge": {
-                "rouge1": 0.1303,
-                "rouge2": 0.0278,
-                "rougeL": 0.1202,
-                "rougeLsum": 0.1202
-            },
-            "bleu": {
-                "bleu": 0.0199,
-                "precisions": []
-            },
-            "retrieval": {}
-        }
-    },
-    {
-        "timestamp": "2025-05-15 01:26:40",
-        "model_name": "google/flan-t5-base",
-        "retrieval_method": "Generative",
-        "dataset_name": "ms_marco",
-        "num_entries": 191,
-        "metrics": {
-            "squad": {
-                "exact_match": 1.05,
-                "f1": 11.06
-            },
-            "rouge": {
-                "rouge1": 0.1303,
-                "rouge2": 0.0278,
-                "rougeL": 0.1202,
-                "rougeLsum": 0.1202
-            },
-            "bleu": {
-                "bleu": 0.0199,
-                "precisions": []
-            },
-            "retrieval": {}
-        }
-    },
-    {
         "timestamp": "2025-05-20 16:25:59",
         "model_name": "gpt-4o-mini",
         "evaluation_method": "Generative",
@@ -2436,6 +2388,496 @@
                     "It allows passengers to check-in to a flight automatically up to 36 hours prior to the flight's scheduled departure time."
                 ],
                 "prediction": "Early Bird Check-In is a service offered by Southwest Airlines that allows passengers to check in for their flight automatically up to 36 hours before the scheduled departure time. For a small fee, this service aims to secure a better boarding position, although it is important to note that Early Bird Check-In passengers board after Business Select and A-List customers. This means that if there are many Business Select or A-List passengers on a flight, Early Bird Check-In passengers may still end up with a lower boarding position, such as a C boarding position. The service can be purchased online, over the phone, or through the Southwest mobile app, and"
+            }
+        ]
+    },
+    {
+        "timestamp": "2025-06-04 19:20:01",
+        "model_name": "gpt-4.1",
+        "evaluation_method": "RAG",
+        "dataset_name": "ms_marco",
+        "num_entries": 57,
+        "metrics": {
+            "squad": {
+                "exact_match": 0.0,
+                "f1": 18.43
+            },
+            "rouge": {
+                "rouge1": 0.2062,
+                "rouge2": 0.0934,
+                "rougeL": 0.1698,
+                "rougeLsum": 0.1784
+            },
+            "bleu": {
+                "bleu": 0.0296,
+                "precisions": []
+            },
+            "retrieval": {},
+            "truthfulqa": {
+                "PHR": 0.0877,
+                "THR": 0.0877
+            }
+        },
+        "examples": [
+            {
+                "query_id": "1185869",
+                "query": ")what was the immediate impact of the success of the manhattan project?",
+                "ground_truth": [
+                    "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+                ],
+                "prediction": "**Question: What was the immediate impact of the success of the Manhattan Project?**\n\n**Answer:**  \nThe immediate impact of the success of the Manhattan Project was the creation and use of the first atomic bombs during World War II. In August 1945, the United States dropped two atomic bombs on the Japanese cities of Hiroshima and Nagasaki. This led to massive destruction and the deaths of hundreds of thousands of people, both instantly and from radiation sickness. The bombings forced Japan to surrender, effectively bringing an end to World War II. The success of the Manhattan Project also marked the beginning of the nuclear age, changing global politics, military"
+            },
+            {
+                "query_id": "1185755",
+                "query": "why do nails get rusty",
+                "ground_truth": [
+                    "Nails rust in water because water allows the iron to react with any oxygen present, which forms iron oxide. Nails rust due to presence of some impurities in the water, particularly salts, which speeds up the transfer of electrons from iron to oxygen."
+                ],
+                "prediction": "Nails get rusty because they are made of iron, which reacts with oxygen and water in the environment. When iron comes into contact with water (including moisture in the air) and oxygen, a chemical reaction occurs that forms iron oxide, commonly known as rust. This process is called oxidation. The presence of impurities, such as salts, can speed up this reaction, causing the nails to rust more quickly. So, nails rust because iron reacts with oxygen and water to form rust."
+            },
+            {
+                "query_id": "1174754",
+                "query": "is the colon in the lower intestine",
+                "ground_truth": [
+                    "No, The colon is also called the large intestine."
+                ],
+                "prediction": "**Answer:**  \nYes, the colon is part of the lower intestine. The term \"lower intestine\" generally refers to the large intestine, which includes the colon. The colon is also called the large intestine and is located after the small intestine in the digestive tract. It starts in the lower right abdomen (at the cecum, where it connects to the ileum\u2014the last part of the small intestine) and continues upward, across, and down the abdomen before ending at the rectum."
+            },
+            {
+                "query_id": "534802",
+                "query": "using cpap without prescription",
+                "ground_truth": [
+                    "A motorized oxygen mask doesn't qualify to most as being on the same plane as actual medication, but it really is."
+                ],
+                "prediction": "**Using CPAP Without a Prescription: What You Need to Know**\n\n**1. Medical Risks:**  \nUsing a CPAP machine without a prescription is not recommended. The correct pressure settings are crucial for effective treatment and safety. Using the wrong pressure can make the therapy ineffective or even cause harm (e.g., lung injury, discomfort, or other complications).\n\n**2. Why a Prescription Is Required:**  \nA prescription ensures you have a proper diagnosis (usually sleep apnea) and that the machine is set to the correct pressure for your needs. This is determined through a sleep study and sometimes a titration study. The prescription protects your health and"
+            },
+            {
+                "query_id": "728808",
+                "query": "what is ce certified",
+                "ground_truth": [
+                    "An abbreviation of Conformite Conformit\u00e9, europeenne Europ\u00e9enne Meaning. european conformity."
+                ],
+                "prediction": "**CE certified** means that a product has been assessed and meets the essential requirements of relevant European Union (EU) safety, health, and environmental protection legislation. The \"CE\" marking (which stands for \"Conformit\u00e9 Europ\u00e9enne,\" meaning \"European Conformity\") is a symbol that manufacturers affix to their products to indicate that they comply with all applicable EU directives and regulations.\n\nWhen a product is **CE certified**:\n\n- It has undergone the necessary conformity assessment procedures, which may include testing, inspection, and documentation.\n- It meets the requirements set out in relevant EU directives (such as those for machinery, electrical equipment,"
+            }
+        ]
+    },
+    {
+        "timestamp": "2025-06-04 19:30:16",
+        "model_name": "gpt-3.5-turbo",
+        "evaluation_method": "RAG",
+        "dataset_name": "ms_marco",
+        "num_entries": 57,
+        "metrics": {
+            "squad": {
+                "exact_match": 1.75,
+                "f1": 30.35
+            },
+            "rouge": {
+                "rouge1": 0.3228,
+                "rouge2": 0.1837,
+                "rougeL": 0.2919,
+                "rougeLsum": 0.2919
+            },
+            "bleu": {
+                "bleu": 0.1104,
+                "precisions": []
+            },
+            "retrieval": {},
+            "truthfulqa": {
+                "PHR": 0.0175,
+                "THR": 0.0175
+            }
+        },
+        "examples": [
+            {
+                "query_id": "1184773",
+                "query": "depona ab",
+                "ground_truth": [
+                    "Depona Ab is a library in Vilhelmina, Sweden."
+                ],
+                "prediction": "Depona AB is a company that provides physical archive services in Sweden. They offer archival materials for businesses, organizations, and governmental agencies, using the latest technology for recording, retrieval, and archive databases. Depona AB was founded in 1999 and operates in ten locations in Sweden, serving thousands of customers with their web-based archiving solution Visual archive."
+            },
+            {
+                "query_id": "612660",
+                "query": "what county is shelton, ct",
+                "ground_truth": [
+                    "Shelton is in Fairfield County, Connecticut, United States."
+                ],
+                "prediction": "Fairfield County"
+            },
+            {
+                "query_id": "728808",
+                "query": "what is ce certified",
+                "ground_truth": [
+                    "An abbreviation of Conformite Conformit\u00e9, europeenne Europ\u00e9enne Meaning. european conformity."
+                ],
+                "prediction": "CE certification is a certification mark that indicates a product complies with European Union safety, health, and environmental protection requirements. It is required for all recreational boats entering or being sold in the European Union, and is obtained through testing and documentation to ensure conformity to applicable European directives and requirements. The CE mark allows for free and open access to the European Union market."
+            },
+            {
+                "query_id": "451087",
+                "query": "medical coding how many days is considered acute?",
+                "ground_truth": [
+                    "up to nine days."
+                ],
+                "prediction": "The timeframe for a patient who is discharged to an acute care facility is up to nine days."
+            },
+            {
+                "query_id": "467556",
+                "query": "nyu tuition cost",
+                "ground_truth": [
+                    "$43,746 for the 2014-2015 academic year."
+                ],
+                "prediction": "The tuition cost for New York University is $43,746 for the 2014-2015 academic year."
+            }
+        ]
+    },
+    {
+        "timestamp": "2025-06-09 12:53:02",
+        "model_name": "deepseek-v2:latest",
+        "evaluation_method": "RAG",
+        "dataset_name": "ms_marco",
+        "num_entries": 191,
+        "metrics": {
+            "squad": {
+                "exact_match": 0.0,
+                "f1": 12.91
+            },
+            "rouge": {
+                "rouge1": 0.1422,
+                "rouge2": 0.0583,
+                "rougeL": 0.1139,
+                "rougeLsum": 0.12
+            },
+            "bleu": {
+                "bleu": 0.0279,
+                "precisions": []
+            },
+            "retrieval": {},
+            "truthfulqa": {
+                "PHR": 0.2775,
+                "THR": 0.2775
+            }
+        },
+        "examples": [
+            {
+                "query_id": "669982",
+                "query": "what icd-10-cm code is reported for an abnormal cervical pap smear?",
+                "ground_truth": [
+                    "ICD-10-CM V72.32"
+                ],
+                "prediction": "For an abnormal cervical Pap smear, the ICD-10-CM code to report is 795.0x (Abnormal Papanicolaou smear of cervix and cervical HPV)."
+            },
+            {
+                "query_id": "26191",
+                "query": "are whiskers on cats used for balance",
+                "ground_truth": [
+                    "Yes whiskers are used to help balance as well as feelers to help them judge space and help in the dark."
+                ],
+                "prediction": "Yes, whiskers play a crucial role in helping animals like cats maintain their balance. They serve multiple functions beyond just assisting with balancing \u2013 they also act as sensory tools that help the animal navigate and perceive its surroundings. The deep-rooted nature of cat's whiskers ensures there is an abundance of nerves and blood vessels for increased sensitivity, making them highly efficient tactile sensors in determining distances and obstacles in their environment.\n\nIn addition to balance, cats use their whiskers when moving through tight spaces, helping them judge whether they can pass or need to find another route altogether. They are able to do this by assessing the width of the opening using their whiskers \u2013 much like a natural ruler at roughly equal to the body's size. The sensitive tips on cat whiskers respond well to pressure and play an essential role in detecting changes in air currents, aiding in navigating through spaces effectively without bumping into objects or getting stuck.\n\nMoreover, cats also use their whiskers as indicators of mood \u2013 when they are happy, curious or content, the whiskers will be more relaxed with tips pushed forward; while a display indicating anger or defensiveness often involves pulled-back whisker positions. In summary, while balance is one of several functions that cat whiskers serve in their daily life, it's essential to understand how critical these sensitive hairs are for maintaining overall mobility and safety within the environment."
+            },
+            {
+                "query_id": "150905",
+                "query": "different types of social security disability",
+                "ground_truth": [
+                    "Social security disability insurance benefit, disability insurance benefits."
+                ],
+                "prediction": "There are at least five major types of Social Security Disability Benefits, namely: \n\n1) Social Security Disability Insurance (SSDI): This benefit is available for individuals who have worked and paid into the Social Security system within recent years. These workers become disabled before retirement age or their disabling condition results in death. In most cases, they must have worked five out of the last ten years to qualify. \n\n2) Supplemental Security Income (SSI): Unlike SSDI which is for those who are working but disabled, SSI benefits are meant for individuals with a disability that prevents them from earning income or results in substantially reduced earnings capacity and low-income. It does not require any prior work history to qualify. \n\n3) Disabled Widow(er)'s Benefits: If you're at least 50 years old but younger than full retirement age when your spouse dies, these benefits may be an option for you if the deceased worker earned Social Security credits in the past and you are also disabled or caring for a child under age 16 with a disability.\n\n4) Disabled Child\u2019s Benefits: If you're at least 50 years old but younger than full retirement age when your own parent dies, these benefits may be an option for you if you have a disability that began before age 22 and the deceased worker was in the workforce long enough to earn Social Security credits.\n\n5) Medicare Disability Benefits: This benefit is available to individuals who are approved for SSDI or SSI due to their disabilities. It allows them to receive medical care from healthcare providers at no cost, similar to traditional health insurance. \n\n6) Blind Pension (SSB): These benefits are provided under the Social Security Act and apply if you\u2019re legally blind in accordance with Social Security's blindness guidelines. However, not everyone who is blind receives this benefit; it typically goes to individuals whose incomes are very low or nonexistent."
+            },
+            {
+                "query_id": "1174740",
+                "query": "bandwidth knowledge of results",
+                "ground_truth": [
+                    "Bandwidth knowledge of results are more than just a relative frequency effect. Abstract."
+                ],
+                "prediction": "The \"bandwidth knowledge of results\" refers to the extent or range within which a participant's performance is monitored for feedback on their accuracy in executing motor tasks such as rapid elbow-flexion movements, according to predefined criteria that define acceptable movement times. This concept is centered around a goal-oriented approach where only when an individual's response falls outside of this specific tolerance limit (i.e., the bandwidth), they are provided with knowledge about the results of their performance\u2014specifically whether it was correct or not and how far off from the intended target or standard movement time they were.\n\nIn essence, under a narrow bandwidth condition, participants would have to be extremely precise in order for them to receive feedback on each trial (every response within acceptable limits), whereas with broader tolerance boundaries this frequency of providing results knowledge could decrease as the margin for error is increased\u2014this lower rate does not necessarily imply less learning or poorer performance outcomes.\n\nThis idea supports a goal-directed approach that can adaptively adjust its criteria based on individual participants\u2019 skill level, and it's being explored how such bandwidth knowledge influences motor learning and overall task proficiency in different scenarios, including rapid elbow flexion movements as described by the abstract of this study discussed above. The research conducted under these conditions aims to better understand optimal feedback protocols for improving performance outcomes over time."
+            },
+            {
+                "query_id": "687512",
+                "query": "what is a importer of record number",
+                "ground_truth": [
+                    "The Importer of Record is a person or entity who assumes the responsibility for ensuring legal goods are imported into the United States."
+                ],
+                "prediction": "An Importer Number, also known as an Importer of Record Number or INumber, is a unique identifier assigned by Customs to the Importer of Record (Importer Number). This identification is required for importing processes and helps customs officials track imports. All importers must have this number on file during importation into America."
+            }
+        ]
+    },
+    {
+        "timestamp": "2025-06-09 15:36:47",
+        "model_name": "gpt-4.1-nano",
+        "evaluation_method": "Generative",
+        "dataset_name": "ms_marco",
+        "num_entries": 33,
+        "metrics": {
+            "squad": {
+                "exact_match": 0.0,
+                "f1": 18.42
+            },
+            "rouge": {
+                "rouge1": 0.2069,
+                "rouge2": 0.077,
+                "rougeL": 0.1716,
+                "rougeLsum": 0.1733
+            },
+            "bleu": {
+                "bleu": 0.0378,
+                "precisions": []
+            },
+            "retrieval": {},
+            "truthfulqa": {
+                "PHR": 0.4,
+                "THR": 0.2
+            }
+        },
+        "examples": [
+            {
+                "query_id": "728808",
+                "query": "what is ce certified",
+                "ground_truth": [
+                    "An abbreviation of Conformite Conformit\u00e9, europeenne Europ\u00e9enne Meaning. european conformity."
+                ],
+                "prediction": "CE Certified refers to a product that has been evaluated and meets the safety, health, and environmental protection requirements set by the European Union (EU). The CE marking indicates that the product complies with EU legislation and can be legally sold within the European Economic Area (EEA). It signifies that the manufacturer has ensured the product conforms to all relevant EU directives and standards, and it often involves testing, assessment, and documentation processes."
+            },
+            {
+                "query_id": "605123",
+                "query": "what county is dewitt michigan in?",
+                "ground_truth": [
+                    "DeWitt is located in Clinton County, Michigan, United States."
+                ],
+                "prediction": "DeWitt, Michigan, is located in Clinton County."
+            },
+            {
+                "query_id": "612569",
+                "query": "what county is seminole fl in",
+                "ground_truth": [
+                    "Pinellas County"
+                ],
+                "prediction": "Seminole, Florida, is located in Pinellas County."
+            },
+            {
+                "query_id": "638438",
+                "query": "what does granuloma annulare look like",
+                "ground_truth": [
+                    "A ring of small red or skin-coloured bumps"
+                ],
+                "prediction": "Granuloma annulare typically appears as smooth, raised, or flat-topped bumps or patches on the skin. These lesions are usually arranged in a ring or circular pattern, often with a slightly raised border and a central area that may be slightly lighter or skin-colored. The most common presentation is a series of small, firm, reddish or flesh-colored bumps that form a ring-shaped or annular configuration. The lesions are usually asymptomatic, meaning they don't cause itching or pain, and can appear on various parts of the body, most commonly on the hands, fingers, elbows, or feet."
+            },
+            {
+                "query_id": "610348",
+                "query": "what county is nine mile in",
+                "ground_truth": [
+                    "Onondaga"
+                ],
+                "prediction": "Nine Mile is located in Marquette County, Michigan."
+            }
+        ]
+    },
+    {
+        "timestamp": "2025-06-09 15:50:57",
+        "model_name": "gpt-4o-mini",
+        "evaluation_method": "Generative",
+        "dataset_name": "ms_marco",
+        "num_entries": 33,
+        "metrics": {
+            "squad": {
+                "exact_match": 0.0,
+                "f1": 18.59
+            },
+            "rouge": {
+                "rouge1": 0.2059,
+                "rouge2": 0.08,
+                "rougeL": 0.1664,
+                "rougeLsum": 0.1792
+            },
+            "bleu": {
+                "bleu": 0.0365,
+                "precisions": []
+            },
+            "retrieval": {},
+            "truthfulqa": {
+                "PHR": 0.6,
+                "THR": 0.1
+            }
+        },
+        "examples": [
+            {
+                "query_id": "467556",
+                "query": "nyu tuition cost",
+                "ground_truth": [
+                    "$43,746 for the 2014-2015 academic year."
+                ],
+                "prediction": "As of the 2023-2024 academic year, the undergraduate tuition for New York University (NYU) is approximately $62,000 per year. This figure can vary based on the specific program and additional fees, such as housing, meals, and other expenses. Graduate program tuition rates can also differ significantly depending on the field of study. For the most accurate and up-to-date information, it's best to check NYU's official website or contact their admissions office directly."
+            },
+            {
+                "query_id": "1185869",
+                "query": ")what was the immediate impact of the success of the manhattan project?",
+                "ground_truth": [
+                    "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+                ],
+                "prediction": "The immediate impact of the success of the Manhattan Project, which culminated in the development and detonation of atomic bombs during World War II, was multifaceted:\n\n1. **End of World War II**: The most significant immediate impact was the use of atomic bombs on the Japanese cities of Hiroshima (August 6, 1945) and Nagasaki (August 9, 1945). These bombings contributed to Japan's surrender on August 15, 1945, effectively bringing an end to World War II.\n\n2. **Shift in Global Power Dynamics**: The successful development of nuclear weapons positioned the United States as a"
+            },
+            {
+                "query_id": "693333",
+                "query": "what is a omurice omelet",
+                "ground_truth": [
+                    "A contemporary Asian dish consisting of an omelette made with fried rice."
+                ],
+                "prediction": "Omurice, a popular dish in Japanese cuisine, is a fusion of an omelet and fried rice. The name \"omurice\" is a portmanteau of \"omelet\" and \"rice.\" The dish typically consists of a serving of fried rice, which is often flavored with ketchup, chicken, and vegetables, wrapped in a soft, fluffy omelet. \n\nThe omelet is usually cooked until just set, allowing it to be creamy and tender, and it is often topped with additional ketchup or a savory sauce. Omurice is commonly served in cafes and restaurants in Japan and is loved for its comforting flavors and"
+            },
+            {
+                "query_id": "534802",
+                "query": "using cpap without prescription",
+                "ground_truth": [
+                    "A motorized oxygen mask doesn't qualify to most as being on the same plane as actual medication, but it really is."
+                ],
+                "prediction": "Using a CPAP (Continuous Positive Airway Pressure) machine without a prescription is not recommended. Here are several reasons why:\n\n1. **Medical Supervision**: CPAP therapy is typically prescribed for conditions like obstructive sleep apnea (OSA). A healthcare provider can diagnose the condition and determine the appropriate pressure settings and type of CPAP machine needed.\n\n2. **Potential Risks**: Using a CPAP machine without proper guidance can lead to complications. Incorrect pressure settings may not effectively treat sleep apnea and could potentially worsen the condition or lead to other health issues.\n\n3. **Mask Fit and Comfort**: A healthcare provider can help ensure that"
+            },
+            {
+                "query_id": "728808",
+                "query": "what is ce certified",
+                "ground_truth": [
+                    "An abbreviation of Conformite Conformit\u00e9, europeenne Europ\u00e9enne Meaning. european conformity."
+                ],
+                "prediction": "\"CE certified\" refers to products that have been assessed and meet the requirements of the European Union's CE marking. The \"CE\" stands for \"Conformit\u00e9 Europ\u00e9enne,\" which translates to \"European Conformity.\" This marking indicates that a product complies with EU safety, health, and environmental protection standards.\n\nWhen a product is CE certified, it means that the manufacturer has verified that the product meets all relevant EU directives and regulations. This certification is often required for a wide range of products, including electronics, machinery, medical devices, toys, and construction materials, among others.\n\nThe CE marking allows products to be sold within the European"
+            }
+        ]
+    },
+    {
+        "timestamp": "2025-06-10 16:46:03",
+        "model_name": "deepseek-llm:latest",
+        "evaluation_method": "Generative",
+        "dataset_name": "ms_marco",
+        "num_entries": 9,
+        "metrics": {
+            "squad": {
+                "exact_match": 0.0,
+                "f1": 9.52
+            },
+            "rouge": {
+                "rouge1": 0.1088,
+                "rouge2": 0.0341,
+                "rougeL": 0.0894,
+                "rougeLsum": 0.093
+            },
+            "bleu": {
+                "bleu": 0.014,
+                "precisions": []
+            },
+            "retrieval": {},
+            "truthfulqa": {
+                "PHR": 1.0,
+                "THR": 0.5
+            }
+        },
+        "examples": [
+            {
+                "query_id": "467556",
+                "query": "nyu tuition cost",
+                "ground_truth": [
+                    "$43,746 for the 2014-2015 academic year."
+                ],
+                "prediction": "As of my knowledge cutoff in 2021, the estimated annual tuition and fees at New York University (NYU) for undergraduate students was around $51,478. However, this number can vary depending on the specific program or school within NYU that you choose to attend, as well as your residency status (out-of-state vs in-state).\n\nIt's important to note that tuition and fees at NYU are subject to change each year, so it is always a good idea to check with the university directly for up-to-date information. Additionally, there may be additional costs such as room and board, books, supplies, and personal expenses that you will need to take into account when planning your budget.\n\nPlease keep in mind that this information was accurate at the time of my last update. I recommend checking NYU's website or contacting their admissions office for current tuition rates and any additional fees that may apply to your chosen program of study."
+            },
+            {
+                "query_id": "1185868",
+                "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+                "ground_truth": [
+                    "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+                ],
+                "prediction": "Retribution"
+            },
+            {
+                "query_id": "410717",
+                "query": "is funner a word?",
+                "ground_truth": [
+                    "Yes, funner is a word."
+                ],
+                "prediction": "No, \"funner\" is not a word. It's made by combining the words \"fun\" and \"-er\", which don't make sense together in this way. Let's say \"the city has more fun things to do.\""
+            },
+            {
+                "query_id": "1185854",
+                "query": "why did stalin want control of eastern europe",
+                "ground_truth": [
+                    "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+                ],
+                "prediction": "Joseph Stalin wanted to control Eastern Europe for several reasons, mainly related to his pursuit of a powerful Soviet Union and the consolidation of communist ideology. Here are some key factors that led to Stalin's interest in controlling Eastern European countries:\n\n1. Geopolitical interests: During World War II, the Soviet Union was occupied by Nazi Germany (1941-1945). This occupation had a profound impact on Soviet society and leadership, prompting them to see control of their eastern border as crucial for national security and stability. After the war, Stalin pursued territorial changes in Eastern Europe with the aim of creating buffer zones between the Soviet Union and potential future threats from Germany or other hostile nations.\n\n2. Ideological reasons: The socialist ideology promoted by the Communist Party of the Soviet Union (CPSU) dictated that communist revolutions should spread throughout the world to create a global proletarian revolution. Stalin believed this would only happen if Eastern European countries became part of this new socialist order, in which they could help support and propagate communist rule elsewhere.\n\n3. Consolidation of power: After World War II, Stalin was desperate to consolidate Soviet power both domestically (with the \"Great Purge\" or the purges of 1934-1938) and internationally through regional control. The establishment of satellite states in Eastern Europe would provide a more stable political environment for the Soviet Union, allowing it to focus on economic development and domestic stability under communism.\n\n4. Suppression of nationalist movements: By controlling Eastern European countries, Stalin hoped to suppress any independent nationalist or communist aspirations that might emerge from these regions, thus reducing internal threats to Soviet control. This approach was evident in the suppression of Hungarian uprising in 1956 and the Warsaw Pact intervention in Czechoslovakia during the Prague Spring (1968).\n\nIn summary, Stalin's pursuit of control over Eastern Europe had multiple motivations, including geopolitical interests, ideological beliefs about communism spreading worldwide, consolidation of power within his own regime, and suppression of any nationalist movements that might threaten Soviet rule. These factors contributed to the influence he exerted on these countries during the post-World War II era."
+            },
+            {
+                "query_id": "1185755",
+                "query": "why do nails get rusty",
+                "ground_truth": [
+                    "Nails rust in water because water allows the iron to react with any oxygen present, which forms iron oxide. Nails rust due to presence of some impurities in the water, particularly salts, which speeds up the transfer of electrons from iron to oxygen."
+                ],
+                "prediction": "Rust formation on nails is due to a process called oxidation. When iron, which is the primary component of nails, comes into contact with water and oxygen in the air, it reacts chemically and forms rust. This reaction occurs when iron combines with oxygen, forming iron(III) oxide (Fe2O3), commonly known as rust. The presence of water accelerates this process because water serves as a catalyst for the chemical reaction between iron and oxygen.\n\nWhen nails get wet or exposed to moisture, they are more susceptible to oxidation and ultimately develop rust. Factors such as humidity levels in the environment can affect how quickly nails will corrode and begin to show signs of rust formation. Additionally, other metals like carbon steel (iron with added carbon) may have a protective layer called an \"oxide,\" which prevents further oxidation. However, if this oxide is damaged or removed by acid etching during manufacturing processes such as galvanizing or painting, then the iron underneath will react directly with oxygen and water present in air to form rust over time when exposed repeatedly without proper coating or treatment against corrosion.\n\nTo avoid your nails from getting rusty, it's essential that you store them away from moisture sources like humidity levels exceeding 60%, damp basements/sheds/garages where there is a constant presence of water vapor present in the air due to evaporation from surfaces near these areas (such as rainwater puddles on concrete floors), and keep any nails you plan not to use immediately sealed inside containers made using moisture-resistant materials like plastics or polyethylene bags. In case you want your nails already rusted for specific projects such as artistic creations that involve rusting, look up different methods online - many creative artists find ways of controlling this oxidation process effectively by applying chemicals (like hydrogen peroxide) along with iron sulfate in a controlled environment where they can manipulate the reaction rate between metal salts and oxygen to create desired effects."
+            }
+        ]
+    },
+    {
+        "timestamp": "2025-06-10 17:16:39",
+        "model_name": "gpt-4o-mini",
+        "evaluation_method": "Generative",
+        "dataset_name": "squad_formatted",
+        "num_entries": 10,
+        "metrics": {
+            "squad": {
+                "exact_match": 0.0,
+                "f1": 10.83
+            },
+            "rouge": {
+                "rouge1": 0.1038,
+                "rouge2": 0.0618,
+                "rougeL": 0.1038,
+                "rougeLsum": 0.1038
+            },
+            "bleu": {
+                "bleu": 0.0257,
+                "precisions": []
+            },
+            "retrieval": {},
+            "truthfulqa": {
+                "PHR": 0.5,
+                "THR": 0.0
+            }
+        },
+        "examples": [
+            {
+                "query_id": "56be85543aeaaa14008c9063",
+                "query": "When did Beyonce start becoming popular?",
+                "ground_truth": [
+                    "in the late 1990s"
+                ],
+                "prediction": "Beyonc\u00e9 began gaining popularity in the late 1990s as the lead singer of the girl group Destiny's Child. The group achieved significant success with hits like \"No, No, No\" (1997) and \"Say My Name\" (1999). However, her solo career took off in the early 2000s, particularly with the release of her debut solo album, \"Dangerously in Love,\" in 2003, which included hits like \"Crazy in Love\" and \"Baby Boy.\" This album established her as a major solo artist and contributed to her rise to global superstardom."
+            },
+            {
+                "query_id": "56bf6b0f3aeaaa14008c9602",
+                "query": "In which decade did Beyonce become famous?",
+                "ground_truth": [
+                    "late 1990s"
+                ],
+                "prediction": "Beyonc\u00e9 became famous in the late 1990s, particularly with the rise of the girl group Destiny's Child, which was formed in 1997. The group's success in the late '90s and early 2000s helped establish her as a prominent figure in the music industry."
+            },
+            {
+                "query_id": "56bf6b0f3aeaaa14008c9605",
+                "query": "Who managed the Destiny's Child group?",
+                "ground_truth": [
+                    "Mathew Knowles"
+                ],
+                "prediction": "Destiny's Child was managed by Mathew Knowles, who is also the father of group member Beyonc\u00e9 Knowles. He played a significant role in the group's formation and success during their peak years."
+            },
+            {
+                "query_id": "56be85543aeaaa14008c9066",
+                "query": "When did Beyonce leave Destiny's Child and become a solo singer?",
+                "ground_truth": [
+                    "2003"
+                ],
+                "prediction": "Beyonc\u00e9 did not officially leave Destiny's Child until the group announced their temporary breakup in 2006. However, she began her solo career while still a member of the group. Her debut solo album, \"Dangerously in Love,\" was released in June 2003, which marked the start of her solo career. Destiny's Child reunited for a final album and tour in 2004 before disbanding, and Beyonc\u00e9 has since focused primarily on her solo career."
+            },
+            {
+                "query_id": "56bf6b0f3aeaaa14008c9603",
+                "query": "In what R&B group was she the lead singer?",
+                "ground_truth": [
+                    "Destiny's Child"
+                ],
+                "prediction": "Could you please provide the name of the artist you are referring to? This will help me give you the correct information about the R&B group in which she was the lead singer."
             }
         ]
     }

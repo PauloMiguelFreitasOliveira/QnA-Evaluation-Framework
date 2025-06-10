@@ -4,6 +4,7 @@ import json
 import random
 import subprocess
 import torch
+import sys
 from tqdm import tqdm
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -13,6 +14,9 @@ from qna_eval.dataset_loader import load_dataset_file
 from qna_eval.extractive_eval import evaluate_extractive_model
 from logging_utils.save_results import save_evaluation_results
 from qna_eval.hallucination_eval import load_secondary_dataset, generate_multisample, judge_with_llm
+
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 # ── CONFIG ──────────────────────────────────────────────────────────────────────
 JUDGE_MODEL = "gpt-4o-mini"
