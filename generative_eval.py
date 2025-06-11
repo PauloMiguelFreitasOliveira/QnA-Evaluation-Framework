@@ -205,7 +205,8 @@ def main():
         },
         "examples": examples
     }
-    print(json.dumps(out, indent=2))
+    print(json.dumps(out))
+
 
     save_evaluation_results(
       model_name=args.model_name,

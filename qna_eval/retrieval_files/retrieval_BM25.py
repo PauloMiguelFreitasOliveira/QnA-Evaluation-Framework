@@ -13,12 +13,14 @@ import sys
 import os
 
 # Adds the parent directory to the Python path so it can find logging_utils
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+sys.path.append(ROOT_DIR)
 from logging_utils.save_results import save_evaluation_results
 
 
 
-with open("..\datasets\ms_marco.json", "r", encoding="utf-8") as f:
+dataset_path = os.path.join(ROOT_DIR, "datasets", "ms_marco.json")
+with open(dataset_path, "r", encoding="utf-8") as f:
     ms_marco_data = json.load(f)
 
 NUM_EXAMPLES = int(os.getenv("NUM_EXAMPLES", 10000))
@@ -128,7 +130,7 @@ print(f"Mean Reciprocal Rank (MRR):       {mean_metrics['recip_rank']:.4f}")
 
 save_evaluation_results(
     model_name=model_name,
-    retrieval_method="BM25",
+    evaluation_method="BM25",
     dataset_name="ms_marco",
     squad_results=squad_results,
     rouge_results=rouge_results,
