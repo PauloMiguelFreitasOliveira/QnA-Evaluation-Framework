@@ -190,12 +190,17 @@ def main():
     out = {
         "model_name": args.model_name,
         "evaluation_method": "RAG",
-        "dataset": args.dataset,
-        "num_queries": len(retrieved),
-        "metrics": {"squad": qa_metrics, "hallucination": judgement},
+        "dataset_name": args.dataset,
+        "secondary_dataset": args.secondary_dataset,
+        "num_primary": len(retrieved),
+        "num_secondary": None,  # For RAG, you may not have a secondary, but keep key for UI consistency
+        "metrics": {
+            "squad": qa_metrics,
+            "hallucination": judgement
+        },
         "examples": examples,
     }
-    print(json.dumps(out, indent=2))
+    print(json.dumps(out, indent=2, ensure_ascii=False))
 
     save_evaluation_results(
         model_name=args.model_name,

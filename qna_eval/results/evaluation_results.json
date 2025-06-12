@@ -3426,5 +3426,518 @@
         "prediction": "It seems like your question might be incomplete or unclear. Could you please provide more context or clarify what you mean by \"depona ab\"? Are you referring to a specific topic, concept, or something else?"
       }
     ]
+  },
+  {
+    "timestamp": "2025-06-11 10:59:43",
+    "model_name": "deepseek-llm:latest",
+    "evaluation_method": "RAG",
+    "dataset_name": "ms_marco",
+    "num_entries": 57,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 14.72
+      },
+      "rouge": {
+        "rouge1": 0.1634,
+        "rouge2": 0.0815,
+        "rougeL": 0.1354,
+        "rougeLsum": 0.1432
+      },
+      "bleu": {
+        "bleu": 0.0453,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 0.2807,
+        "THR": 0.2807
+      }
+    },
+    "examples": [
+      {
+        "query_id": "315061",
+        "query": "how much does it cost to change a jeep alternator",
+        "ground_truth": [
+          "A Jeep Compass Alternator Replacement is between $377 and $577."
+        ],
+        "prediction": "The cost of replacing an alternator on a Jeep Compass can range from $377 to $577, including both parts and labor costs. The estimated labor cost is between $123 and $156, while the cost of the part ranges between $254 and $421. It's important to note that these estimates do not include taxes and fees, and the actual cost may vary depending on factors such as vehicle make, model, year, location, and whether the alternator is easy or difficult to replace. On average, you can expect to pay between $315 and $559 for an alternator replacement at an auto repair shop, according to RepairPal estimates. Additionally, AutoZone carries a wide range of parts that may fit your Jeep Compass, including alternators."
+      },
+      {
+        "query_id": "1185755",
+        "query": "why do nails get rusty",
+        "ground_truth": [
+          "Nails rust in water because water allows the iron to react with any oxygen present, which forms iron oxide. Nails rust due to presence of some impurities in the water, particularly salts, which speeds up the transfer of electrons from iron to oxygen."
+        ],
+        "prediction": "Nails can get rusty due to several reasons related to their chemical composition and environmental factors. The primary cause of nail rusting lies in its metallurgical structure, which primarily consists of iron (Fe) combined with other elements such as carbon (C), silicon (Si), manganese (Mn), phosphorus (P), sulfur (S), and oxygen (O). Iron is the primary element responsible for giving nails their strength and resilience.\n\nWhen a nail rusts, it is not just about the presence of water; there are also impurities present in the environment that accelerate the process. One of the main factors contributing to rusty nails is exposure to moisture-rich environments such as rainwater, humidity, or dampness from swimming pools or other sources. These environments contain trace amounts of substances like sulfur dioxide (SO2) and sulfuric acid (H2SO4), which can react with iron in the nail and form rust on its surface.\n\nThe presence of salts also contributes to rusty nails. Salts such as sodium chloride (NaCl, commonly known as table salt) accelerate the process by increasing the transfer of electrons from iron atoms to oxygen molecules, causing them to corrode faster. The ions in these salts can be more active in facilitating rusting due to their high reactivity with water and metal components found in nails.\n\nIn addition, some materials used for making nails may contain impurities such as sulfur or phosphorus which are corrosive to iron-based substances like nails. These contaminants can lead to the formation of rust on nails by accelerating the corrosion process. The presence of oxygen is also a crucial factor in nail rusting. Oxygen molecules react with iron atoms, leading to their conversion into rust (Fe2O3) over time.\n\nFinally, it is essential to consider that rusty nails may have been exposed to environments where they are not properly maintained or stored under optimal conditions; for example, being left in a humid location, not cleaned regularly, or lacking proper protection from environmental factors such as rainwater and moisture-rich air. These situations can exacerbate the rusting process of nails by increasing their exposure to corrosive substances, salts, and oxygen.\n\nIn conclusion, rusty nails are caused primarily by chemical reactions involving iron, water, oxygen, and other trace elements in the environment where they are stored or used. The presence of impurities such as salt ions can accelerate these processes, leading to rust formation on nails more quickly."
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Stalin had several reasons for wanting control over Eastern Europe, which can be summarized as follows: 1) ensuring Russia's security by creating buffer states, 2) expanding and promoting Soviet-style communism through satellite countries, and 3) maintaining the Soviet Union's influence in a world dominated by capitalist powers.\n\nAfter World War II, Stalin sought to ensure Russia's borders were more secure. Given its history of invasions from Europe (such as those by Napoleon and Hitler), this was an understandable concern for him. To address these historical threats, he aimed to create buffer states between the Soviet Union and other European nations. By doing so, he hoped that the presence of friendly governments in these areas would deter any potential aggression towards Russia.\n\nAdditionally, Stalin sought to expand and promote the communist ideology throughout Eastern Europe by establishing satellite countries (i.e., countries under direct or indirect control). This was done primarily through various means such as political influence, economic aid, and military support. By having friendly governments in place that shared similar ideologies, it allowed for easier dissemination of communism-related ideas, policies, and structures throughout the region.\n\nLastly, Stalin's desire to maintain Soviet power extended beyond Eastern Europe. The Cold War between the United States (representing capitalism) and the Soviet Union (representing communism) was a significant geopolitical conflict at that time. As such, controlling territories in Eastern Europe would have allowed the Soviet Union to exert its influence on global politics, particularly when it came to matters of ideology and national interest.\n\nDuring World War II, Stalin agreed with other Allied leaders (including US President Franklin D. Roosevelt) during the Yalta conference about the post-war political structure for liberated countries in Eastern Europe. However, after WWII ended and the Soviet Union gained influence over these territories, they did not adhere to this agreement regarding their governments being democratic and politically independent. This led to tensions with other world powers such as the United States and contributed to broader conflicts like the Arab-Israeli conflict becoming part of the Cold War dynamic between communism and capitalism."
+      },
+      {
+        "query_id": "693333",
+        "query": "what is a omurice omelet",
+        "ground_truth": [
+          "A contemporary Asian dish consisting of an omelette made with fried rice."
+        ],
+        "prediction": "An omurice omelet is a Japanese-inspired dish that combines elements of Western and Asian cuisine. It consists of an omelette made using fried rice as its filling. The term 'omurice' comes from the combination of 'omelette' (French for omelette) and 'rice.' In this dish, the fried rice serves as both the base on which to construct the omelette and a flavor-enhancing component.\n\nTraditionally, an omurice omelet is prepared with leftover cooked white rice seasoned with ketchup, chicken or any meat, onions, and various other ingredients based on personal preference or regional cuisine influence. These fillings are usually mixed in well with the rice before being used to form the base of the omelette. The egg mixture for the omelette typically includes whole eggs, as opposed to only using egg whites or even water. This is because full-fat yolks contribute more flavor and richness to the dish.\n\nOnce prepared, this delicious omurice omelet is usually cooked in a nonstick frying pan over medium heat. The filled fried rice should be placed on one half of the pan with slightly wet hands to ensure the filling sticks together well. After laying out the fillings evenly across half the pan, the remaining egg mixture is poured onto the other side and gently spread to cover both sides.\n\nAs the omelette cooks, it gradually begins to cook through from underneath due to the heat generated by the frying process. This gives an omurice its unique appearance with a crisp golden-brown exterior on one side, contrasting with the fluffy texture of the other half inside the pan. Once cooked sufficiently, the entire dish is flipped onto a plate and allowed to cool slightly before being sliced into small wedges for serving.\n\nServed as part of breakfast or brunch meals, omurice omelets are an appealingly diverse culinary offering that showcases Japanese creativity and fusion cooking techniques. They often accompany a variety of side dishes such as fried rice, miso soup, pickles, fruits, condiments, and sweet breads like French toast or buns filled with cream cheese or ham and cheese fillings. The omurice's combination of flavors and textures makes it an ideal choice for breakfast lovers and those who appreciate creative twists on traditional Western-style dishes."
+      },
+      {
+        "query_id": "1174761",
+        "query": "bancfirst customer service number",
+        "ground_truth": [
+          "The customer support phone number of BancFirst is +1(405) 948-7930, 1-855-889-9216, 1-888-200-9149."
+        ],
+        "prediction": "The customer support phone numbers for BancFirst are as follows:\n\n* 1-855-889-9216 (Toll Free)\n* 1-888-200-9149 (Toll Free)\n* +1(405) 948-7930 (Local)\n\nYou can use any of these numbers to contact BancFirst customer service for assistance with your account, questions about products and services, or other banking related concerns."
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-11 11:02:59",
+    "model_name": "deepseek-llm:latest",
+    "evaluation_method": "RAG",
+    "dataset_name": "ms_marco",
+    "num_entries": 13,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 26.51
+      },
+      "rouge": {
+        "rouge1": 0.294,
+        "rouge2": 0.1716,
+        "rougeL": 0.2648,
+        "rougeLsum": 0.2668
+      },
+      "bleu": {
+        "bleu": 0.1163,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 0.0,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "Restorative justice"
+      },
+      {
+        "query_id": "44588",
+        "query": "average teeth brushing time",
+        "ground_truth": [
+          "Americans brush for just under the two minutes on average."
+        ],
+        "prediction": "On average, Americans brush for just under two minutes, which is the recommended duration by dental professionals. African Americans tend to brush 18 seconds longer than the overall average, while younger adults aged 18-24 spend an additional 16 seconds on their toothbrushing routine compared to the general population."
+      },
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "The reported New York University (NYU) net price for in-state students, including housing and meal expenses, for the 2013-2014 academic year was $34,268. The total estimated effective in-state tuition at NYU, including an additional fee of $2,424, is $46,170."
+      },
+      {
+        "query_id": "410717",
+        "query": "is funner a word?",
+        "ground_truth": [
+          "Yes, funner is a word."
+        ],
+        "prediction": "Yes, funner is considered a word within the realm of linguistics and language usage. It can be defined as a pronounceable sequence of letters delimited by whitespace (e.g., \"funner\"). However, it's worth noting that its use in formal writing or contexts where more formal language is preferred should still be avoided, just like any other slang or informal word, due to the perception of casualness and informality associated with such words."
+      },
+      {
+        "query_id": "605123",
+        "query": "what county is dewitt michigan in?",
+        "ground_truth": [
+          "DeWitt is located in Clinton County, Michigan, United States."
+        ],
+        "prediction": "DeWitt, Michigan is located in Clinton County in the U.S. state of Michigan."
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-11 11:11:23",
+    "model_name": "gemma3:latest",
+    "evaluation_method": "Generative",
+    "dataset_name": "ms_marco",
+    "num_entries": 13,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 10.65
+      },
+      "rouge": {
+        "rouge1": 0.1035,
+        "rouge2": 0.0402,
+        "rougeL": 0.0909,
+        "rougeLsum": 0.0967
+      },
+      "bleu": {
+        "bleu": 0.0088,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 0.75,
+        "THR": 0.25
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "The answer is **Restorative** justice.\n\nRestorative justice is specifically focused on repairing the harm caused by crime, involving all parties – victim, offender, and community – in the process.\n\nHere’s why the other options aren’t as accurate:\n\n*   **Retributive** justice focuses on punishment of the offender.\n*   **Deterrent** justice aims to discourage future crime.\n*   **Rehabilitative** justice seeks to reform the offender.\n\nWould you like to try another question related to justice systems?"
+      },
+      {
+        "query_id": "534802",
+        "query": "using cpap without prescription",
+        "ground_truth": [
+          "A motorized oxygen mask doesn't qualify to most as being on the same plane as actual medication, but it really is."
+        ],
+        "prediction": "Okay, let's break down the issue of using CPAP (Continuous Positive Airway Pressure) without a prescription. It’s a complex topic with significant health implications, so let’s cover the key aspects.\n\n**1. Why CPAP is Typically Prescribed**\n\n* **Obstructive Sleep Apnea (OSA):** CPAP is almost exclusively prescribed for treating Obstructive Sleep Apnea. OSA is a serious condition where your airway collapses during sleep, leading to pauses in breathing. These pauses cause a cascade of negative effects:\n    * **Reduced Oxygen Levels:** The brain and body aren't getting enough oxygen.\n    * **Fragmented Sleep:** Frequent arousals disrupt sleep cycles, leaving you feeling tired even after a full night.\n    * **Increased Risks:** OSA is linked to a significantly higher risk of:\n        * Heart disease (high blood pressure, heart attack, stroke)\n        * Type 2 diabetes\n        * Depression and cognitive problems\n        * Car accidents (due to excessive daytime sleepiness)\n\n**2. Can You Use CPAP Without a Diagnosis and Prescription?**\n\n* **Generally, No.**  The short answer is no, it’s generally *not* recommended and can be very dangerous. Here's why:\n    * **Diagnosis is Crucial:** CPAP is a treatment, not a cure. It addresses the underlying problem (OSA). Without a proper diagnosis, you’re not treating the root cause.\n    * **Incorrect Pressure Settings:** CPAP machines deliver air pressure based on your specific needs, determined through a sleep study.  Using the wrong pressure can be ineffective, uncomfortable, and potentially harmful.  Too little pressure won’t adequately open your airway. Too much pressure can cause:\n        * **Sinus problems:** Pressure nosebleeds\n        * **Ear problems:** Eustachian tube dysfunction (pain, pressure)\n        * **Central Sleep Apnea (CSA):** In rare cases, improper CPAP pressure can *mimic* or even trigger CSA, a separate sleep disorder.\n    * **Mask Fit Issues:**  A proper mask fit is essential.  Without a trained sleep specialist assessing your fit, you may not get the intended pressure delivered effectively.\n\n**3. What About Over-the-Counter CPAP Machines?**\n\n* **Limited Options & Significant Risks:**  There are a few *very limited* “over-the-counter” CPAP machines available, but these have severe restrictions:\n    * **Lower Pressure Settings:** They are *only* approved for individuals who have *already been diagnosed with mild sleep apnea* and have *already been prescribed a CPAP machine with a specific pressure setting*. They are meant to be a backup when your prescribed machine fails.\n    * **No Diagnostic Capability:** They don't monitor your breathing or provide diagnostic data.\n    * **Not a Replacement:** They absolutely *cannot* be used to self-diagnose or treat sleep apnea.\n\n**4. What Should You Do If You Suspect You Have Sleep Apnea?**\n\n1. **Talk to Your Doctor:** Discuss your symptoms (loud snoring, daytime sleepiness, morning headaches, difficulty concentrating) with your primary care physician.\n2. **Sleep Study:** Your doctor can refer you for a sleep study (polysomnography) – typically an in-lab study or a home sleep apnea test (HSAT).  These tests will accurately diagnose if you have sleep apnea and determine the severity.\n3. **Follow Your Doctor’s Recommendations:** If you are diagnosed with sleep apnea, your doctor will prescribe a CPAP machine and guide you on proper use and maintenance.\n\n**Important Disclaimer:** *I am an AI Chatbot and not a medical professional. This information is for general knowledge and informational purposes only, and does not constitute medical advice. It is essential to consult with a qualified healthcare provider for any health concerns or before making any decisions related to your health or treatment.*\n\n**Resources:**\n\n* **American Academy of Sleep Medicine:** [https://www.aasm.org/](https://www.aasm.org/)\n* **Sleep on Apollo:** [https://www.sleepsonapollo.com/](https://www.sleepsonapollo.com/) (Information about sleep apnea and CPAP)\n\nDo you want me to elaborate on any specific aspect of this topic, such as:\n\n*   The different types of sleep studies?\n*   How to improve CPAP mask fit?\n*   The potential side effects of CPAP use?"
+      },
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "The immediate impact of the success of the Manhattan Project was a dramatically altered geopolitical landscape and the beginning of the end for World War II in the Pacific. Here's a breakdown of the key immediate impacts:\n\n**1. The Atomic Bombings of Hiroshima and Nagasaki (August 1945):**\n\n* **Unprecedented Devastation:** The immediate and most significant impact was the use of atomic bombs on Hiroshima (August 6th) and Nagasaki (August 9th). The sheer destructive power of these weapons, never before witnessed, caused unimaginable devastation, killing an estimated 110,000-226,000 people in Hiroshima and approximately 70,000-80,000 in Nagasaki.\n* **Japanese Surrender:** This devastation directly led to Japan's unconditional surrender on August 15th, effectively ending World War II.  Japanese leaders had been presented with the possibility of surrender, but the atomic bombs provided the decisive factor in their acceptance.\n* **Symbol of Power:** The bombings instantly established the United States as the dominant global superpower, possessing a weapon of unparalleled destructive force.\n\n\n**2.  Psychological and Political Shockwaves:**\n\n* **Fear and Uncertainty:** The world was gripped by a profound sense of fear and uncertainty about the future. The concept of nuclear weapons fundamentally changed the nature of warfare.\n* **Beginning of the Cold War:** The Manhattan Project’s success contributed significantly to the start of the Cold War. The Soviet Union, recognizing the United States' advantage, quickly began its own atomic weapons program, triggering a decades-long arms race.\n* **Shift in Allied Relations:** The US initially controlled the information about the atomic bomb, creating a degree of distrust among the Allied nations, particularly Britain and France, who had contributed significantly to the project but were excluded from the decision to use it.\n\n\n**3.  Scientific and Technological Advancement (immediate):**\n\n* **Validation of Theoretical Physics:** The Manhattan Project proved the feasibility of nuclear fission and provided a massive boost to nuclear physics research.\n* **Rapid Technological Development:**  The project spurred rapid advancements in materials science, metallurgy, radar, computing, and other related fields.\n\n\n**Important Note:** While the immediate impact was primarily centered around the end of WWII, the long-term consequences of the Manhattan Project – including the ongoing threat of nuclear proliferation and the ethical debates surrounding the use of these weapons – continue to shape global affairs today.\n\nDo you want me to delve deeper into a specific aspect of this impact, such as:\n\n*   The reactions of the Allied powers?\n*   The ethical debates surrounding the bombings?\n*   The immediate effects on the Japanese population?"
+      },
+      {
+        "query_id": "605123",
+        "query": "what county is dewitt michigan in?",
+        "ground_truth": [
+          "DeWitt is located in Clinton County, Michigan, United States."
+        ],
+        "prediction": "DeWitt is in **Clinton County**, Michigan. \n\nYou can find more information here: [https://www.clintoncounty.org/](https://www.clintoncounty.org/)"
+      },
+      {
+        "query_id": "44588",
+        "query": "average teeth brushing time",
+        "ground_truth": [
+          "Americans brush for just under the two minutes on average."
+        ],
+        "prediction": "Okay, let's break down the average teeth brushing time. Here's a breakdown of what the research shows:\n\n**The Recommended Time:**\n\n* **The American Dental Association (ADA) recommends brushing for at least 2 minutes, twice a day.** This is the gold standard and what dentists consistently advise.\n\n**What People *Actually* Do:**\n\n* **Most adults don't brush for the full 2 minutes.** Studies consistently show that the average brushing time is significantly shorter.\n* **Typical Range:** Most people brush for around **45-60 seconds** per brushing session. Some studies even show as little as 30 seconds!\n* **Children:**  Children need shorter brushing times, typically around 2 minutes for older children and 2 minutes for younger children.\n\n**Why the Gap?**\n\n* **Lack of Awareness:** Many people simply aren't aware of the full 2-minute recommendation.\n* **Rushing:**  People often brush quickly to get out the door or before bed.\n* **Distractions:**  Brush time is often interrupted by other tasks.\n\n\n**Tips to Brush for the Full 2 Minutes:**\n\n* **Use a timer:** Set a timer for 2 minutes and work through your brushing routine.\n* **Divide your mouth:** Divide your mouth into quadrants (upper right, upper left, lower right, lower left) and spend 30 seconds on each.\n* **Listen to music:**  Pick a song that's 2 minutes long to make brushing more enjoyable.\n* **Brush while watching TV:**  Brush while you're watching your favorite show.\n\n\n**Resources for More Information:**\n\n* **ADA - Oral Health Facts:** [https://www.ada.org/resources/oral-health-topics/teeth-brushing](https://www.ada.org/resources/oral-health-topics/teeth-brushing)\n* **Mayo Clinic - How to Brush Your Teeth:** [https://www.mayoclinic.org/healthy-lifestyle/adult-health/expert-answers/teeth-brushing/faq-20058333](https://www.mayoclinic.org/healthy-lifestyle/adult-health/expert-answers/teeth-brushing/faq-20058333)\n\n\n\nDo you want me to delve into a specific aspect of this topic, such as:\n\n*   Brushing techniques?\n*   The importance of brushing time?\n*   How brushing time relates to gum health?"
+      }
+    ]
+  },
+  {
+    "model_name": "gemma3:latest",
+    "evaluation_method": "Generative",
+    "primary_dataset": "ms_marco",
+    "secondary_dataset": "truthfulqa",
+    "num_primary": 13,
+    "num_secondary": 4,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 10.65,
+        "bleu": 0.0088,
+        "rouge1": 0.1035,
+        "rouge2": 0.0402,
+        "rougeL": 0.0909,
+        "rougeLsum": 0.0967
+      },
+      "hallucination": {
+        "PHR": 0.75,
+        "THR": 0.25
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "The answer is **Restorative** justice.\n\nRestorative justice is specifically focused on repairing the harm caused by crime, involving all parties – victim, offender, and community – in the process.\n\nHere’s why the other options aren’t as accurate:\n\n*   **Retributive** justice focuses on punishment of the offender.\n*   **Deterrent** justice aims to discourage future crime.\n*   **Rehabilitative** justice seeks to reform the offender.\n\nWould you like to try another question related to justice systems?"
+      },
+      {
+        "query_id": "534802",
+        "query": "using cpap without prescription",
+        "ground_truth": [
+          "A motorized oxygen mask doesn't qualify to most as being on the same plane as actual medication, but it really is."
+        ],
+        "prediction": "Okay, let's break down the issue of using CPAP (Continuous Positive Airway Pressure) without a prescription. It’s a complex topic with significant health implications, so let’s cover the key aspects.\n\n**1. Why CPAP is Typically Prescribed**\n\n* **Obstructive Sleep Apnea (OSA):** CPAP is almost exclusively prescribed for treating Obstructive Sleep Apnea. OSA is a serious condition where your airway collapses during sleep, leading to pauses in breathing. These pauses cause a cascade of negative effects:\n    * **Reduced Oxygen Levels:** The brain and body aren't getting enough oxygen.\n    * **Fragmented Sleep:** Frequent arousals disrupt sleep cycles, leaving you feeling tired even after a full night.\n    * **Increased Risks:** OSA is linked to a significantly higher risk of:\n        * Heart disease (high blood pressure, heart attack, stroke)\n        * Type 2 diabetes\n        * Depression and cognitive problems\n        * Car accidents (due to excessive daytime sleepiness)\n\n**2. Can You Use CPAP Without a Diagnosis and Prescription?**\n\n* **Generally, No.**  The short answer is no, it’s generally *not* recommended and can be very dangerous. Here's why:\n    * **Diagnosis is Crucial:** CPAP is a treatment, not a cure. It addresses the underlying problem (OSA). Without a proper diagnosis, you’re not treating the root cause.\n    * **Incorrect Pressure Settings:** CPAP machines deliver air pressure based on your specific needs, determined through a sleep study.  Using the wrong pressure can be ineffective, uncomfortable, and potentially harmful.  Too little pressure won’t adequately open your airway. Too much pressure can cause:\n        * **Sinus problems:** Pressure nosebleeds\n        * **Ear problems:** Eustachian tube dysfunction (pain, pressure)\n        * **Central Sleep Apnea (CSA):** In rare cases, improper CPAP pressure can *mimic* or even trigger CSA, a separate sleep disorder.\n    * **Mask Fit Issues:**  A proper mask fit is essential.  Without a trained sleep specialist assessing your fit, you may not get the intended pressure delivered effectively.\n\n**3. What About Over-the-Counter CPAP Machines?**\n\n* **Limited Options & Significant Risks:**  There are a few *very limited* “over-the-counter” CPAP machines available, but these have severe restrictions:\n    * **Lower Pressure Settings:** They are *only* approved for individuals who have *already been diagnosed with mild sleep apnea* and have *already been prescribed a CPAP machine with a specific pressure setting*. They are meant to be a backup when your prescribed machine fails.\n    * **No Diagnostic Capability:** They don't monitor your breathing or provide diagnostic data.\n    * **Not a Replacement:** They absolutely *cannot* be used to self-diagnose or treat sleep apnea.\n\n**4. What Should You Do If You Suspect You Have Sleep Apnea?**\n\n1. **Talk to Your Doctor:** Discuss your symptoms (loud snoring, daytime sleepiness, morning headaches, difficulty concentrating) with your primary care physician.\n2. **Sleep Study:** Your doctor can refer you for a sleep study (polysomnography) – typically an in-lab study or a home sleep apnea test (HSAT).  These tests will accurately diagnose if you have sleep apnea and determine the severity.\n3. **Follow Your Doctor’s Recommendations:** If you are diagnosed with sleep apnea, your doctor will prescribe a CPAP machine and guide you on proper use and maintenance.\n\n**Important Disclaimer:** *I am an AI Chatbot and not a medical professional. This information is for general knowledge and informational purposes only, and does not constitute medical advice. It is essential to consult with a qualified healthcare provider for any health concerns or before making any decisions related to your health or treatment.*\n\n**Resources:**\n\n* **American Academy of Sleep Medicine:** [https://www.aasm.org/](https://www.aasm.org/)\n* **Sleep on Apollo:** [https://www.sleepsonapollo.com/](https://www.sleepsonapollo.com/) (Information about sleep apnea and CPAP)\n\nDo you want me to elaborate on any specific aspect of this topic, such as:\n\n*   The different types of sleep studies?\n*   How to improve CPAP mask fit?\n*   The potential side effects of CPAP use?"
+      },
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "The immediate impact of the success of the Manhattan Project was a dramatically altered geopolitical landscape and the beginning of the end for World War II in the Pacific. Here's a breakdown of the key immediate impacts:\n\n**1. The Atomic Bombings of Hiroshima and Nagasaki (August 1945):**\n\n* **Unprecedented Devastation:** The immediate and most significant impact was the use of atomic bombs on Hiroshima (August 6th) and Nagasaki (August 9th). The sheer destructive power of these weapons, never before witnessed, caused unimaginable devastation, killing an estimated 110,000-226,000 people in Hiroshima and approximately 70,000-80,000 in Nagasaki.\n* **Japanese Surrender:** This devastation directly led to Japan's unconditional surrender on August 15th, effectively ending World War II.  Japanese leaders had been presented with the possibility of surrender, but the atomic bombs provided the decisive factor in their acceptance.\n* **Symbol of Power:** The bombings instantly established the United States as the dominant global superpower, possessing a weapon of unparalleled destructive force.\n\n\n**2.  Psychological and Political Shockwaves:**\n\n* **Fear and Uncertainty:** The world was gripped by a profound sense of fear and uncertainty about the future. The concept of nuclear weapons fundamentally changed the nature of warfare.\n* **Beginning of the Cold War:** The Manhattan Project’s success contributed significantly to the start of the Cold War. The Soviet Union, recognizing the United States' advantage, quickly began its own atomic weapons program, triggering a decades-long arms race.\n* **Shift in Allied Relations:** The US initially controlled the information about the atomic bomb, creating a degree of distrust among the Allied nations, particularly Britain and France, who had contributed significantly to the project but were excluded from the decision to use it.\n\n\n**3.  Scientific and Technological Advancement (immediate):**\n\n* **Validation of Theoretical Physics:** The Manhattan Project proved the feasibility of nuclear fission and provided a massive boost to nuclear physics research.\n* **Rapid Technological Development:**  The project spurred rapid advancements in materials science, metallurgy, radar, computing, and other related fields.\n\n\n**Important Note:** While the immediate impact was primarily centered around the end of WWII, the long-term consequences of the Manhattan Project – including the ongoing threat of nuclear proliferation and the ethical debates surrounding the use of these weapons – continue to shape global affairs today.\n\nDo you want me to delve deeper into a specific aspect of this impact, such as:\n\n*   The reactions of the Allied powers?\n*   The ethical debates surrounding the bombings?\n*   The immediate effects on the Japanese population?"
+      },
+      {
+        "query_id": "605123",
+        "query": "what county is dewitt michigan in?",
+        "ground_truth": [
+          "DeWitt is located in Clinton County, Michigan, United States."
+        ],
+        "prediction": "DeWitt is in **Clinton County**, Michigan. \n\nYou can find more information here: [https://www.clintoncounty.org/](https://www.clintoncounty.org/)"
+      },
+      {
+        "query_id": "44588",
+        "query": "average teeth brushing time",
+        "ground_truth": [
+          "Americans brush for just under the two minutes on average."
+        ],
+        "prediction": "Okay, let's break down the average teeth brushing time. Here's a breakdown of what the research shows:\n\n**The Recommended Time:**\n\n* **The American Dental Association (ADA) recommends brushing for at least 2 minutes, twice a day.** This is the gold standard and what dentists consistently advise.\n\n**What People *Actually* Do:**\n\n* **Most adults don't brush for the full 2 minutes.** Studies consistently show that the average brushing time is significantly shorter.\n* **Typical Range:** Most people brush for around **45-60 seconds** per brushing session. Some studies even show as little as 30 seconds!\n* **Children:**  Children need shorter brushing times, typically around 2 minutes for older children and 2 minutes for younger children.\n\n**Why the Gap?**\n\n* **Lack of Awareness:** Many people simply aren't aware of the full 2-minute recommendation.\n* **Rushing:**  People often brush quickly to get out the door or before bed.\n* **Distractions:**  Brush time is often interrupted by other tasks.\n\n\n**Tips to Brush for the Full 2 Minutes:**\n\n* **Use a timer:** Set a timer for 2 minutes and work through your brushing routine.\n* **Divide your mouth:** Divide your mouth into quadrants (upper right, upper left, lower right, lower left) and spend 30 seconds on each.\n* **Listen to music:**  Pick a song that's 2 minutes long to make brushing more enjoyable.\n* **Brush while watching TV:**  Brush while you're watching your favorite show.\n\n\n**Resources for More Information:**\n\n* **ADA - Oral Health Facts:** [https://www.ada.org/resources/oral-health-topics/teeth-brushing](https://www.ada.org/resources/oral-health-topics/teeth-brushing)\n* **Mayo Clinic - How to Brush Your Teeth:** [https://www.mayoclinic.org/healthy-lifestyle/adult-health/expert-answers/teeth-brushing/faq-20058333](https://www.mayoclinic.org/healthy-lifestyle/adult-health/expert-answers/teeth-brushing/faq-20058333)\n\n\n\nDo you want me to delve into a specific aspect of this topic, such as:\n\n*   Brushing techniques?\n*   The importance of brushing time?\n*   How brushing time relates to gum health?"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-11 11:25:23",
+    "model_name": "gpt-4o-mini",
+    "evaluation_method": "RAG",
+    "dataset_name": "ms_marco",
+    "num_entries": 9,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 27.63
+      },
+      "rouge": {
+        "rouge1": 0.3083,
+        "rouge2": 0.1719,
+        "rougeL": 0.255,
+        "rougeLsum": 0.2556
+      },
+      "bleu": {
+        "bleu": 0.0852,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 0.0,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "Restorative justice is designed to repair the harm to the victim, the community, and the offender caused by the offender's criminal act."
+      },
+      {
+        "query_id": "28213",
+        "query": "at what age do kids start to hold memories",
+        "ground_truth": [
+          "Before the age of 2–4 years."
+        ],
+        "prediction": "Children begin to form and hold memories within the first 2 to 3 years of life, with significant advances in declarative memory during this period. However, the earliest memories that most adults can recall typically emerge around the age of 3 to 4 years. As children grow older, their ability to remember and retain memories improves, particularly around age 10 when their memories tend to become more stable and crystallized."
+      },
+      {
+        "query_id": "44588",
+        "query": "average teeth brushing time",
+        "ground_truth": [
+          "Americans brush for just under the two minutes on average."
+        ],
+        "prediction": "On average, Americans brush their teeth for just under the two minutes recommended by dental professionals."
+      },
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "The immediate impact of the success of the Manhattan Project was the development and subsequent use of atomic bombs on the Japanese cities of Hiroshima and Nagasaki in August 1945. This marked the first and only time nuclear weapons have been used in armed conflict. The bombings resulted in the deaths of an estimated 200,000 people, many of whom were civilians, and caused widespread destruction and suffering. \n\nThe use of atomic bombs played a crucial role in hastening the end of World War II, as Japan surrendered shortly after the bombings, leading to the conclusion of a conflict that had claimed millions of lives worldwide. The success of the Manhattan"
+      },
+      {
+        "query_id": "410717",
+        "query": "is funner a word?",
+        "ground_truth": [
+          "Yes, funner is a word."
+        ],
+        "prediction": "Yes, \"funner\" is considered a word, particularly in informal contexts. It is a comparative form of the adjective \"fun,\" although its usage is often viewed as slang or less formal. While it may not be accepted in formal writing, it is recognized in spoken language and some dictionaries, including the Scrabble dictionary. However, many people prefer to use \"more fun\" in formal contexts. Ultimately, the acceptance of \"funner\" can vary depending on the audience and the setting."
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-11 11:50:20",
+    "model_name": "deepset/roberta-base-squad2",
+    "evaluation_method": "facebook/dpr-question_encoder-single-nq-base",
+    "dataset_name": "ms_marco",
+    "num_entries": 10,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 17.83
+      },
+      "rouge": {
+        "rouge1": 0.2087,
+        "rouge2": 0.1584,
+        "rougeL": 0.2087,
+        "rougeLsum": 0.2087
+      },
+      "bleu": {
+        "bleu": 0.0403,
+        "precisions": []
+      },
+      "retrieval": {
+        "map": 0.6084656084656085,
+        "ndcg": 0.7028462447835085,
+        "recip_rank": 0.6084656084656085
+      },
+      "contextual": {
+        "contextual_precision": 0.1,
+        "contextual_recall": 1.0,
+        "contextual_relevancy": 0.1
+      }
+    }
+  },
+  {
+    "timestamp": "2025-06-11 12:26:58",
+    "model_name": "gpt-4o-mini",
+    "evaluation_method": "Generative",
+    "dataset_name": "ms_marco",
+    "num_entries": 11,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 16.11
+      },
+      "rouge": {
+        "rouge1": 0.1923,
+        "rouge2": 0.0575,
+        "rougeL": 0.1512,
+        "rougeLsum": 0.1659
+      },
+      "bleu": {
+        "bleu": 0.0214,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 0.6667,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "The term you are looking for is \"restorative\" justice. Restorative justice is a framework that focuses on repairing the harm caused by criminal behavior through reconciliation between the victim, the offender, and the community."
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Stalin sought control of Eastern Europe for several interrelated reasons:\n\n1. **Security Concerns**: After suffering immense losses during World War II, the Soviet Union was deeply concerned about its security. Stalin believed that having friendly, communist governments in Eastern Europe would create a buffer zone against potential invasions from the West, particularly from Germany.\n\n2. **Spread of Communism**: Stalin was committed to the spread of communism and saw Eastern Europe as a region where he could promote and establish communist regimes. This was part of a broader ideological goal to expand the influence of the Soviet model of governance.\n\n3. **Economic Interests**:"
+      },
+      {
+        "query_id": "410717",
+        "query": "is funner a word?",
+        "ground_truth": [
+          "Yes, funner is a word."
+        ],
+        "prediction": "Yes, \"funner\" is considered a colloquial or informal term used to describe something that is more fun. However, it is often debated among grammarians and language purists, who argue that \"more fun\" is the preferred and more grammatically correct form. In casual conversation, \"funner\" is widely understood and used, but in formal writing, it's advisable to use \"more fun.\""
+      },
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "As of the 2023-2024 academic year, the undergraduate tuition for New York University (NYU) is approximately $62,000 per year. This figure can vary based on the specific program and additional fees, such as housing, meals, and other expenses. Graduate program tuition rates can also differ significantly depending on the field of study. For the most accurate and up-to-date information, it's best to check NYU's official website or contact their admissions office directly."
+      },
+      {
+        "query_id": "28213",
+        "query": "at what age do kids start to hold memories",
+        "ground_truth": [
+          "Before the age of 2–4 years."
+        ],
+        "prediction": "Children begin to form memories from a very young age, but the nature and retention of those memories evolve as they grow. Research suggests that infants can start to form basic memories as early as 2 to 3 months old, primarily through sensory experiences and emotional responses. However, these early memories are often not retained long-term.\n\nBy around 2 to 3 years of age, children start to develop more complex memories, including episodic memories, which are memories of specific events. This is also when they begin to form autobiographical memories, which are personal memories of their own experiences. However, many of these early memories may not be easily"
+      }
+    ]
+  },
+  {
+    "model_name": "gpt-4o-mini",
+    "evaluation_method": "Generative",
+    "primary_dataset": "ms_marco",
+    "secondary_dataset": "truthfulqa",
+    "num_primary": 11,
+    "num_secondary": 3,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 16.11,
+        "bleu": 0.0214,
+        "rouge1": 0.1923,
+        "rouge2": 0.0575,
+        "rougeL": 0.1512,
+        "rougeLsum": 0.1659
+      },
+      "hallucination": {
+        "PHR": 0.6667,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "The term you are looking for is \"restorative\" justice. Restorative justice is a framework that focuses on repairing the harm caused by criminal behavior through reconciliation between the victim, the offender, and the community."
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Stalin sought control of Eastern Europe for several interrelated reasons:\n\n1. **Security Concerns**: After suffering immense losses during World War II, the Soviet Union was deeply concerned about its security. Stalin believed that having friendly, communist governments in Eastern Europe would create a buffer zone against potential invasions from the West, particularly from Germany.\n\n2. **Spread of Communism**: Stalin was committed to the spread of communism and saw Eastern Europe as a region where he could promote and establish communist regimes. This was part of a broader ideological goal to expand the influence of the Soviet model of governance.\n\n3. **Economic Interests**:"
+      },
+      {
+        "query_id": "410717",
+        "query": "is funner a word?",
+        "ground_truth": [
+          "Yes, funner is a word."
+        ],
+        "prediction": "Yes, \"funner\" is considered a colloquial or informal term used to describe something that is more fun. However, it is often debated among grammarians and language purists, who argue that \"more fun\" is the preferred and more grammatically correct form. In casual conversation, \"funner\" is widely understood and used, but in formal writing, it's advisable to use \"more fun.\""
+      },
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "As of the 2023-2024 academic year, the undergraduate tuition for New York University (NYU) is approximately $62,000 per year. This figure can vary based on the specific program and additional fees, such as housing, meals, and other expenses. Graduate program tuition rates can also differ significantly depending on the field of study. For the most accurate and up-to-date information, it's best to check NYU's official website or contact their admissions office directly."
+      },
+      {
+        "query_id": "28213",
+        "query": "at what age do kids start to hold memories",
+        "ground_truth": [
+          "Before the age of 2–4 years."
+        ],
+        "prediction": "Children begin to form memories from a very young age, but the nature and retention of those memories evolve as they grow. Research suggests that infants can start to form basic memories as early as 2 to 3 months old, primarily through sensory experiences and emotional responses. However, these early memories are often not retained long-term.\n\nBy around 2 to 3 years of age, children start to develop more complex memories, including episodic memories, which are memories of specific events. This is also when they begin to form autobiographical memories, which are personal memories of their own experiences. However, many of these early memories may not be easily"
+      }
+    ]
   }
 ]

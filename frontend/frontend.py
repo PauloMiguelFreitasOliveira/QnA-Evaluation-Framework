@@ -100,7 +100,7 @@ with tabs[0]:
             index=0
         )
         if ret_choice == "Other…":
-            retriever_model = st.text_input("Digite o retriever", key="custom_retriever").strip()
+            retriever_model = st.text_input("Insert retriever", key="custom_retriever").strip()
         else:
             retriever_model = ret_choice
 
@@ -166,47 +166,64 @@ with tabs[0]:
 
     if st.button("▶️ Execute evaluation", disabled=not run_enabled):
         script = EVAL_SCRIPTS[eval_type]
-        
+        cmd = None
+        env_vars = None
+
         if eval_type == "Retrieval":
-            env_vars = None
             lower_ret = retriever_model.lower()
             if lower_ret in ("bm25", "dpr", "hybrid"):
                 script = f"qna_eval/retrieval_files/retrieval_{lower_ret.upper()}.py"
                 cmd = ["python", script]
                 env_vars = os.environ.copy()
                 env_vars["NUM_EXAMPLES"] = str(limit)
+                # Optionally: If your script needs reader model as env, add here
+                if reader_model:
+                    env_vars["READER_MODEL"] = reader_model
             else:
+                # For non-bm25/dpr/hybrid retrievers
                 cmd = [
                     "python", script,
                     "--retriever_model", retriever_model,
+                    "--reader_model", reader_model,
                     "--dataset", ds,
                     "--limit", str(limit),
                     "--top_k", str(top_k),
                     "--max_context_per_query", str(max_ctx)
                 ]
-                if reader_model:
-                    cmd += ["--reader_model", reader_model]
-        else:
+
+        elif eval_type == "Generative":
             cmd = [
                 "python", script,
                 "--backend", backend,
                 "--model_name", model,
-                ("--primary_dataset" if eval_type == "Generative" else "--dataset"),
-                ds,
-                "--limit", str(limit)
+                "--primary_dataset", ds,
+                "--limit", str(limit),
+                "--secondary_dataset", "truthfulqa",
+                "--n_samples", "5"
             ]
-            if eval_type == "Generative":
-                cmd += ["--secondary_dataset", "truthfulqa", "--n_samples", "5"]
-            elif eval_type == "RAG":
-                cmd += ["--rag_config", "default"]
+
+        elif eval_type == "RAG":
+            cmd = [
+                "python", script,
+                "--model_name", model,
+                "--dataset", ds,
+                "--limit", str(limit),
+                "--backend", backend,
+                "--secondary_dataset", "truthfulqa",
+                "--n_samples", "5"
+            ]
+
+        else:
+            st.error("Unknown evaluation type.")
+            st.stop()
 
         disp_cmd = ' '.join(cmd)
-        if eval_type == "Retrieval" and lower_ret in ("bm25", "dpr", "hybrid"):
+        if eval_type == "Retrieval" and 'env_vars' in locals() and env_vars is not None and lower_ret in ("bm25", "dpr", "hybrid"):
             disp_cmd = f"NUM_EXAMPLES={limit} " + disp_cmd
         st.markdown(f"**Executing:** `{ disp_cmd }`")
 
         # Captura em tempo real
-        popen_env = env_vars if eval_type == "Retrieval" and lower_ret in ("bm25", "dpr", "hybrid") else None
+        popen_env = env_vars if eval_type == "Retrieval" and env_vars is not None else None
         process = subprocess.Popen(
             cmd,
             stdout=subprocess.PIPE,
