@@ -18,7 +18,6 @@ def load_dataset_file(dataset_name, limit, max_contexts_per_query=None):
     dataset_path = os.path.join("datasets", f"{dataset_name}.json")
 
     if os.path.exists(dataset_path):
-        print(f" Loading dataset locally from {dataset_path}")
         with open(dataset_path, "r", encoding="utf-8") as f:
             raw_data = json.load(f)
     else:
@@ -39,18 +38,6 @@ def load_dataset_file(dataset_name, limit, max_contexts_per_query=None):
     # Ensure we're returning a valid dictionary with 'queries' key
     if formatted_data is None or context_pool is None:
         raise ValueError(" Error in formatting dataset: formatted_data or context_pool is None.")
-    
-    # ✅ Print up to 200 entries after deduplication
-    #print("\n🖨️ Showing up to 200 unique formatted entries:\n")
-    #for i, entry in enumerate(formatted_data[:200]):
-    #    print(f"\n🔹 Entry {i+1}:")
-    #    print(f"Query ID: {entry.get('query_id')}")
-    #    print(f"Query: {entry.get('query')}")
-    #    print(f"Answers: {entry.get('answers')}")
-    #    print("Candidates:")
-    #    for c in entry.get("candidates", []):
-    #        print(f"  - Passage: {c.get('passage_text')[:200]}...")  # Truncate long text
-    #        print(f"    Selected: {c.get('is_selected')}")
     
     return {"queries": formatted_data, "context_pool": context_pool}
 
@@ -165,8 +152,8 @@ def try_format_dataset(raw_data, limit, max_contexts_per_query):
     if not formatted:
         raise ValueError(" Dataset could not be formatted: No valid entries found.")
 
-    print(f" Number of contexts in the context pool: {len(context_pool) if context_pool else 0}")
+    #print(f" Number of contexts in the context pool: {len(context_pool) if context_pool else 0}")
     num_answerable = sum(1 for q in formatted if q["answers"])
-    print(f" Formatted {len(formatted)} entries ({num_answerable} with answers, {len(formatted)-num_answerable} unanswerable).")
+    #print(f" Formatted {len(formatted)} entries ({num_answerable} with answers, {len(formatted)-num_answerable} unanswerable).")
 
     return formatted, context_pool

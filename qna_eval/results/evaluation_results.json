@@ -3939,5 +3939,2282 @@
         "prediction": "Children begin to form memories from a very young age, but the nature and retention of those memories evolve as they grow. Research suggests that infants can start to form basic memories as early as 2 to 3 months old, primarily through sensory experiences and emotional responses. However, these early memories are often not retained long-term.\n\nBy around 2 to 3 years of age, children start to develop more complex memories, including episodic memories, which are memories of specific events. This is also when they begin to form autobiographical memories, which are personal memories of their own experiences. However, many of these early memories may not be easily"
       }
     ]
+  },
+  {
+    "timestamp": "2025-06-12 15:19:55",
+    "model_name": "deepset/roberta-base-squad2",
+    "evaluation_method": "facebook/dpr-question_encoder-single-nq-base",
+    "dataset_name": "ms_marco",
+    "num_entries": 200,
+    "metrics": {
+      "squad": {
+        "exact_match": 8.0,
+        "f1": 25.25
+      },
+      "rouge": {
+        "rouge1": 0.2673,
+        "rouge2": 0.1669,
+        "rougeL": 0.2584,
+        "rougeLsum": 0.2584
+      },
+      "bleu": {
+        "bleu": 0.0842,
+        "precisions": []
+      },
+      "retrieval": {
+        "map": 0.5088920634920635,
+        "ndcg": 0.6273413695330662,
+        "recip_rank": 0.5086253968253969
+      },
+      "contextual": {
+        "contextual_precision": 0.1045,
+        "contextual_recall": 1.04,
+        "contextual_relevancy": 0.1045
+      }
+    }
+  },
+  {
+    "timestamp": "2025-06-13 10:53:00",
+    "model_name": "distilbert-base-uncased-distilled-squad",
+    "evaluation_method": "BM25",
+    "dataset_name": "ms_marco",
+    "num_entries": null,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 10.279885185057598
+      },
+      "rouge": {
+        "rouge1": 0.11394991582491582,
+        "rouge2": 0.03443070423690579,
+        "rougeL": 0.10925618044152527,
+        "rougeLsum": 0.11070346320346319
+      },
+      "bleu": {
+        "bleu": 0.02645225108788979,
+        "precisions": [
+          0.1751412429378531,
+          0.10204081632653061,
+          0.08130081300813008,
+          0.05825242718446602
+        ]
+      },
+      "retrieval": {
+        "map": 0.2713888888888889,
+        "ndcg": 0.36449543064282675,
+        "recip_rank": 0.2713888888888889
+      }
+    }
+  },
+  {
+    "timestamp": "2025-06-13 11:02:18",
+    "model_name": "llama3.1:latest",
+    "evaluation_method": "Generative",
+    "dataset_name": "ms_marco",
+    "num_entries": 21,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 13.82
+      },
+      "rouge": {
+        "rouge1": 0.1513,
+        "rouge2": 0.057,
+        "rougeL": 0.1209,
+        "rougeLsum": 0.1359
+      },
+      "bleu": {
+        "bleu": 0.0311,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 1.0,
+        "THR": 0.6667
+      }
+    },
+    "examples": [
+      {
+        "query_id": "612660",
+        "query": "what county is shelton, ct",
+        "ground_truth": [
+          "Shelton is in Fairfield County, Connecticut, United States."
+        ],
+        "prediction": "Shelton, CT is located in Fairfield County."
+      },
+      {
+        "query_id": "44588",
+        "query": "average teeth brushing time",
+        "ground_truth": [
+          "Americans brush for just under the two minutes on average."
+        ],
+        "prediction": "The average recommended teeth brushing time is:\n\n* 2 minutes (as specified by the American Dental Association, ADA)\n* Some studies suggest that a minimum of 30 seconds to 1 minute is sufficient for effective cleaning\n* However, the ADA recommends brushing in sections and spending at least 30 seconds on each section for optimal results.\n\nTo give you a better idea, here's a rough breakdown:\n\n* Brush your teeth in small circular motions with a gentle back-and-forth motion\n* Spend about 15-20 seconds on the top surfaces of your teeth (chewing surfaces)\n* Another 10-15 seconds on the bottom surfaces (tongue side)\n* Finally, brush your tongue and the roof of your mouth for 5-10 seconds each\n\nRemember, brushing is just one part of a complete oral hygiene routine. It's also essential to floss at least once a day, visit your dentist regularly for check-ups and cleanings, and avoid sugary or acidic foods/drinks that can harm teeth."
+      },
+      {
+        "query_id": "604568",
+        "query": "what county is columbus city in",
+        "ground_truth": [
+          "Bartholomew"
+        ],
+        "prediction": "However, I need a bit more information from you. There are several places named \"Columbus City\" in the United States. Could you please specify which one you're referring to? Here are a few possibilities:\n\n* Columbus City, Iowa - This is a city located in Louisa County.\n* Columbus City, Ohio - This is actually the largest city in the state of Ohio and the county seat of Franklin County.\n\nIf neither of these sounds like what you're looking for, please let me know and I can try to help further."
+      },
+      {
+        "query_id": "605123",
+        "query": "what county is dewitt michigan in?",
+        "ground_truth": [
+          "DeWitt is located in Clinton County, Michigan, United States."
+        ],
+        "prediction": "DeWitt, Michigan is located in Clinton County."
+      },
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "A question about one of the most prestigious universities in the world!\n\nThe New York University (NYU) is a private research university with two main campuses, located in Manhattan and Brooklyn. The tuition costs at NYU can vary depending on several factors, including your academic program, residency status, and other factors.\n\nHere are some estimated tuition fees for the 2022-2023 academic year:\n\n**Undergraduate Tuition:**\n\n* Full-time tuition (12-18 credits): around $52,828 per year\n* Part-time tuition (1-11 credits): around $2,143 per credit hour\n\n**Graduate Tuition:**\n\n* Master's programs:\n\t+ Online and part-time students: around $32,472 per year\n\t+ On-campus students: around $43,448 per year\n* Doctoral programs:\n\t+ Online and part-time students: around $29,672 per year\n\t+ On-campus students: around $39,656 per year\n\n**Other Fees:**\n\n* Student health insurance (optional): around $2,654 per year\n* Technology fee: around $240 per semester\n* Facilities fee: around $300 per semester\n* Other miscellaneous fees: around $1,000 - $2,000 per academic year\n\n**Scholarships and Financial Aid:**\n\nNYU offers various forms of financial aid to help students cover the cost of tuition. These include scholarships, grants, loans, and work-study programs.\n\nSome examples of NYU scholarships include:\n\n* The Dean's Merit Scholarship\n* The NYU Promise Scholarship (for low-income students)\n* The NYU Scholarship for Transfer Students\n\nI recommend checking the official NYU website or contacting their admissions office directly for more up-to-date information on tuition costs and financial aid opportunities."
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-13 12:33:39",
+    "model_name": "llama3.1:latest",
+    "evaluation_method": "Generative",
+    "dataset_name": "ms_marco",
+    "num_entries": 13,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 14.13
+      },
+      "rouge": {
+        "rouge1": 0.158,
+        "rouge2": 0.0589,
+        "rougeL": 0.1265,
+        "rougeLsum": 0.1359
+      },
+      "bleu": {
+        "bleu": 0.0381,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 1.0,
+        "THR": 0.5
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "It seems like there's a missing part of the question. However, based on what I can infer from the given text, it appears to be about restorative justice.\n\nRestorative justice is an approach that aims to repair the harm caused by a crime through dialogue and cooperation between those affected, including the victim, the offender, and members of their communities. It seeks to address the needs of all parties involved in the criminal act.\n\nSo, I'll provide some potential answers based on this understanding:\n\n- **Restorative justice**\n- **Reparative justice** (a synonym for restorative justice)\n- **Rehabilitative justice** (another approach focused on rehabilitation and repairing harm)\n\nIf you could provide more context or clarify what the question is asking, I can offer a more specific answer."
+      },
+      {
+        "query_id": "534802",
+        "query": "using cpap without prescription",
+        "ground_truth": [
+          "A motorized oxygen mask doesn't qualify to most as being on the same plane as actual medication, but it really is."
+        ],
+        "prediction": "I can't advise you to use CPAP therapy without a prescription. Is there anything else I can help you with?"
+      },
+      {
+        "query_id": "44588",
+        "query": "average teeth brushing time",
+        "ground_truth": [
+          "Americans brush for just under the two minutes on average."
+        ],
+        "prediction": "The average teeth brushing time is typically around 2 minutes. This is the recommended duration by many dental associations and organizations, including the American Dental Association (ADA). Brushing for 2 minutes allows you to effectively clean all surfaces of your teeth, including the front, back, and top.\n\nHere's a breakdown of how you can divide your brushing time:\n\n*   Brush the front teeth (2 seconds)\n*   Brush the back teeth (2 seconds)\n*   Brush the top surface of the molars (4 seconds per molar)\n*   Brush the bottom surface of the molars (4 seconds per molar)\n*   Clean the chewing surfaces (4 seconds per tooth)\n*   Pay special attention to areas where your teeth and gums meet\n*   Don't forget to brush your tongue and the roof of your mouth\n\nHowever, it's worth noting that the American Dental Association recommends brushing for at least 2 minutes, but no more than 3 minutes. Brushing for too long can cause gum recession and tooth wear.\n\nIt's also essential to remember that teeth brushing is just one part of good oral hygiene. You should also floss daily, visit your dentist regularly for check-ups and cleanings, and limit sugary and acidic foods and drinks."
+      },
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "The immediate impact of the success of the Manhattan Project, which developed the atomic bomb, was multifaceted and had far-reaching consequences. Here are some key effects:\n\n1. **End of World War II**: The successful development and use of the atomic bomb in August 1945 led to Japan's rapid surrender on August 15, 1945, bringing an end to World War II. This marked a significant turning point in world history.\n\n2. **Shift in Global Politics**: The introduction of nuclear weapons fundamentally altered international relations. It ushered in the era of nuclear deterrence, where possession and the threat of use became critical elements of national security strategies for countries like the United States, Soviet Union (and later Russia), China, France, the UK, India, Pakistan, Israel, North Korea, and others.\n\n3. **Establishment of the Nuclear Age**: The success of the Manhattan Project marked the beginning of the nuclear age, an era characterized by the possession and threat of use of nuclear weapons. This has led to a significant focus on arms control, disarmament efforts, and security strategies around nuclear deterrence.\n\n4. **Nuclear Proliferation Concerns**: The development and deployment of atomic bombs created concerns about the proliferation of these weapons. Countries began to worry that other nations might develop their own nuclear capabilities, leading to a heightened sense of global insecurity. This concern led to efforts in arms control and non-proliferation.\n\n5. **Impact on Science and Research Funding**: The success of the Manhattan Project significantly impacted the way governments approached science research and funding. It became clear that investing heavily in scientific research could have profound implications for national security, leading to a boost in funding for related projects worldwide.\n\n6. **Ethical Debates**: The development of atomic bombs raised profound ethical questions about the use of such weapons and the consequences of playing with forces as destructive as those unleashed by nuclear reactions. This led to ongoing debates about nuclear ethics and international agreements aimed at controlling their use.\n\n7. **Humanitarian Impact**: The bombings of Hiroshima and Nagasaki had a devastating humanitarian impact, causing widespread destruction and long-term health effects among survivors. This led to increased focus on humanitarian aspects of warfare and the protection of civilians in conflict zones.\n\n8. **Cold War Escalation**: The development of nuclear weapons by the United States was soon matched by the Soviet Union's development of its own atomic bomb (1949), leading to a nuclear arms race during the Cold War, which lasted until 1991.\n\nIn summary, the immediate impact of the Manhattan Project's success was to end World War II with an unprecedented and awe-inspiring demonstration of technological power, followed by profound changes in international politics, global security, science funding, ethics debates, humanitarian concerns, and the escalation of the Cold War."
+      },
+      {
+        "query_id": "1174761",
+        "query": "bancfirst customer service number",
+        "ground_truth": [
+          "The customer support phone number of BancFirst is +1(405) 948-7930, 1-855-889-9216, 1-888-200-9149."
+        ],
+        "prediction": "The contact information for BancFirst customer service is:\n\nPhone: (405) 237-0300 or toll-free at (800) 234-BANK\nEmail: [customerservice@bancfirst.com](mailto:customerservice@bancfirst.com)\nAddress: 123 Robert S. Kerr Ave, Oklahoma City, OK 73102\n\nPlease note that the contact information may be subject to change, and it's always a good idea to check the bank's official website or mobile app for any updates.\n\nAlso, you can find more contact options on BancFirst's website under \"Contact Us\" section."
+      }
+    ]
+  },
+  {
+    "model_name": "llama3.1:latest",
+    "evaluation_method": "Generative",
+    "primary_dataset": "ms_marco",
+    "secondary_dataset": "truthfulqa",
+    "num_primary": 13,
+    "num_secondary": 4,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 14.13,
+        "bleu": 0.0381,
+        "rouge1": 0.158,
+        "rouge2": 0.0589,
+        "rougeL": 0.1265,
+        "rougeLsum": 0.1359
+      },
+      "hallucination": {
+        "PHR": 1.0,
+        "THR": 0.5
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "It seems like there's a missing part of the question. However, based on what I can infer from the given text, it appears to be about restorative justice.\n\nRestorative justice is an approach that aims to repair the harm caused by a crime through dialogue and cooperation between those affected, including the victim, the offender, and members of their communities. It seeks to address the needs of all parties involved in the criminal act.\n\nSo, I'll provide some potential answers based on this understanding:\n\n- **Restorative justice**\n- **Reparative justice** (a synonym for restorative justice)\n- **Rehabilitative justice** (another approach focused on rehabilitation and repairing harm)\n\nIf you could provide more context or clarify what the question is asking, I can offer a more specific answer."
+      },
+      {
+        "query_id": "534802",
+        "query": "using cpap without prescription",
+        "ground_truth": [
+          "A motorized oxygen mask doesn't qualify to most as being on the same plane as actual medication, but it really is."
+        ],
+        "prediction": "I can't advise you to use CPAP therapy without a prescription. Is there anything else I can help you with?"
+      },
+      {
+        "query_id": "44588",
+        "query": "average teeth brushing time",
+        "ground_truth": [
+          "Americans brush for just under the two minutes on average."
+        ],
+        "prediction": "The average teeth brushing time is typically around 2 minutes. This is the recommended duration by many dental associations and organizations, including the American Dental Association (ADA). Brushing for 2 minutes allows you to effectively clean all surfaces of your teeth, including the front, back, and top.\n\nHere's a breakdown of how you can divide your brushing time:\n\n*   Brush the front teeth (2 seconds)\n*   Brush the back teeth (2 seconds)\n*   Brush the top surface of the molars (4 seconds per molar)\n*   Brush the bottom surface of the molars (4 seconds per molar)\n*   Clean the chewing surfaces (4 seconds per tooth)\n*   Pay special attention to areas where your teeth and gums meet\n*   Don't forget to brush your tongue and the roof of your mouth\n\nHowever, it's worth noting that the American Dental Association recommends brushing for at least 2 minutes, but no more than 3 minutes. Brushing for too long can cause gum recession and tooth wear.\n\nIt's also essential to remember that teeth brushing is just one part of good oral hygiene. You should also floss daily, visit your dentist regularly for check-ups and cleanings, and limit sugary and acidic foods and drinks."
+      },
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "The immediate impact of the success of the Manhattan Project, which developed the atomic bomb, was multifaceted and had far-reaching consequences. Here are some key effects:\n\n1. **End of World War II**: The successful development and use of the atomic bomb in August 1945 led to Japan's rapid surrender on August 15, 1945, bringing an end to World War II. This marked a significant turning point in world history.\n\n2. **Shift in Global Politics**: The introduction of nuclear weapons fundamentally altered international relations. It ushered in the era of nuclear deterrence, where possession and the threat of use became critical elements of national security strategies for countries like the United States, Soviet Union (and later Russia), China, France, the UK, India, Pakistan, Israel, North Korea, and others.\n\n3. **Establishment of the Nuclear Age**: The success of the Manhattan Project marked the beginning of the nuclear age, an era characterized by the possession and threat of use of nuclear weapons. This has led to a significant focus on arms control, disarmament efforts, and security strategies around nuclear deterrence.\n\n4. **Nuclear Proliferation Concerns**: The development and deployment of atomic bombs created concerns about the proliferation of these weapons. Countries began to worry that other nations might develop their own nuclear capabilities, leading to a heightened sense of global insecurity. This concern led to efforts in arms control and non-proliferation.\n\n5. **Impact on Science and Research Funding**: The success of the Manhattan Project significantly impacted the way governments approached science research and funding. It became clear that investing heavily in scientific research could have profound implications for national security, leading to a boost in funding for related projects worldwide.\n\n6. **Ethical Debates**: The development of atomic bombs raised profound ethical questions about the use of such weapons and the consequences of playing with forces as destructive as those unleashed by nuclear reactions. This led to ongoing debates about nuclear ethics and international agreements aimed at controlling their use.\n\n7. **Humanitarian Impact**: The bombings of Hiroshima and Nagasaki had a devastating humanitarian impact, causing widespread destruction and long-term health effects among survivors. This led to increased focus on humanitarian aspects of warfare and the protection of civilians in conflict zones.\n\n8. **Cold War Escalation**: The development of nuclear weapons by the United States was soon matched by the Soviet Union's development of its own atomic bomb (1949), leading to a nuclear arms race during the Cold War, which lasted until 1991.\n\nIn summary, the immediate impact of the Manhattan Project's success was to end World War II with an unprecedented and awe-inspiring demonstration of technological power, followed by profound changes in international politics, global security, science funding, ethics debates, humanitarian concerns, and the escalation of the Cold War."
+      },
+      {
+        "query_id": "1174761",
+        "query": "bancfirst customer service number",
+        "ground_truth": [
+          "The customer support phone number of BancFirst is +1(405) 948-7930, 1-855-889-9216, 1-888-200-9149."
+        ],
+        "prediction": "The contact information for BancFirst customer service is:\n\nPhone: (405) 237-0300 or toll-free at (800) 234-BANK\nEmail: [customerservice@bancfirst.com](mailto:customerservice@bancfirst.com)\nAddress: 123 Robert S. Kerr Ave, Oklahoma City, OK 73102\n\nPlease note that the contact information may be subject to change, and it's always a good idea to check the bank's official website or mobile app for any updates.\n\nAlso, you can find more contact options on BancFirst's website under \"Contact Us\" section."
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-13 15:32:17",
+    "model_name": "deepseek-v2:latest",
+    "evaluation_method": "Generative",
+    "dataset_name": "ms_marco",
+    "num_entries": 9,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 7.32
+      },
+      "rouge": {
+        "rouge1": 0.0833,
+        "rouge2": 0.017,
+        "rougeL": 0.0627,
+        "rougeLsum": 0.0684
+      },
+      "bleu": {
+        "bleu": 0.0065,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 1.0,
+        "THR": 1.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "28213",
+        "query": "at what age do kids start to hold memories",
+        "ground_truth": [
+          "Before the age of 2–4 years."
+        ],
+        "prediction": "The development of memory in children is a gradual process that occurs over time. However, it's difficult to pinpoint an exact age when most kids begin holding long-term memories because this varies among individuals based on their genetic makeup and environment. Nevertheless, there are some milestones you can consider as indicators for the emergence of longer-lasting memories.\n\nDuring infancy (from birth till around 3 years old), children develop a \"working memory\" that allows them to remember short-lived information like events they experience in real time or familiarize themselves with new stimuli briefly. This type of remembering is usually associated with sensory experiences and does not involve encoding details into long-term storage.\n\nBy the toddler stage (between 12-36 months), children show improvements in their memory abilities, such as recognizing previous routines or objects they have encountered before. They also begin forming a more structured form of recall by using cues to remember information about people and experiences that are significant for them. However, these memories may not be very detailed or long-lasting at this point but could last up to days or weeks without much recollection effort from the child's side.\n\nAs children grow older, they continue improving their memory skills through exposure to new events, activities, people, and environments that help encode information into longer-term memories in various brain structures such as the hippocampus, amygdala, and prefrontal cortex. At this stage (around 3-5 years old), most kids have developed episodic memories - recollections about specific experiences they can recall in vivid detail to tell a story or share their personal perspective on events that happened during past times of play or daily life activities. This is also the age range where children begin forming autobiographical memories, which are linked with identity formation and self-awareness processes.\n\nBy elementary school (around 5 years old), most kids have developed advanced memory skills such as encoding new information into their long-term storage system through various cognitive strategies like rehearsal or elaboration techniques; organizing stored knowledge in appropriate schemas or mental frameworks that enable easier access, retrieval, and use of memories when required. This further supports the ability to remember important details about everyday life events beyond just personal experiences related to playtime activities or family interactions.\n\nIn summary, while there isn't an exact age at which kids start holding memories in a consistent way, most children will develop their memory abilities gradually through different stages of early development starting from infancy up until they enter elementary school years where they exhibit advanced recall and encoding skills related to episodic memory formation processes."
+      },
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "The immediate impact of the success of the Manhattan Project, which led to the development of the first atomic bomb during World War II, can be divided into three significant categories: military consequences, political repercussions, and scientific advancements. These factors combined had a profound influence on international relations, global security policies, and the trajectory of science for decades to come.\n\n1. Military Consequences:\nThe success of the Manhattan Project led to the development of two types of atomic weapons: nuclear artillery shells (Fat Man) and air-dropped bombs (Little Boy). The use of these devastatingly powerful weapons enabled the United States, under President Harry S. Truman, to force Japan's surrender in World War II without a full-scale invasion, which would have resulted in immense casualties on both sides.\n\nThe atomic bombings of Hiroshima and Nagasaki on August 6th and 9th, 1945, respectively, effectively ended the war but also set off an arms race as other nations sought to develop their own nuclear arsenals. The destructive power of these weapons led to a shift in global military strategy from mass troop movements to the development of deterrence through mutually assured destruction (MAD).\n\n2. Political Repercussions:\nThe success of the Manhattan Project and its application during World War II had profound political implications, fundamentally altering international relations between nations for decades to come. The U.S.'s successful demonstration of nuclear capability led to concerns about global security balance and triggered a series of events that would shape world politics in the following years – including the formation of NATO, competition among superpowers during the Cold War, arms control treaties like the Nuclear Non-Proliferation Treaty (NPT), and numerous instances of brinkmanship.\n\nThe United States' monopoly on nuclear technology created strong alliances but also strained international relations as other nations saw a threat to their own national security. The fear of an atomic attack was used by several countries, including the Soviet Union and its satellite states during the Cold War, for domestic propaganda purposes or even to suppress political dissent.\n\n3. Scientific Advancements:\nThe success of the Manhattan Project also paved the way for significant advancements in various scientific fields like physics, materials science, computer technology, and engineering. The project involved a multidisciplinary approach, requiring extensive knowledge from specialists such as physicists, chemists, engineers, mathematicians, metallurgists, and electrical engineers. Consequently, it led to innovations that contributed significantly to post-war technological development.\n\nFor example:\n\n- Theoretical physics was advanced by the necessity of understanding nuclear reactions leading to scientists like J. Robert Oppenheimer (father of the atomic bomb) and Ernest O. Lawrence (Nobel laureate in Physics).\n  - The explosive potential of nuclear materials led to research into confinement methods, culminating in the development of containment vessels for nuclear reactors and containment concepts during space missions.\n  - Accelerator-driven subcritical experiments have been used as a tool by physicists working on understanding neutron transport phenomena that can contribute to verifying the safety of nuclear power plants or even detecting illicit nuclear activities.\n  \nIn summary, the success of the Manhattan Project had far-reaching consequences in military strategy and global security policies; altered international relations between nations through deterrence and arms control agreements; led to advancements in various scientific fields such as physics, materials science, computer technology, and engineering; ultimately shaping our understanding of nuclear energy's potential for both peaceful and destructive purposes."
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Joseph Stalin, the leader of the Soviet Union from 1924 to 1953, had a complex set of motivations for wanting control over Eastern Europe after World War II. These motives can be understood through various historical and geopolitical contexts:\n\n1. Containment of potential enemies: During and immediately after World War II, Stalin was concerned about the possibility of Western powers attempting to regain influence in Central and Eastern Europe. By establishing a sphere of control in these countries, he aimed to prevent any external forces from threatening Soviet security or undermining his authority.\n2. Economic stability and resources: The post-war period presented opportunities for the USSR to rebuild its economy after significant wartime destruction. Control over natural resources such as raw materials, agricultural lands, and strategic locations enabled Stalin to secure vital economic benefits that would support Soviet industrialization efforts.\n3. Political ideology: Communism was a key aspect of Stalin's foreign policy doctrine, and he sought to expand the influence of communism throughout Europe in order to strengthen his position within the international communist movement. By controlling Eastern European countries, he could demonstrate the power and success of communism against competing capitalist systems.\n4. Deterrence: Establishing control over Eastern Europe allowed Stalin to project Soviet strength as a means of deterring potential challenges or conflicts with Western powers, particularly the United States. The \"Iron Curtain\" that fell across Central and Eastern Europe acted both as an ideological barrier between communism and capitalism and as a physical demarcation of Soviet territory.\n5. National security: By securing control over strategic locations in Eastern Europe, Stalin aimed to prevent any potential threats or uprisings within these countries which could undermine the stability of his regime at home. Additionally, having a buffer zone closer to Western borders would protect the USSR from direct military confrontations with NATO forces during periods of Cold War tension.\n6. Propaganda: Controlling Eastern Europe also provided Stalin and the Soviet Union an opportunity for propaganda purposes – they could tout their influence over various governments as proof of communist success, while simultaneously criticizing Western powers' attempts to manipulate these nations. This would strengthen domestic support for Stalin's leadership and further legitimize his rule at home.\n7. Legacy: For Stalin personally, controlling Eastern Europe served as a means to solidify his position within the Soviet hierarchy by demonstrating loyalty and obedience to the communist cause among other Communist International leaders such as Mao Zedong in China or Tito of Yugoslavia. This would be important for maintaining alliances during periods of ideological disagreement like the Sino-Soviet split, as well as bolstering his international standing amidst global rivalries with capitalist nations like the United States.\nIn summary, Stalin's desire to control Eastern Europe was rooted in a complex mix of political ideology, economic stability and resource acquisition, deterrence against potential Western threats, national security considerations, propaganda purposes, and personal legacy-building. These motives were interconnected and driven by an overall goal of expanding Soviet influence at the expense of capitalist nations while solidifying Stalin's position within both domestic and international communist circles."
+      },
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "The cost of attending NYU (New York University) is quite high, as it's considered one of the most expensive universities in the United States. Tuition fees for undergraduate students are calculated on a yearly basis and can vary depending on your program, whether you’re an in-state or out-of-state student, etc. \n\nIn academic year 2019-2020 (the last published rates), NYU charged $53,678 for tuition and required fees for full-time undergraduate students who were classified as New York State residents. For international students or those from other states in the US, it cost approximately $59,404 per year. However, this amount does not include additional costs such as housing, meals, books, supplies, transportation etc., which can significantly increase your overall expenses during your time at NYU.\n\nPlease note that these figures are subject to change each academic year and could be affected by various factors including inflation or changes in state legislation affecting tuition fees for resident students. For the most current information about tuition costs, it is advisable to visit NYU's Office of Financial Aid website where they often provide detailed breakdowns on what constitutes those totals – from course registration fees to student activity assessments etc., along with instructions for applying for financial aid if you need support covering these costs.\n  \nAlso remember that this estimate does not include living expenses which could range widely depending on your lifestyle and chosen accommodations, nor does it take into account potential scholarships or other forms of financial assistance you might qualify for as a student at NYU – all crucial points to consider when budgeting for college life."
+      },
+      {
+        "query_id": "44588",
+        "query": "average teeth brushing time",
+        "ground_truth": [
+          "Americans brush for just under the two minutes on average."
+        ],
+        "prediction": "The recommended average tooth-brushing duration varies between one to three minutes, according to various dental organizations and guidelines. It is not just about how long you brush but the technique you use during that period as well."
+      }
+    ]
+  },
+  {
+    "model_name": "deepseek-v2:latest",
+    "evaluation_method": "Generative",
+    "primary_dataset": "ms_marco",
+    "secondary_dataset": "truthfulqa",
+    "num_primary": 9,
+    "num_secondary": 2,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 7.32,
+        "bleu": 0.0065,
+        "rouge1": 0.0833,
+        "rouge2": 0.017,
+        "rougeL": 0.0627,
+        "rougeLsum": 0.0684
+      },
+      "hallucination": {
+        "PHR": 1.0,
+        "THR": 1.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "28213",
+        "query": "at what age do kids start to hold memories",
+        "ground_truth": [
+          "Before the age of 2–4 years."
+        ],
+        "prediction": "The development of memory in children is a gradual process that occurs over time. However, it's difficult to pinpoint an exact age when most kids begin holding long-term memories because this varies among individuals based on their genetic makeup and environment. Nevertheless, there are some milestones you can consider as indicators for the emergence of longer-lasting memories.\n\nDuring infancy (from birth till around 3 years old), children develop a \"working memory\" that allows them to remember short-lived information like events they experience in real time or familiarize themselves with new stimuli briefly. This type of remembering is usually associated with sensory experiences and does not involve encoding details into long-term storage.\n\nBy the toddler stage (between 12-36 months), children show improvements in their memory abilities, such as recognizing previous routines or objects they have encountered before. They also begin forming a more structured form of recall by using cues to remember information about people and experiences that are significant for them. However, these memories may not be very detailed or long-lasting at this point but could last up to days or weeks without much recollection effort from the child's side.\n\nAs children grow older, they continue improving their memory skills through exposure to new events, activities, people, and environments that help encode information into longer-term memories in various brain structures such as the hippocampus, amygdala, and prefrontal cortex. At this stage (around 3-5 years old), most kids have developed episodic memories - recollections about specific experiences they can recall in vivid detail to tell a story or share their personal perspective on events that happened during past times of play or daily life activities. This is also the age range where children begin forming autobiographical memories, which are linked with identity formation and self-awareness processes.\n\nBy elementary school (around 5 years old), most kids have developed advanced memory skills such as encoding new information into their long-term storage system through various cognitive strategies like rehearsal or elaboration techniques; organizing stored knowledge in appropriate schemas or mental frameworks that enable easier access, retrieval, and use of memories when required. This further supports the ability to remember important details about everyday life events beyond just personal experiences related to playtime activities or family interactions.\n\nIn summary, while there isn't an exact age at which kids start holding memories in a consistent way, most children will develop their memory abilities gradually through different stages of early development starting from infancy up until they enter elementary school years where they exhibit advanced recall and encoding skills related to episodic memory formation processes."
+      },
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "The immediate impact of the success of the Manhattan Project, which led to the development of the first atomic bomb during World War II, can be divided into three significant categories: military consequences, political repercussions, and scientific advancements. These factors combined had a profound influence on international relations, global security policies, and the trajectory of science for decades to come.\n\n1. Military Consequences:\nThe success of the Manhattan Project led to the development of two types of atomic weapons: nuclear artillery shells (Fat Man) and air-dropped bombs (Little Boy). The use of these devastatingly powerful weapons enabled the United States, under President Harry S. Truman, to force Japan's surrender in World War II without a full-scale invasion, which would have resulted in immense casualties on both sides.\n\nThe atomic bombings of Hiroshima and Nagasaki on August 6th and 9th, 1945, respectively, effectively ended the war but also set off an arms race as other nations sought to develop their own nuclear arsenals. The destructive power of these weapons led to a shift in global military strategy from mass troop movements to the development of deterrence through mutually assured destruction (MAD).\n\n2. Political Repercussions:\nThe success of the Manhattan Project and its application during World War II had profound political implications, fundamentally altering international relations between nations for decades to come. The U.S.'s successful demonstration of nuclear capability led to concerns about global security balance and triggered a series of events that would shape world politics in the following years – including the formation of NATO, competition among superpowers during the Cold War, arms control treaties like the Nuclear Non-Proliferation Treaty (NPT), and numerous instances of brinkmanship.\n\nThe United States' monopoly on nuclear technology created strong alliances but also strained international relations as other nations saw a threat to their own national security. The fear of an atomic attack was used by several countries, including the Soviet Union and its satellite states during the Cold War, for domestic propaganda purposes or even to suppress political dissent.\n\n3. Scientific Advancements:\nThe success of the Manhattan Project also paved the way for significant advancements in various scientific fields like physics, materials science, computer technology, and engineering. The project involved a multidisciplinary approach, requiring extensive knowledge from specialists such as physicists, chemists, engineers, mathematicians, metallurgists, and electrical engineers. Consequently, it led to innovations that contributed significantly to post-war technological development.\n\nFor example:\n\n- Theoretical physics was advanced by the necessity of understanding nuclear reactions leading to scientists like J. Robert Oppenheimer (father of the atomic bomb) and Ernest O. Lawrence (Nobel laureate in Physics).\n  - The explosive potential of nuclear materials led to research into confinement methods, culminating in the development of containment vessels for nuclear reactors and containment concepts during space missions.\n  - Accelerator-driven subcritical experiments have been used as a tool by physicists working on understanding neutron transport phenomena that can contribute to verifying the safety of nuclear power plants or even detecting illicit nuclear activities.\n  \nIn summary, the success of the Manhattan Project had far-reaching consequences in military strategy and global security policies; altered international relations between nations through deterrence and arms control agreements; led to advancements in various scientific fields such as physics, materials science, computer technology, and engineering; ultimately shaping our understanding of nuclear energy's potential for both peaceful and destructive purposes."
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Joseph Stalin, the leader of the Soviet Union from 1924 to 1953, had a complex set of motivations for wanting control over Eastern Europe after World War II. These motives can be understood through various historical and geopolitical contexts:\n\n1. Containment of potential enemies: During and immediately after World War II, Stalin was concerned about the possibility of Western powers attempting to regain influence in Central and Eastern Europe. By establishing a sphere of control in these countries, he aimed to prevent any external forces from threatening Soviet security or undermining his authority.\n2. Economic stability and resources: The post-war period presented opportunities for the USSR to rebuild its economy after significant wartime destruction. Control over natural resources such as raw materials, agricultural lands, and strategic locations enabled Stalin to secure vital economic benefits that would support Soviet industrialization efforts.\n3. Political ideology: Communism was a key aspect of Stalin's foreign policy doctrine, and he sought to expand the influence of communism throughout Europe in order to strengthen his position within the international communist movement. By controlling Eastern European countries, he could demonstrate the power and success of communism against competing capitalist systems.\n4. Deterrence: Establishing control over Eastern Europe allowed Stalin to project Soviet strength as a means of deterring potential challenges or conflicts with Western powers, particularly the United States. The \"Iron Curtain\" that fell across Central and Eastern Europe acted both as an ideological barrier between communism and capitalism and as a physical demarcation of Soviet territory.\n5. National security: By securing control over strategic locations in Eastern Europe, Stalin aimed to prevent any potential threats or uprisings within these countries which could undermine the stability of his regime at home. Additionally, having a buffer zone closer to Western borders would protect the USSR from direct military confrontations with NATO forces during periods of Cold War tension.\n6. Propaganda: Controlling Eastern Europe also provided Stalin and the Soviet Union an opportunity for propaganda purposes – they could tout their influence over various governments as proof of communist success, while simultaneously criticizing Western powers' attempts to manipulate these nations. This would strengthen domestic support for Stalin's leadership and further legitimize his rule at home.\n7. Legacy: For Stalin personally, controlling Eastern Europe served as a means to solidify his position within the Soviet hierarchy by demonstrating loyalty and obedience to the communist cause among other Communist International leaders such as Mao Zedong in China or Tito of Yugoslavia. This would be important for maintaining alliances during periods of ideological disagreement like the Sino-Soviet split, as well as bolstering his international standing amidst global rivalries with capitalist nations like the United States.\nIn summary, Stalin's desire to control Eastern Europe was rooted in a complex mix of political ideology, economic stability and resource acquisition, deterrence against potential Western threats, national security considerations, propaganda purposes, and personal legacy-building. These motives were interconnected and driven by an overall goal of expanding Soviet influence at the expense of capitalist nations while solidifying Stalin's position within both domestic and international communist circles."
+      },
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "The cost of attending NYU (New York University) is quite high, as it's considered one of the most expensive universities in the United States. Tuition fees for undergraduate students are calculated on a yearly basis and can vary depending on your program, whether you’re an in-state or out-of-state student, etc. \n\nIn academic year 2019-2020 (the last published rates), NYU charged $53,678 for tuition and required fees for full-time undergraduate students who were classified as New York State residents. For international students or those from other states in the US, it cost approximately $59,404 per year. However, this amount does not include additional costs such as housing, meals, books, supplies, transportation etc., which can significantly increase your overall expenses during your time at NYU.\n\nPlease note that these figures are subject to change each academic year and could be affected by various factors including inflation or changes in state legislation affecting tuition fees for resident students. For the most current information about tuition costs, it is advisable to visit NYU's Office of Financial Aid website where they often provide detailed breakdowns on what constitutes those totals – from course registration fees to student activity assessments etc., along with instructions for applying for financial aid if you need support covering these costs.\n  \nAlso remember that this estimate does not include living expenses which could range widely depending on your lifestyle and chosen accommodations, nor does it take into account potential scholarships or other forms of financial assistance you might qualify for as a student at NYU – all crucial points to consider when budgeting for college life."
+      },
+      {
+        "query_id": "44588",
+        "query": "average teeth brushing time",
+        "ground_truth": [
+          "Americans brush for just under the two minutes on average."
+        ],
+        "prediction": "The recommended average tooth-brushing duration varies between one to three minutes, according to various dental organizations and guidelines. It is not just about how long you brush but the technique you use during that period as well."
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-13 15:43:57",
+    "model_name": "deepseek-llm:latest",
+    "evaluation_method": "Generative",
+    "dataset_name": "ms_marco",
+    "num_entries": 10,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 11.22
+      },
+      "rouge": {
+        "rouge1": 0.1287,
+        "rouge2": 0.0415,
+        "rougeL": 0.1046,
+        "rougeLsum": 0.1118
+      },
+      "bleu": {
+        "bleu": 0.0149,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 1.0,
+        "THR": 1.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "728808",
+        "query": "what is ce certified",
+        "ground_truth": [
+          "An abbreviation of Conformite Conformité, europeenne Européenne Meaning. european conformity."
+        ],
+        "prediction": "CE certification, also known as Conformity Assessment (CA) or Conformity to Standard (CTS), refers to the process of ensuring that a product meets all necessary regulations and safety standards. CE marking on products indicates they have been tested for compliance with these European norms. The process involves assessing whether products meet requirements set by individual countries' authorities, such as EC directives; this ensures consumers can trust they're buying safe items when shopping within the EEA (European Economic Area)."
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Joseph Stalin wanted to gain control over Eastern Europe because he believed it would help him expand the Soviet Union's influence and territory. He also saw Eastern European nations as potential allies in his fight against Western powers, such as Germany and Britain. Additionally, gaining control over these countries allowed Stalin to create buffer zones between the Soviet Union and other hostile neighbors like Finland and Poland."
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "It seems like you might be referring to \"Depóna Ab\", which is a brand of an over-the-counter medication used for relief from stomach pain and heartburn. This medicine contains Domperidone, an antiemetic drug that stimulates the release of gastric juice in the stomach, and Pimozide, a potent anticholinergic agent that blocks the action of acetylcholine at muscarinic cholinergic receptors.\n\nDomperidone works by increasing the production of digestive juices in your stomach and suppressing nausea and vomiting. Meanwhile, pimozide decreases sensitivity to acetylcholine - a neurotransmitter involved in muscle contraction and communication between nerves. \n\nDepóna Ab is commonly used for treating the following conditions:\n1. Gastric reflux disease (gastroesophageal reflux disease) or heartburn that causes stomach acid to flow back into the esophagus, irritating it;\n2. Nausea and vomiting related to cancer treatments such as chemotherapy;\n3. Motion sickness in those who have experienced this condition before taking Depóna Ab;\n4. Gastroparesis - a medical disorder characterized by delayed emptying of food from the stomach into the small intestine;\n5. Cyclic vomiting syndrome (CVS) – an uncommon, chronic illness that causes repetitive episodes of severe nausea and vomiting without any identifiable cause.\n\nHowever, it's essential to consult your doctor before taking Depóna Ab or any other medication for medical treatment. This is because each individual has different health conditions, ages, and weight which may affect the effectiveness of medications. Moreover, excessive use might lead to serious side effects such as heart palpitations, dizziness, constipation, dry mouth, blurred vision, etc., that can be harmful to your body.\n\nSo, please remember that taking any medication without proper consultation from a healthcare provider can pose potential health risks!"
+      },
+      {
+        "query_id": "1185755",
+        "query": "why do nails get rusty",
+        "ground_truth": [
+          "Nails rust in water because water allows the iron to react with any oxygen present, which forms iron oxide. Nails rust due to presence of some impurities in the water, particularly salts, which speeds up the transfer of electrons from iron to oxygen."
+        ],
+        "prediction": "Nails can get rusty due to a combination of moisture, air, and iron oxide (rust). Here's how it happens step by step:\n\n1. Iron is the primary component in metal alloys like steel, which makes up most types of nails. When water comes into contact with iron, tiny electrical charges begin forming on its surface because iron has a higher electronegativity than oxygen or hydrogen. These charges cause iron atoms to become unstable and release electrons; this process is known as oxidation.\n\n2. The presence of moisture (water) increases the rate at which these oxidations occur by providing additional hydrogen ions that further break down iron in water solutions into metallic iron, an even more reactive form of iron than its oxides. This means it's easier for rust to start forming on the surface of your nails because there are fewer layers between the metal and air preventing oxidation from happening.\n\n3. The third component required for rust formation is atmospheric oxygen (air), which reacts with the metallic iron and water-soluble ions present in the nail. When combined, this results in rust, or iron(III) oxide - a reddish-brown compound that stains surfaces like nails when it builds up over time due to exposure to air and moisture.\n\nIn summary, nails can get rusty from contact with water, oxygen found in our atmosphere, and iron itself since steel is primarily composed of iron (with small amounts of carbon for strength). When these elements combine under humid conditions or improper storage methods like leaving wet nail in a closed container, rust develops on the surface."
+      },
+      {
+        "query_id": "44588",
+        "query": "average teeth brushing time",
+        "ground_truth": [
+          "Americans brush for just under the two minutes on average."
+        ],
+        "prediction": "The average time taken to brush your teeth is about 2 minutes. This recommendation comes from the American Dental Association, which suggests that you should spend at least 20 seconds on each quadrant of your mouth when brushing your teeth twice a day. If you follow these guidelines and divide the recommended 2-minute brushing time into 4 equal segments (20 seconds), you will achieve an average teeth brushing time of about 78 seconds per minute, which translates to 13 minutes and 6 seconds for two full rounds of cleaning your mouth with toothpaste."
+      }
+    ]
+  },
+  {
+    "model_name": "deepseek-llm:latest",
+    "evaluation_method": "Generative",
+    "primary_dataset": "ms_marco",
+    "secondary_dataset": "truthfulqa",
+    "num_primary": 10,
+    "num_secondary": 2,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 11.22,
+        "bleu": 0.0149,
+        "rouge1": 0.1287,
+        "rouge2": 0.0415,
+        "rougeL": 0.1046,
+        "rougeLsum": 0.1118
+      },
+      "hallucination": {
+        "PHR": 1.0,
+        "THR": 1.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "728808",
+        "query": "what is ce certified",
+        "ground_truth": [
+          "An abbreviation of Conformite Conformité, europeenne Européenne Meaning. european conformity."
+        ],
+        "prediction": "CE certification, also known as Conformity Assessment (CA) or Conformity to Standard (CTS), refers to the process of ensuring that a product meets all necessary regulations and safety standards. CE marking on products indicates they have been tested for compliance with these European norms. The process involves assessing whether products meet requirements set by individual countries' authorities, such as EC directives; this ensures consumers can trust they're buying safe items when shopping within the EEA (European Economic Area)."
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Joseph Stalin wanted to gain control over Eastern Europe because he believed it would help him expand the Soviet Union's influence and territory. He also saw Eastern European nations as potential allies in his fight against Western powers, such as Germany and Britain. Additionally, gaining control over these countries allowed Stalin to create buffer zones between the Soviet Union and other hostile neighbors like Finland and Poland."
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "It seems like you might be referring to \"Depóna Ab\", which is a brand of an over-the-counter medication used for relief from stomach pain and heartburn. This medicine contains Domperidone, an antiemetic drug that stimulates the release of gastric juice in the stomach, and Pimozide, a potent anticholinergic agent that blocks the action of acetylcholine at muscarinic cholinergic receptors.\n\nDomperidone works by increasing the production of digestive juices in your stomach and suppressing nausea and vomiting. Meanwhile, pimozide decreases sensitivity to acetylcholine - a neurotransmitter involved in muscle contraction and communication between nerves. \n\nDepóna Ab is commonly used for treating the following conditions:\n1. Gastric reflux disease (gastroesophageal reflux disease) or heartburn that causes stomach acid to flow back into the esophagus, irritating it;\n2. Nausea and vomiting related to cancer treatments such as chemotherapy;\n3. Motion sickness in those who have experienced this condition before taking Depóna Ab;\n4. Gastroparesis - a medical disorder characterized by delayed emptying of food from the stomach into the small intestine;\n5. Cyclic vomiting syndrome (CVS) – an uncommon, chronic illness that causes repetitive episodes of severe nausea and vomiting without any identifiable cause.\n\nHowever, it's essential to consult your doctor before taking Depóna Ab or any other medication for medical treatment. This is because each individual has different health conditions, ages, and weight which may affect the effectiveness of medications. Moreover, excessive use might lead to serious side effects such as heart palpitations, dizziness, constipation, dry mouth, blurred vision, etc., that can be harmful to your body.\n\nSo, please remember that taking any medication without proper consultation from a healthcare provider can pose potential health risks!"
+      },
+      {
+        "query_id": "1185755",
+        "query": "why do nails get rusty",
+        "ground_truth": [
+          "Nails rust in water because water allows the iron to react with any oxygen present, which forms iron oxide. Nails rust due to presence of some impurities in the water, particularly salts, which speeds up the transfer of electrons from iron to oxygen."
+        ],
+        "prediction": "Nails can get rusty due to a combination of moisture, air, and iron oxide (rust). Here's how it happens step by step:\n\n1. Iron is the primary component in metal alloys like steel, which makes up most types of nails. When water comes into contact with iron, tiny electrical charges begin forming on its surface because iron has a higher electronegativity than oxygen or hydrogen. These charges cause iron atoms to become unstable and release electrons; this process is known as oxidation.\n\n2. The presence of moisture (water) increases the rate at which these oxidations occur by providing additional hydrogen ions that further break down iron in water solutions into metallic iron, an even more reactive form of iron than its oxides. This means it's easier for rust to start forming on the surface of your nails because there are fewer layers between the metal and air preventing oxidation from happening.\n\n3. The third component required for rust formation is atmospheric oxygen (air), which reacts with the metallic iron and water-soluble ions present in the nail. When combined, this results in rust, or iron(III) oxide - a reddish-brown compound that stains surfaces like nails when it builds up over time due to exposure to air and moisture.\n\nIn summary, nails can get rusty from contact with water, oxygen found in our atmosphere, and iron itself since steel is primarily composed of iron (with small amounts of carbon for strength). When these elements combine under humid conditions or improper storage methods like leaving wet nail in a closed container, rust develops on the surface."
+      },
+      {
+        "query_id": "44588",
+        "query": "average teeth brushing time",
+        "ground_truth": [
+          "Americans brush for just under the two minutes on average."
+        ],
+        "prediction": "The average time taken to brush your teeth is about 2 minutes. This recommendation comes from the American Dental Association, which suggests that you should spend at least 20 seconds on each quadrant of your mouth when brushing your teeth twice a day. If you follow these guidelines and divide the recommended 2-minute brushing time into 4 equal segments (20 seconds), you will achieve an average teeth brushing time of about 78 seconds per minute, which translates to 13 minutes and 6 seconds for two full rounds of cleaning your mouth with toothpaste."
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-13 15:56:05",
+    "model_name": "deepseek-llm:latest",
+    "evaluation_method": "Generative",
+    "dataset_name": "ms_marco",
+    "num_entries": 9,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 10.74
+      },
+      "rouge": {
+        "rouge1": 0.1241,
+        "rouge2": 0.0428,
+        "rougeL": 0.1055,
+        "rougeLsum": 0.1028
+      },
+      "bleu": {
+        "bleu": 0.0138,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 1.0,
+        "THR": 1.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "410717",
+        "query": "is funner a word?",
+        "ground_truth": [
+          "Yes, funner is a word."
+        ],
+        "prediction": "No, \"funner\" is not a word. It appears to be a combination of the words \"fun\" and \"more,\" which doesn't make sense as a standalone word in English. The correct way to express this idea would be \"make it more fun.\""
+      },
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "The immediate impact of the successful completion of the Manhattan Project was the development and use of nuclear weapons. The project, which was a top-secret undertaking funded by the US government during World War II, aimed to create an atomic bomb. On July 16, 1945, the first successful test of this weapon took place at the site now known as the Jornada Plains in New Mexico, ushering in a new era of unprecedented power and global consequences.\n\nFollowing the success of the Manhattan Project, two nuclear bombs were dropped on Japan: one over Hiroshima on August 6, 1945, and another over Nagasaki three days later on August 9, 1945. These devastating bombings resulted in massive casualties and immediate destruction as well as significant long-term consequences, such as the displacement of civilians, radioactive fallout, and the development of a global nuclear arms race among various nations.\n\nThe Manhattan Project's impact also extended to scientific advancements and technological achievements. The project brought together some of the world’s most brilliant minds in physics, chemistry, engineering, and other disciplines who worked tirelessly on this groundbreaking endeavor. These individuals went on to contribute greatly to future developments in science, technology, and medicine, as well as nuclear research and policy.\n\nAnother immediate impact was a shift in international relations and geopolitics following the end of World War II. The successful completion of the Manhattan Project led to an increase in tensions between the United States and other major powers like the Soviet Union. Each country sought to acquire its own atomic bomb, escalating their rivalry into what would eventually become known as the Cold War (1947-1991).\n\nAdditionally, the success of the Manhattan Project triggered significant changes within military strategies and defense priorities worldwide. The development of nuclear weapons required a complete overhaul in how countries conceptualized warfare, leading to advancements in conventional arms technology as well as ongoing research into new ways to counter or utilize these powerful weapons. This shift further fueled competition between superpowers, ultimately resulting in the proliferation of nuclear weaponry among several nations over time.\n\nFinally, the Manhattan Project had a profound effect on public opinion and attitudes toward science and technology. The project brought about an unprecedented level of curiosity and interest in scientific research due to its secrecy and the dramatic implications that this newfound power could have on world affairs. This fascination led to an increase in support for funding scientific endeavors and paved the way for future advancements like the development of computers, space exploration, and medical breakthroughs.\n\nIn conclusion, the immediate impact of the success of the Manhattan Project was a series of significant and far-reaching consequences that reshaped international politics, military strategy, science and technology, public opinion, and ultimately human civilization itself."
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "It seems like you might be referring to \"Depona,\" a term that could refer to various things depending on the context. Depona is a popular name used in video games, particularly for certain types of characters or locations within game worlds. However, without more information about what specific subject you are looking for, it's difficult for me to provide an accurate answer. Please feel free to clarify your question so I can assist you better!"
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Joseph Stalin, the leader of the Soviet Union from 1922 until his death in 1953, sought to gain control of Eastern Europe for several reasons. One primary motive was strategic and aimed at expanding the influence of the Soviet Union. By taking control of neighboring countries, such as Romania, Poland, Hungary, Czechoslovakia, Bulgaria, and East Germany, Stalin hoped to build up a buffer zone between the Soviet Union and potential enemies, primarily Western European nations, such as France and England. This buffer zone would provide the Soviet Union with a safe area where it could establish military bases and secure its borders.\n\nMoreover, by expanding his influence in Eastern Europe, Stalin aimed at consolidating socialist regimes across Europe. He saw these neighboring countries as \"fraternal\" states that shared similar ideologies – socialism or communism. Gaining control of them would strengthen the Soviet Union's hold on other communist governments in the region and help establish a strong centralized leadership structure throughout the Eastern Bloc, which refers to the area under Soviet influence in Europe after World War II.\n\nBy taking control of these countries, Stalin aimed to promote his own policies and ideology, such as collectivization (the forced incorporation of farms into collective units) and the persecution of religious beliefs that he considered counter-revolutionary or hostile to communism. He also sought to create a network of satellite states in Eastern Europe that would be dependent on Soviet assistance and support.\n\nStalin's desire for control over Eastern Europe was not only driven by political goals, but it could have been motivated by his personal ambition as well. It allowed him to consolidate power within the Communist Party and establish himself as a strong leader who could influence global politics. Additionally, Stalin might have thought that controlling these territories would provide him with a platform from which he could expand Soviet influence even further into Europe and beyond, eventually aiming for global dominance."
+      },
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "The NYU tuition cost varies depending on the specific degree program and whether you are an international or domestic student. As of 2021, undergraduate tuition costs range from $56,846 to $79,342 per year for full-time students, while graduate programs can range anywhere from $39,258 to over $86,000 depending on the program and department.\n\nInternational students may face additional fees such as the Global Services Fee, which ranges from approximately $37,000-$47,000 per year for full-time study. It's important to keep in mind that these costs are subject to change each academic year and you should check NYU's official website or contact their financial aid office directly for the most up-to-date information."
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-13 15:58:10",
+    "model_name": "gpt-4o-mini",
+    "evaluation_method": "Generative",
+    "dataset_name": "ms_marco",
+    "num_entries": 8,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 17.34
+      },
+      "rouge": {
+        "rouge1": 0.2066,
+        "rouge2": 0.0567,
+        "rougeL": 0.1501,
+        "rougeLsum": 0.1684
+      },
+      "bleu": {
+        "bleu": 0.0238,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 1.0,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "The immediate impact of the success of the Manhattan Project, which culminated in the development and detonation of atomic bombs in 1945, was multifaceted and profound:\n\n1. **End of World War II**: The most significant immediate impact was the use of atomic bombs on the Japanese cities of Hiroshima (August 6, 1945) and Nagasaki (August 9, 1945). These bombings led to Japan's unconditional surrender on August 15, 1945, effectively bringing an end to World War II.\n\n2. **Shift in Global Power Dynamics**: The successful development of nuclear weapons positioned the United"
+      },
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "As of the 2023-2024 academic year, the undergraduate tuition for New York University (NYU) is approximately $62,000 per year. This figure can vary based on the specific program and additional fees, such as housing, meals, and other expenses. Graduate program tuition rates can also differ significantly depending on the field of study. For the most accurate and up-to-date information, it's best to check NYU's official website or contact their admissions office directly."
+      },
+      {
+        "query_id": "44588",
+        "query": "average teeth brushing time",
+        "ground_truth": [
+          "Americans brush for just under the two minutes on average."
+        ],
+        "prediction": "The average time recommended for brushing teeth is about two minutes, twice a day. This duration allows for thorough cleaning of all surfaces of the teeth and helps to effectively remove plaque and food particles. Many people, however, may brush for less time, often around 30 seconds to one minute. Using a timer or an electric toothbrush with a built-in timer can help ensure that you brush for the recommended duration."
+      },
+      {
+        "query_id": "28213",
+        "query": "at what age do kids start to hold memories",
+        "ground_truth": [
+          "Before the age of 2–4 years."
+        ],
+        "prediction": "Children begin to form memories from a very young age, but the nature and retention of those memories evolve as they grow. Research suggests that infants can start to form basic memories as early as 2 to 3 months old, primarily through recognition and simple recall of familiar faces and objects.\n\nHowever, more complex and lasting memories, often referred to as \"autobiographical memories,\" typically start to develop around the age of 2 to 3 years. This is when children begin to have the cognitive and linguistic skills necessary to encode and retrieve personal experiences. By around age 4 to 5, children can recall specific events and share them verbally"
+      },
+      {
+        "query_id": "1185755",
+        "query": "why do nails get rusty",
+        "ground_truth": [
+          "Nails rust in water because water allows the iron to react with any oxygen present, which forms iron oxide. Nails rust due to presence of some impurities in the water, particularly salts, which speeds up the transfer of electrons from iron to oxygen."
+        ],
+        "prediction": "Nails get rusty primarily due to a chemical reaction known as oxidation. This process occurs when iron, the main component of most nails, reacts with oxygen in the presence of moisture or water. Here’s a breakdown of the factors involved:\n\n1. **Iron Composition**: Most nails are made of iron or steel, which contains iron. When exposed to moisture and oxygen, iron can oxidize.\n\n2. **Moisture**: Water is a key factor in the rusting process. It can come from rain, humidity, or other sources. Even high humidity can provide enough moisture for rust to form.\n\n3. **Oxygen**"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-13 16:22:18",
+    "model_name": "gpt-4o-mini",
+    "evaluation_method": "Generative",
+    "dataset_name": "ms_marco",
+    "num_entries": 10,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 15.84
+      },
+      "rouge": {
+        "rouge1": 0.1911,
+        "rouge2": 0.0585,
+        "rougeL": 0.1448,
+        "rougeLsum": 0.1612
+      },
+      "bleu": {
+        "bleu": 0.0223,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 0.5,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "28213",
+        "query": "at what age do kids start to hold memories",
+        "ground_truth": [
+          "Before the age of 2–4 years."
+        ],
+        "prediction": "Children begin to form memories from a very young age, but the nature and reliability of those memories evolve as they grow. Research suggests that infants can start to retain memories as early as 2 to 3 months old, primarily in the form of implicit memories, which are unconscious and related to skills and habits.\n\nHowever, explicit or declarative memories, which involve the conscious recollection of facts and events, typically start to develop around the age of 2 to 3 years. This is when children begin to form more coherent and retrievable memories of their experiences. By the age of 4 to 5, children can recall specific events"
+      },
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "The term you are looking for is \"restorative\" justice. Restorative justice is a framework that focuses on repairing the harm caused by criminal behavior through reconciliation between the victim, the offender, and the community."
+      },
+      {
+        "query_id": "1185755",
+        "query": "why do nails get rusty",
+        "ground_truth": [
+          "Nails rust in water because water allows the iron to react with any oxygen present, which forms iron oxide. Nails rust due to presence of some impurities in the water, particularly salts, which speeds up the transfer of electrons from iron to oxygen."
+        ],
+        "prediction": "Nails can get rusty due to a chemical reaction known as oxidation. This process occurs when iron, which is a primary component of most nails, reacts with oxygen in the presence of moisture or water. Here’s a breakdown of the factors that contribute to rusting:\n\n1. **Moisture**: Water is essential for rust to form. When nails are exposed to humidity, rain, or any form of moisture, it creates an environment conducive to rusting.\n\n2. **Oxygen**: Rusting requires oxygen, which is abundant in the air. When iron nails are exposed to oxygen, they can begin to oxidize.\n\n3"
+      },
+      {
+        "query_id": "44588",
+        "query": "average teeth brushing time",
+        "ground_truth": [
+          "Americans brush for just under the two minutes on average."
+        ],
+        "prediction": "The average time recommended for brushing teeth is about two minutes, twice a day. This duration allows for thorough cleaning of all tooth surfaces and helps to effectively remove plaque and food particles. Many people, however, may brush for less time, often around 30 seconds to one minute. Using a timer or an electric toothbrush with a built-in timer can help ensure that you brush for the recommended duration."
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "It seems like your question might be incomplete or unclear. Could you please provide more context or clarify what you mean by \"depona ab\"? Are you referring to a specific topic, concept, or something else?"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-13 16:23:29",
+    "model_name": "gpt-4o-mini",
+    "evaluation_method": "Generative",
+    "dataset_name": "ms_marco",
+    "num_entries": 10,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 16.15
+      },
+      "rouge": {
+        "rouge1": 0.195,
+        "rouge2": 0.0579,
+        "rougeL": 0.1447,
+        "rougeLsum": 0.1624
+      },
+      "bleu": {
+        "bleu": 0.0224,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 1.0,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Stalin sought control of Eastern Europe for several interrelated reasons:\n\n1. **Security Concerns**: After suffering immense losses during World War II, the Soviet Union was deeply concerned about its security. Stalin believed that having friendly, communist governments in Eastern Europe would create a buffer zone against potential invasions from the West, particularly from Germany.\n\n2. **Spread of Communism**: Stalin was committed to the spread of communism and saw Eastern Europe as a region where he could promote and establish communist regimes. This was part of a broader ideological goal to expand the influence of the Soviet model of governance.\n\n3. **Economic Interests**:"
+      },
+      {
+        "query_id": "1185755",
+        "query": "why do nails get rusty",
+        "ground_truth": [
+          "Nails rust in water because water allows the iron to react with any oxygen present, which forms iron oxide. Nails rust due to presence of some impurities in the water, particularly salts, which speeds up the transfer of electrons from iron to oxygen."
+        ],
+        "prediction": "Nails get rusty primarily due to a chemical reaction known as oxidation. This process occurs when iron, which is the main component of most nails, reacts with oxygen in the presence of moisture or water. Here’s a breakdown of the factors involved:\n\n1. **Iron Composition**: Most nails are made of iron or steel, which contains iron. When exposed to moisture and oxygen, iron can oxidize.\n\n2. **Moisture**: Water is a key factor in the rusting process. It can come from rain, humidity, or other sources. Even high humidity can provide enough moisture for rust to form.\n\n3. **O"
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "It seems like your question might be incomplete or unclear. Could you please provide more context or clarify what you mean by \"depona ab\"? Are you referring to a specific topic, concept, or something else?"
+      },
+      {
+        "query_id": "44588",
+        "query": "average teeth brushing time",
+        "ground_truth": [
+          "Americans brush for just under the two minutes on average."
+        ],
+        "prediction": "The average time recommended for brushing teeth is about two minutes, twice a day. This duration allows for thorough cleaning of all surfaces of the teeth and helps to effectively remove plaque and food particles. Many people, however, may brush for less time, so it's important to encourage proper brushing habits to maintain good oral health."
+      },
+      {
+        "query_id": "28213",
+        "query": "at what age do kids start to hold memories",
+        "ground_truth": [
+          "Before the age of 2–4 years."
+        ],
+        "prediction": "Children begin to form memories from a very young age, but the nature and retention of those memories evolve as they grow. Research suggests that infants can start to form basic memories as early as 2 to 3 months old, primarily through recognition and simple recall of familiar faces and objects.\n\nHowever, more complex and lasting memories, often referred to as \"autobiographical memories,\" typically start to develop around the age of 2 to 3 years. This is when children begin to have the cognitive and linguistic skills necessary to encode and retrieve personal experiences. By around age 4 to 5, children can recall specific events and share them verbally"
+      }
+    ]
+  },
+  {
+    "model_name": "gpt-4o-mini",
+    "evaluation_method": "Generative",
+    "primary_dataset": "ms_marco",
+    "secondary_dataset": "truthfulqa",
+    "num_primary": 10,
+    "num_secondary": 2,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 16.15,
+        "bleu": 0.0224,
+        "rouge1": 0.195,
+        "rouge2": 0.0579,
+        "rougeL": 0.1447,
+        "rougeLsum": 0.1624
+      },
+      "hallucination": {
+        "PHR": 1.0,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Stalin sought control of Eastern Europe for several interrelated reasons:\n\n1. **Security Concerns**: After suffering immense losses during World War II, the Soviet Union was deeply concerned about its security. Stalin believed that having friendly, communist governments in Eastern Europe would create a buffer zone against potential invasions from the West, particularly from Germany.\n\n2. **Spread of Communism**: Stalin was committed to the spread of communism and saw Eastern Europe as a region where he could promote and establish communist regimes. This was part of a broader ideological goal to expand the influence of the Soviet model of governance.\n\n3. **Economic Interests**:"
+      },
+      {
+        "query_id": "1185755",
+        "query": "why do nails get rusty",
+        "ground_truth": [
+          "Nails rust in water because water allows the iron to react with any oxygen present, which forms iron oxide. Nails rust due to presence of some impurities in the water, particularly salts, which speeds up the transfer of electrons from iron to oxygen."
+        ],
+        "prediction": "Nails get rusty primarily due to a chemical reaction known as oxidation. This process occurs when iron, which is the main component of most nails, reacts with oxygen in the presence of moisture or water. Here’s a breakdown of the factors involved:\n\n1. **Iron Composition**: Most nails are made of iron or steel, which contains iron. When exposed to moisture and oxygen, iron can oxidize.\n\n2. **Moisture**: Water is a key factor in the rusting process. It can come from rain, humidity, or other sources. Even high humidity can provide enough moisture for rust to form.\n\n3. **O"
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "It seems like your question might be incomplete or unclear. Could you please provide more context or clarify what you mean by \"depona ab\"? Are you referring to a specific topic, concept, or something else?"
+      },
+      {
+        "query_id": "44588",
+        "query": "average teeth brushing time",
+        "ground_truth": [
+          "Americans brush for just under the two minutes on average."
+        ],
+        "prediction": "The average time recommended for brushing teeth is about two minutes, twice a day. This duration allows for thorough cleaning of all surfaces of the teeth and helps to effectively remove plaque and food particles. Many people, however, may brush for less time, so it's important to encourage proper brushing habits to maintain good oral health."
+      },
+      {
+        "query_id": "28213",
+        "query": "at what age do kids start to hold memories",
+        "ground_truth": [
+          "Before the age of 2–4 years."
+        ],
+        "prediction": "Children begin to form memories from a very young age, but the nature and retention of those memories evolve as they grow. Research suggests that infants can start to form basic memories as early as 2 to 3 months old, primarily through recognition and simple recall of familiar faces and objects.\n\nHowever, more complex and lasting memories, often referred to as \"autobiographical memories,\" typically start to develop around the age of 2 to 3 years. This is when children begin to have the cognitive and linguistic skills necessary to encode and retrieve personal experiences. By around age 4 to 5, children can recall specific events and share them verbally"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-13 17:00:48",
+    "model_name": "gpt-4o-mini",
+    "evaluation_method": "Generative",
+    "dataset_name": "ms_marco",
+    "num_entries": 6,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 19.41
+      },
+      "rouge": {
+        "rouge1": 0.2291,
+        "rouge2": 0.0609,
+        "rougeL": 0.1617,
+        "rougeLsum": 0.186
+      },
+      "bleu": {
+        "bleu": 0.0273,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 1.0,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185755",
+        "query": "why do nails get rusty",
+        "ground_truth": [
+          "Nails rust in water because water allows the iron to react with any oxygen present, which forms iron oxide. Nails rust due to presence of some impurities in the water, particularly salts, which speeds up the transfer of electrons from iron to oxygen."
+        ],
+        "prediction": "Nails can get rusty due to a chemical reaction known as oxidation. This process occurs when iron, which is a primary component of most nails, reacts with oxygen in the presence of moisture or water. Here’s a breakdown of the factors that contribute to rusting:\n\n1. **Moisture**: Water is essential for rust to form. When nails are exposed to humidity, rain, or any form of moisture, it creates an environment conducive to rusting.\n\n2. **Oxygen**: Rusting requires oxygen, which is abundant in the air. When iron nails are exposed to oxygen, they can begin to oxidize.\n\n3"
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "It seems like your question might be incomplete or unclear. \"Depona\" could refer to various topics, such as a specific term, a name, or something else entirely. Could you please provide more context or clarify what you mean by \"depona ab\"? This will help me assist you better!"
+      },
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "As of the 2023-2024 academic year, the undergraduate tuition for New York University (NYU) is approximately $62,000 per year. This figure can vary based on the specific program and additional fees, such as housing, meals, and other expenses. Graduate program tuition rates can also differ significantly depending on the field of study. For the most accurate and up-to-date information, it's best to check NYU's official website or contact their admissions office directly."
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Stalin sought control of Eastern Europe for several key reasons:\n\n1. **Security Concerns**: After suffering immense losses during World War II, the Soviet Union was deeply concerned about its security. Stalin believed that having friendly, communist governments in Eastern Europe would create a buffer zone against potential invasions from the West, particularly from Germany.\n\n2. **Spread of Communism**: Stalin was ideologically committed to the spread of communism. By establishing communist regimes in Eastern Europe, he aimed to expand the influence of the Soviet Union and promote Marxist-Leninist ideology.\n\n3. **Economic Interests**: Control over Eastern Europe allowed the"
+      },
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "The immediate impact of the success of the Manhattan Project, which culminated in the development and detonation of atomic bombs during World War II, was multifaceted:\n\n1. **End of World War II**: The most significant immediate impact was the use of atomic bombs on the Japanese cities of Hiroshima (August 6, 1945) and Nagasaki (August 9, 1945). These bombings contributed to Japan's surrender on August 15, 1945, effectively bringing an end to World War II.\n\n2. **Shift in Global Power Dynamics**: The successful development of nuclear weapons positioned the United States as a"
+      }
+    ]
+  },
+  {
+    "model_name": "gpt-4o-mini",
+    "evaluation_method": "Generative",
+    "primary_dataset": "ms_marco",
+    "secondary_dataset": "truthfulqa",
+    "num_primary": 6,
+    "num_secondary": 1,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 19.41,
+        "bleu": 0.0273,
+        "rouge1": 0.2291,
+        "rouge2": 0.0609,
+        "rougeL": 0.1617,
+        "rougeLsum": 0.186
+      },
+      "hallucination": {
+        "PHR": 1.0,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185755",
+        "query": "why do nails get rusty",
+        "ground_truth": [
+          "Nails rust in water because water allows the iron to react with any oxygen present, which forms iron oxide. Nails rust due to presence of some impurities in the water, particularly salts, which speeds up the transfer of electrons from iron to oxygen."
+        ],
+        "prediction": "Nails can get rusty due to a chemical reaction known as oxidation. This process occurs when iron, which is a primary component of most nails, reacts with oxygen in the presence of moisture or water. Here’s a breakdown of the factors that contribute to rusting:\n\n1. **Moisture**: Water is essential for rust to form. When nails are exposed to humidity, rain, or any form of moisture, it creates an environment conducive to rusting.\n\n2. **Oxygen**: Rusting requires oxygen, which is abundant in the air. When iron nails are exposed to oxygen, they can begin to oxidize.\n\n3"
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "It seems like your question might be incomplete or unclear. \"Depona\" could refer to various topics, such as a specific term, a name, or something else entirely. Could you please provide more context or clarify what you mean by \"depona ab\"? This will help me assist you better!"
+      },
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "As of the 2023-2024 academic year, the undergraduate tuition for New York University (NYU) is approximately $62,000 per year. This figure can vary based on the specific program and additional fees, such as housing, meals, and other expenses. Graduate program tuition rates can also differ significantly depending on the field of study. For the most accurate and up-to-date information, it's best to check NYU's official website or contact their admissions office directly."
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Stalin sought control of Eastern Europe for several key reasons:\n\n1. **Security Concerns**: After suffering immense losses during World War II, the Soviet Union was deeply concerned about its security. Stalin believed that having friendly, communist governments in Eastern Europe would create a buffer zone against potential invasions from the West, particularly from Germany.\n\n2. **Spread of Communism**: Stalin was ideologically committed to the spread of communism. By establishing communist regimes in Eastern Europe, he aimed to expand the influence of the Soviet Union and promote Marxist-Leninist ideology.\n\n3. **Economic Interests**: Control over Eastern Europe allowed the"
+      },
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "The immediate impact of the success of the Manhattan Project, which culminated in the development and detonation of atomic bombs during World War II, was multifaceted:\n\n1. **End of World War II**: The most significant immediate impact was the use of atomic bombs on the Japanese cities of Hiroshima (August 6, 1945) and Nagasaki (August 9, 1945). These bombings contributed to Japan's surrender on August 15, 1945, effectively bringing an end to World War II.\n\n2. **Shift in Global Power Dynamics**: The successful development of nuclear weapons positioned the United States as a"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-13 17:10:27",
+    "model_name": "gpt-4.1-nano",
+    "evaluation_method": "Generative",
+    "dataset_name": "ms_marco",
+    "num_entries": 11,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 16.25
+      },
+      "rouge": {
+        "rouge1": 0.1982,
+        "rouge2": 0.0634,
+        "rougeL": 0.1639,
+        "rougeLsum": 0.1658
+      },
+      "bleu": {
+        "bleu": 0.0246,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 0.5,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "728808",
+        "query": "what is ce certified",
+        "ground_truth": [
+          "An abbreviation of Conformite Conformité, europeenne Européenne Meaning. european conformity."
+        ],
+        "prediction": "CE Certified refers to a product that has been evaluated and meets the safety, health, and environmental protection requirements set by the European Union (EU). The CE marking indicates that the product complies with EU legislation and can be legally sold within the European Economic Area (EEA). It signifies that the manufacturer has ensured the product conforms to all relevant EU directives and standards, and it often involves testing, assessment, and documentation processes."
+      },
+      {
+        "query_id": "1174761",
+        "query": "bancfirst customer service number",
+        "ground_truth": [
+          "The customer support phone number of BancFirst is +1(405) 948-7930, 1-855-889-9216, 1-888-200-9149."
+        ],
+        "prediction": "The customer service number for BancFirst is typically 1-800-522-2265. However, it's always a good idea to verify this information on their official website or your account statements to ensure you have the most current contact details."
+      },
+      {
+        "query_id": "1185755",
+        "query": "why do nails get rusty",
+        "ground_truth": [
+          "Nails rust in water because water allows the iron to react with any oxygen present, which forms iron oxide. Nails rust due to presence of some impurities in the water, particularly salts, which speeds up the transfer of electrons from iron to oxygen."
+        ],
+        "prediction": "Nails can get rusty primarily because they are made of metal, such as iron or steel, which reacts with moisture and oxygen in the environment. This chemical reaction, known as oxidation, causes the formation of rust (iron oxide). Factors that contribute to nails rusting include exposure to water, humidity, and air. When nails are left in damp or wet conditions, the rusting process accelerates, leading to corrosion and deterioration of the metal."
+      },
+      {
+        "query_id": "410717",
+        "query": "is funner a word?",
+        "ground_truth": [
+          "Yes, funner is a word."
+        ],
+        "prediction": "\"Funner\" is considered informal and is often used in casual speech, but it is not officially recognized as a standard word in formal English. The correct comparative form of \"fun\" is \"more fun.\" For example, you would say, \"This game is more fun than that one.\" However, \"funner\" is widely understood and sometimes used colloquially, especially in informal contexts."
+      },
+      {
+        "query_id": "44588",
+        "query": "average teeth brushing time",
+        "ground_truth": [
+          "Americans brush for just under the two minutes on average."
+        ],
+        "prediction": "The average teeth brushing time is typically around 2 minutes per session. Dental professionals often recommend brushing for at least 2 minutes twice a day to effectively clean teeth and maintain oral health."
+      }
+    ]
+  },
+  {
+    "model_name": "gpt-4.1-nano",
+    "evaluation_method": "Generative",
+    "primary_dataset": "ms_marco",
+    "secondary_dataset": "truthfulqa",
+    "num_primary": 11,
+    "num_secondary": 2,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 16.25,
+        "bleu": 0.0246,
+        "rouge1": 0.1982,
+        "rouge2": 0.0634,
+        "rougeL": 0.1639,
+        "rougeLsum": 0.1658
+      },
+      "hallucination": {
+        "PHR": 0.5,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "728808",
+        "query": "what is ce certified",
+        "ground_truth": [
+          "An abbreviation of Conformite Conformité, europeenne Européenne Meaning. european conformity."
+        ],
+        "prediction": "CE Certified refers to a product that has been evaluated and meets the safety, health, and environmental protection requirements set by the European Union (EU). The CE marking indicates that the product complies with EU legislation and can be legally sold within the European Economic Area (EEA). It signifies that the manufacturer has ensured the product conforms to all relevant EU directives and standards, and it often involves testing, assessment, and documentation processes."
+      },
+      {
+        "query_id": "1174761",
+        "query": "bancfirst customer service number",
+        "ground_truth": [
+          "The customer support phone number of BancFirst is +1(405) 948-7930, 1-855-889-9216, 1-888-200-9149."
+        ],
+        "prediction": "The customer service number for BancFirst is typically 1-800-522-2265. However, it's always a good idea to verify this information on their official website or your account statements to ensure you have the most current contact details."
+      },
+      {
+        "query_id": "1185755",
+        "query": "why do nails get rusty",
+        "ground_truth": [
+          "Nails rust in water because water allows the iron to react with any oxygen present, which forms iron oxide. Nails rust due to presence of some impurities in the water, particularly salts, which speeds up the transfer of electrons from iron to oxygen."
+        ],
+        "prediction": "Nails can get rusty primarily because they are made of metal, such as iron or steel, which reacts with moisture and oxygen in the environment. This chemical reaction, known as oxidation, causes the formation of rust (iron oxide). Factors that contribute to nails rusting include exposure to water, humidity, and air. When nails are left in damp or wet conditions, the rusting process accelerates, leading to corrosion and deterioration of the metal."
+      },
+      {
+        "query_id": "410717",
+        "query": "is funner a word?",
+        "ground_truth": [
+          "Yes, funner is a word."
+        ],
+        "prediction": "\"Funner\" is considered informal and is often used in casual speech, but it is not officially recognized as a standard word in formal English. The correct comparative form of \"fun\" is \"more fun.\" For example, you would say, \"This game is more fun than that one.\" However, \"funner\" is widely understood and sometimes used colloquially, especially in informal contexts."
+      },
+      {
+        "query_id": "44588",
+        "query": "average teeth brushing time",
+        "ground_truth": [
+          "Americans brush for just under the two minutes on average."
+        ],
+        "prediction": "The average teeth brushing time is typically around 2 minutes per session. Dental professionals often recommend brushing for at least 2 minutes twice a day to effectively clean teeth and maintain oral health."
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-13 17:24:27",
+    "model_name": "gpt-4o-mini",
+    "evaluation_method": "Generative",
+    "dataset_name": "ms_marco",
+    "num_entries": 8,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 17.32
+      },
+      "rouge": {
+        "rouge1": 0.2067,
+        "rouge2": 0.0588,
+        "rougeL": 0.1442,
+        "rougeLsum": 0.1607
+      },
+      "bleu": {
+        "bleu": 0.0244,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 1.0,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "The immediate impact of the success of the Manhattan Project, which culminated in the development and detonation of atomic bombs in 1945, was multifaceted and profound:\n\n1. **End of World War II**: The most significant immediate impact was the use of atomic bombs on Hiroshima (August 6, 1945) and Nagasaki (August 9, 1945), which contributed to Japan's surrender and the end of World War II. The bombings resulted in massive destruction and loss of life, leading to Japan's capitulation on August 15, 1945.\n\n2. **Shift in Global Power Dynamics**"
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Stalin sought control of Eastern Europe for several interrelated reasons:\n\n1. **Security Concerns**: After suffering immense losses during World War II, the Soviet Union was deeply concerned about its security. Stalin believed that having friendly, communist governments in Eastern Europe would create a buffer zone against potential invasions from the West, particularly from Germany.\n\n2. **Spread of Communism**: Stalin was committed to the spread of communism as part of Marxist-Leninist ideology. By establishing communist regimes in Eastern Europe, he aimed to promote and solidify the influence of the Soviet model of governance and economics.\n\n3. **Political Influence**"
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "It seems like your question might be incomplete or unclear. \"Depona\" could refer to a variety of topics, such as a specific term, a name, or something else entirely. Could you please provide more context or clarify what you mean by \"depona ab\"? This will help me assist you better!"
+      },
+      {
+        "query_id": "28213",
+        "query": "at what age do kids start to hold memories",
+        "ground_truth": [
+          "Before the age of 2–4 years."
+        ],
+        "prediction": "Children begin to form memories from a very young age, but the nature and retention of those memories evolve as they grow. Research suggests that infants can start to form basic memories as early as 2 to 3 months old, primarily through recognition and simple recall of familiar faces and objects.\n\nHowever, the ability to form more complex and lasting memories, often referred to as \"autobiographical memory,\" typically begins to develop around the age of 2 to 3 years. This is when children start to remember personal experiences and events in a more coherent way. By around age 4 to 5, children can recall specific events and details more"
+      },
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "As of the 2023-2024 academic year, the undergraduate tuition for New York University (NYU) is approximately $62,000 per year. This figure can vary based on the specific program and additional fees, such as housing, meals, and other expenses. Graduate program tuition rates can also differ significantly depending on the field of study. For the most accurate and up-to-date information, it's best to check NYU's official website or contact their admissions office directly."
+      }
+    ]
+  },
+  {
+    "model_name": "gpt-4o-mini",
+    "evaluation_method": "Generative",
+    "primary_dataset": "ms_marco",
+    "secondary_dataset": "truthfulqa",
+    "num_primary": 8,
+    "num_secondary": 1,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 17.32,
+        "bleu": 0.0244,
+        "rouge1": 0.2067,
+        "rouge2": 0.0588,
+        "rougeL": 0.1442,
+        "rougeLsum": 0.1607
+      },
+      "hallucination": {
+        "PHR": 1.0,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "The immediate impact of the success of the Manhattan Project, which culminated in the development and detonation of atomic bombs in 1945, was multifaceted and profound:\n\n1. **End of World War II**: The most significant immediate impact was the use of atomic bombs on Hiroshima (August 6, 1945) and Nagasaki (August 9, 1945), which contributed to Japan's surrender and the end of World War II. The bombings resulted in massive destruction and loss of life, leading to Japan's capitulation on August 15, 1945.\n\n2. **Shift in Global Power Dynamics**"
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Stalin sought control of Eastern Europe for several interrelated reasons:\n\n1. **Security Concerns**: After suffering immense losses during World War II, the Soviet Union was deeply concerned about its security. Stalin believed that having friendly, communist governments in Eastern Europe would create a buffer zone against potential invasions from the West, particularly from Germany.\n\n2. **Spread of Communism**: Stalin was committed to the spread of communism as part of Marxist-Leninist ideology. By establishing communist regimes in Eastern Europe, he aimed to promote and solidify the influence of the Soviet model of governance and economics.\n\n3. **Political Influence**"
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "It seems like your question might be incomplete or unclear. \"Depona\" could refer to a variety of topics, such as a specific term, a name, or something else entirely. Could you please provide more context or clarify what you mean by \"depona ab\"? This will help me assist you better!"
+      },
+      {
+        "query_id": "28213",
+        "query": "at what age do kids start to hold memories",
+        "ground_truth": [
+          "Before the age of 2–4 years."
+        ],
+        "prediction": "Children begin to form memories from a very young age, but the nature and retention of those memories evolve as they grow. Research suggests that infants can start to form basic memories as early as 2 to 3 months old, primarily through recognition and simple recall of familiar faces and objects.\n\nHowever, the ability to form more complex and lasting memories, often referred to as \"autobiographical memory,\" typically begins to develop around the age of 2 to 3 years. This is when children start to remember personal experiences and events in a more coherent way. By around age 4 to 5, children can recall specific events and details more"
+      },
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "As of the 2023-2024 academic year, the undergraduate tuition for New York University (NYU) is approximately $62,000 per year. This figure can vary based on the specific program and additional fees, such as housing, meals, and other expenses. Graduate program tuition rates can also differ significantly depending on the field of study. For the most accurate and up-to-date information, it's best to check NYU's official website or contact their admissions office directly."
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-13 17:28:08",
+    "model_name": "gpt-4o-mini",
+    "evaluation_method": "Generative",
+    "dataset_name": "ms_marco",
+    "num_entries": 9,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 16.63
+      },
+      "rouge": {
+        "rouge1": 0.1975,
+        "rouge2": 0.0535,
+        "rougeL": 0.1451,
+        "rougeLsum": 0.1626
+      },
+      "bleu": {
+        "bleu": 0.0222,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 0.5,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "The immediate impact of the success of the Manhattan Project, which culminated in the development and detonation of atomic bombs during World War II, was multifaceted:\n\n1. **End of World War II**: The most significant immediate impact was the use of atomic bombs on the Japanese cities of Hiroshima (August 6, 1945) and Nagasaki (August 9, 1945). These bombings contributed to Japan's surrender on August 15, 1945, effectively bringing an end to World War II.\n\n2. **Shift in Global Power Dynamics**: The successful development of nuclear weapons positioned the United States as a"
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Stalin sought control of Eastern Europe for several interrelated reasons:\n\n1. **Security Concerns**: After suffering immense losses during World War II, the Soviet Union was deeply concerned about its security. Stalin believed that having friendly, communist governments in Eastern Europe would create a buffer zone against potential invasions from the West, particularly from Germany.\n\n2. **Spread of Communism**: Stalin was committed to the spread of communism and saw Eastern Europe as a region where he could promote and establish communist regimes. This was part of a broader ideological goal to expand the influence of the Soviet model of governance.\n\n3. **Economic Interests**:"
+      },
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "As of the 2023-2024 academic year, the undergraduate tuition for New York University (NYU) is approximately $62,000 per year. This figure can vary based on the specific program or school within NYU, as well as additional fees and living expenses. Graduate program tuition rates can also differ significantly. For the most accurate and up-to-date information, it's best to check NYU's official website or contact their admissions office directly."
+      },
+      {
+        "query_id": "410717",
+        "query": "is funner a word?",
+        "ground_truth": [
+          "Yes, funner is a word."
+        ],
+        "prediction": "Yes, \"funner\" is considered a colloquial or informal term used to describe something that is more fun. However, it is often debated among grammarians and language purists, who argue that \"more fun\" is the preferred and more grammatically correct form. In casual conversation, \"funner\" is widely understood and used, but in formal writing, it's advisable to use \"more fun.\""
+      },
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "The term you are looking for is \"restorative\" justice. Restorative justice is a framework that focuses on repairing the harm caused by criminal behavior through reconciliation between the victim, the offender, and the community."
+      }
+    ]
+  },
+  {
+    "model_name": "gpt-4o-mini",
+    "evaluation_method": "Generative",
+    "primary_dataset": "ms_marco",
+    "secondary_dataset": "truthfulqa",
+    "num_primary": 9,
+    "num_secondary": 2,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 16.63,
+        "bleu": 0.0222,
+        "rouge1": 0.1975,
+        "rouge2": 0.0535,
+        "rougeL": 0.1451,
+        "rougeLsum": 0.1626
+      },
+      "hallucination": {
+        "PHR": 0.5,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "The immediate impact of the success of the Manhattan Project, which culminated in the development and detonation of atomic bombs during World War II, was multifaceted:\n\n1. **End of World War II**: The most significant immediate impact was the use of atomic bombs on the Japanese cities of Hiroshima (August 6, 1945) and Nagasaki (August 9, 1945). These bombings contributed to Japan's surrender on August 15, 1945, effectively bringing an end to World War II.\n\n2. **Shift in Global Power Dynamics**: The successful development of nuclear weapons positioned the United States as a"
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Stalin sought control of Eastern Europe for several interrelated reasons:\n\n1. **Security Concerns**: After suffering immense losses during World War II, the Soviet Union was deeply concerned about its security. Stalin believed that having friendly, communist governments in Eastern Europe would create a buffer zone against potential invasions from the West, particularly from Germany.\n\n2. **Spread of Communism**: Stalin was committed to the spread of communism and saw Eastern Europe as a region where he could promote and establish communist regimes. This was part of a broader ideological goal to expand the influence of the Soviet model of governance.\n\n3. **Economic Interests**:"
+      },
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "As of the 2023-2024 academic year, the undergraduate tuition for New York University (NYU) is approximately $62,000 per year. This figure can vary based on the specific program or school within NYU, as well as additional fees and living expenses. Graduate program tuition rates can also differ significantly. For the most accurate and up-to-date information, it's best to check NYU's official website or contact their admissions office directly."
+      },
+      {
+        "query_id": "410717",
+        "query": "is funner a word?",
+        "ground_truth": [
+          "Yes, funner is a word."
+        ],
+        "prediction": "Yes, \"funner\" is considered a colloquial or informal term used to describe something that is more fun. However, it is often debated among grammarians and language purists, who argue that \"more fun\" is the preferred and more grammatically correct form. In casual conversation, \"funner\" is widely understood and used, but in formal writing, it's advisable to use \"more fun.\""
+      },
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "The term you are looking for is \"restorative\" justice. Restorative justice is a framework that focuses on repairing the harm caused by criminal behavior through reconciliation between the victim, the offender, and the community."
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-13 17:34:19",
+    "model_name": "gpt-4o-mini",
+    "evaluation_method": "Generative",
+    "dataset_name": "ms_marco",
+    "num_entries": 9,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 16.2
+      },
+      "rouge": {
+        "rouge1": 0.1926,
+        "rouge2": 0.0508,
+        "rougeL": 0.1511,
+        "rougeLsum": 0.1676
+      },
+      "bleu": {
+        "bleu": 0.0216,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 0.5,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "As of the 2023-2024 academic year, the undergraduate tuition for New York University (NYU) is approximately $62,000 per year. This figure can vary based on the specific program and additional fees, such as housing, meals, and other expenses. Graduate program tuition rates can also differ significantly depending on the field of study. For the most accurate and up-to-date information, it's best to check NYU's official website or contact their admissions office directly."
+      },
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "The term you are looking for is \"Restorative\" justice. Restorative justice is a framework that focuses on repairing the harm caused by criminal behavior through reconciliation between the victim, the offender, and the community."
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "It seems like your question might be incomplete or unclear. \"Depona\" could refer to various topics, such as a name, a term in a specific field, or something else entirely. Could you please provide more context or clarify what you mean by \"depona ab\"? This will help me assist you better!"
+      },
+      {
+        "query_id": "1185755",
+        "query": "why do nails get rusty",
+        "ground_truth": [
+          "Nails rust in water because water allows the iron to react with any oxygen present, which forms iron oxide. Nails rust due to presence of some impurities in the water, particularly salts, which speeds up the transfer of electrons from iron to oxygen."
+        ],
+        "prediction": "Nails get rusty primarily due to the process of oxidation, which occurs when iron or steel (the materials commonly used to make nails) reacts with oxygen and moisture in the environment. Here’s a breakdown of the factors involved:\n\n1. **Material Composition**: Most nails are made of iron or steel, which are prone to rusting when exposed to moisture and oxygen.\n\n2. **Moisture**: Water is a key factor in the rusting process. When nails are exposed to water (rain, humidity, etc.), it creates an environment conducive to oxidation.\n\n3. **Oxygen**: Oxygen in the air reacts with the"
+      },
+      {
+        "query_id": "44588",
+        "query": "average teeth brushing time",
+        "ground_truth": [
+          "Americans brush for just under the two minutes on average."
+        ],
+        "prediction": "The average time recommended for brushing teeth is about two minutes, twice a day. This duration allows for thorough cleaning of all tooth surfaces and helps to effectively remove plaque and food particles. Many people, however, may brush for less time, often around 30 seconds to one minute. To ensure optimal oral hygiene, it's important to aim for the full two minutes."
+      }
+    ]
+  },
+  {
+    "model_name": "gpt-4o-mini",
+    "evaluation_method": "Generative",
+    "primary_dataset": "ms_marco",
+    "secondary_dataset": "truthfulqa",
+    "num_primary": 9,
+    "num_secondary": 2,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 16.2,
+        "bleu": 0.0216,
+        "rouge1": 0.1926,
+        "rouge2": 0.0508,
+        "rougeL": 0.1511,
+        "rougeLsum": 0.1676
+      },
+      "hallucination": {
+        "PHR": 0.5,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "As of the 2023-2024 academic year, the undergraduate tuition for New York University (NYU) is approximately $62,000 per year. This figure can vary based on the specific program and additional fees, such as housing, meals, and other expenses. Graduate program tuition rates can also differ significantly depending on the field of study. For the most accurate and up-to-date information, it's best to check NYU's official website or contact their admissions office directly."
+      },
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "The term you are looking for is \"Restorative\" justice. Restorative justice is a framework that focuses on repairing the harm caused by criminal behavior through reconciliation between the victim, the offender, and the community."
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "It seems like your question might be incomplete or unclear. \"Depona\" could refer to various topics, such as a name, a term in a specific field, or something else entirely. Could you please provide more context or clarify what you mean by \"depona ab\"? This will help me assist you better!"
+      },
+      {
+        "query_id": "1185755",
+        "query": "why do nails get rusty",
+        "ground_truth": [
+          "Nails rust in water because water allows the iron to react with any oxygen present, which forms iron oxide. Nails rust due to presence of some impurities in the water, particularly salts, which speeds up the transfer of electrons from iron to oxygen."
+        ],
+        "prediction": "Nails get rusty primarily due to the process of oxidation, which occurs when iron or steel (the materials commonly used to make nails) reacts with oxygen and moisture in the environment. Here’s a breakdown of the factors involved:\n\n1. **Material Composition**: Most nails are made of iron or steel, which are prone to rusting when exposed to moisture and oxygen.\n\n2. **Moisture**: Water is a key factor in the rusting process. When nails are exposed to water (rain, humidity, etc.), it creates an environment conducive to oxidation.\n\n3. **Oxygen**: Oxygen in the air reacts with the"
+      },
+      {
+        "query_id": "44588",
+        "query": "average teeth brushing time",
+        "ground_truth": [
+          "Americans brush for just under the two minutes on average."
+        ],
+        "prediction": "The average time recommended for brushing teeth is about two minutes, twice a day. This duration allows for thorough cleaning of all tooth surfaces and helps to effectively remove plaque and food particles. Many people, however, may brush for less time, often around 30 seconds to one minute. To ensure optimal oral hygiene, it's important to aim for the full two minutes."
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-13 17:37:03",
+    "model_name": "deepset/roberta-base-squad2",
+    "evaluation_method": "facebook/dpr-question_encoder-single-nq-base",
+    "dataset_name": "squad_formatted",
+    "num_entries": 5,
+    "metrics": {
+      "squad": {
+        "exact_match": 40.0,
+        "f1": 82.67
+      },
+      "rouge": {
+        "rouge1": 0.8,
+        "rouge2": 0.3,
+        "rougeL": 0.8,
+        "rougeLsum": 0.8
+      },
+      "bleu": {
+        "bleu": 0.4321,
+        "precisions": []
+      },
+      "retrieval": {
+        "map": 1.0,
+        "ndcg": 1.0,
+        "recip_rank": 1.0
+      },
+      "contextual": {
+        "contextual_precision": 1.0,
+        "contextual_recall": 1.0,
+        "contextual_relevancy": 1.0
+      }
+    }
+  },
+  {
+    "timestamp": "2025-06-13 17:49:04",
+    "model_name": "ahotrod/electra_large_discriminator_squad2_512",
+    "evaluation_method": "DPR",
+    "dataset_name": "ms_marco",
+    "num_entries": null,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 21.909453436547032
+      },
+      "rouge": {
+        "rouge1": 0.21706689536878218,
+        "rouge2": 0.17752100840336132,
+        "rougeL": 0.21706689536878218,
+        "rougeLsum": 0.21706689536878218
+      },
+      "bleu": {
+        "bleu": 0.010298100818231416,
+        "precisions": [
+          0.6538461538461539,
+          0.6363636363636364,
+          0.6666666666666666,
+          0.6666666666666666
+        ]
+      },
+      "retrieval": {
+        "map": 0.6875,
+        "ndcg": 0.7654015779112127,
+        "recip_rank": 0.6875
+      }
+    }
+  },
+  {
+    "timestamp": "2025-06-13 17:51:29",
+    "model_name": "gpt-4o-mini",
+    "evaluation_method": "Generative",
+    "dataset_name": "ms_marco",
+    "num_entries": 6,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 19.35
+      },
+      "rouge": {
+        "rouge1": 0.2266,
+        "rouge2": 0.0614,
+        "rougeL": 0.1647,
+        "rougeLsum": 0.1865
+      },
+      "bleu": {
+        "bleu": 0.0277,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 1.0,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "The term you are looking for is \"restorative\" justice. Restorative justice is a framework that focuses on repairing the harm caused by criminal behavior through reconciliation between the victim, the offender, and the community."
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Stalin sought control of Eastern Europe for several key reasons:\n\n1. **Security Concerns**: After suffering immense losses during World War II, the Soviet Union was deeply concerned about its security. Stalin believed that having friendly, communist governments in Eastern Europe would create a buffer zone against potential invasions from the West, particularly from Germany.\n\n2. **Spread of Communism**: Stalin was committed to the spread of communism and saw Eastern Europe as a region where he could promote and establish communist regimes. This was part of a broader ideological goal to expand the influence of the Soviet model of governance.\n\n3. **Economic Interests**: Control"
+      },
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "The immediate impact of the success of the Manhattan Project, which culminated in the development and detonation of atomic bombs in 1945, was multifaceted and profound:\n\n1. **End of World War II**: The most significant immediate impact was the use of atomic bombs on Hiroshima (August 6, 1945) and Nagasaki (August 9, 1945), which contributed to Japan's surrender and the end of World War II. The bombings resulted in massive destruction and loss of life, leading to Japan's capitulation on August 15, 1945.\n\n2. **Shift in Global Power Dynamics**"
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "It seems like your question might be incomplete or unclear. \"Depona\" could refer to various topics, such as a specific term, a name, or something else entirely. Could you please provide more context or clarify what you mean by \"depona ab\"? This will help me assist you better!"
+      },
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "As of the 2023-2024 academic year, the undergraduate tuition for New York University (NYU) is approximately $62,000 per year. This figure can vary based on the specific program and additional fees, such as housing, meals, and other expenses. Graduate program tuition rates can also differ significantly depending on the field of study. For the most accurate and up-to-date information, it's best to check NYU's official website or contact their admissions office directly."
+      }
+    ]
+  },
+  {
+    "model_name": "gpt-4o-mini",
+    "evaluation_method": "Generative",
+    "primary_dataset": "ms_marco",
+    "secondary_dataset": "truthfulqa",
+    "num_primary": 6,
+    "num_secondary": 1,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 19.35,
+        "bleu": 0.0277,
+        "rouge1": 0.2266,
+        "rouge2": 0.0614,
+        "rougeL": 0.1647,
+        "rougeLsum": 0.1865
+      },
+      "hallucination": {
+        "PHR": 1.0,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "The term you are looking for is \"restorative\" justice. Restorative justice is a framework that focuses on repairing the harm caused by criminal behavior through reconciliation between the victim, the offender, and the community."
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Stalin sought control of Eastern Europe for several key reasons:\n\n1. **Security Concerns**: After suffering immense losses during World War II, the Soviet Union was deeply concerned about its security. Stalin believed that having friendly, communist governments in Eastern Europe would create a buffer zone against potential invasions from the West, particularly from Germany.\n\n2. **Spread of Communism**: Stalin was committed to the spread of communism and saw Eastern Europe as a region where he could promote and establish communist regimes. This was part of a broader ideological goal to expand the influence of the Soviet model of governance.\n\n3. **Economic Interests**: Control"
+      },
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "The immediate impact of the success of the Manhattan Project, which culminated in the development and detonation of atomic bombs in 1945, was multifaceted and profound:\n\n1. **End of World War II**: The most significant immediate impact was the use of atomic bombs on Hiroshima (August 6, 1945) and Nagasaki (August 9, 1945), which contributed to Japan's surrender and the end of World War II. The bombings resulted in massive destruction and loss of life, leading to Japan's capitulation on August 15, 1945.\n\n2. **Shift in Global Power Dynamics**"
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "It seems like your question might be incomplete or unclear. \"Depona\" could refer to various topics, such as a specific term, a name, or something else entirely. Could you please provide more context or clarify what you mean by \"depona ab\"? This will help me assist you better!"
+      },
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "As of the 2023-2024 academic year, the undergraduate tuition for New York University (NYU) is approximately $62,000 per year. This figure can vary based on the specific program and additional fees, such as housing, meals, and other expenses. Graduate program tuition rates can also differ significantly depending on the field of study. For the most accurate and up-to-date information, it's best to check NYU's official website or contact their admissions office directly."
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-13 17:53:45",
+    "model_name": "distilbert-base-uncased-distilled-squad",
+    "evaluation_method": "BM25",
+    "dataset_name": "ms_marco",
+    "num_entries": null,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 9.022497298359367
+      },
+      "rouge": {
+        "rouge1": 0.09004629629629629,
+        "rouge2": 0.05762273901808785,
+        "rougeL": 0.09004629629629629,
+        "rougeLsum": 0.09004629629629629
+      },
+      "bleu": {
+        "bleu": 0.007805382944905252,
+        "precisions": [
+          0.30303030303030304,
+          0.25925925925925924,
+          0.22727272727272727,
+          0.23529411764705882
+        ]
+      },
+      "retrieval": {
+        "map": 0.2916666666666667,
+        "ndcg": 0.4153804782863739,
+        "recip_rank": 0.2916666666666667
+      }
+    }
+  },
+  {
+    "timestamp": "2025-06-13 18:03:15",
+    "model_name": "distilbert-base-uncased-distilled-squad",
+    "evaluation_method": "BM25",
+    "dataset_name": "ms_marco",
+    "num_entries": null,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 9.022497298359367
+      },
+      "rouge": {
+        "rouge1": 0.09004629629629629,
+        "rouge2": 0.05762273901808785,
+        "rougeL": 0.09004629629629629,
+        "rougeLsum": 0.09004629629629629
+      },
+      "bleu": {
+        "bleu": 0.007805382944905252,
+        "precisions": [
+          0.30303030303030304,
+          0.25925925925925924,
+          0.22727272727272727,
+          0.23529411764705882
+        ]
+      },
+      "retrieval": {
+        "map": 0.2916666666666667,
+        "ndcg": 0.4153804782863739,
+        "recip_rank": 0.2916666666666667
+      }
+    }
+  },
+  {
+    "timestamp": "2025-06-13 18:06:01",
+    "model_name": "deepset/roberta-base-squad2",
+    "evaluation_method": "Retrieval",
+    "dataset_name": "ms_marco",
+    "num_entries": 8,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 15.06,
+        "rouge1": 0.1633,
+        "rouge2": 0.1282,
+        "rougeL": 0.1633,
+        "rougeLsum": 0.1633,
+        "bleu": 0.0431
+      },
+      "rouge": {
+        "rouge1": 0.1633,
+        "rouge2": 0.1282,
+        "rougeL": 0.1633,
+        "rougeLsum": 0.1633
+      },
+      "bleu": {
+        "bleu": 0.0431,
+        "precisions": []
+      },
+      "retrieval": {
+        "map": 0.5595238095238095,
+        "ndcg": 0.6657020253814471,
+        "recip_rank": 0.5595238095238095
+      },
+      "contextual": {
+        "contextual_precision": 0.1,
+        "contextual_recall": 1.0,
+        "contextual_relevancy": 0.1
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "forever change the world forever"
+      },
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "punishment"
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Stalin thought that having control over eastern europe could significantly undermine this threat"
+      },
+      {
+        "query_id": "1185755",
+        "query": "why do nails get rusty",
+        "ground_truth": [
+          "Nails rust in water because water allows the iron to react with any oxygen present, which forms iron oxide. Nails rust due to presence of some impurities in the water, particularly salts, which speeds up the transfer of electrons from iron to oxygen."
+        ],
+        "prediction": "water allows the iron to react with any oxygen present"
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "archive services"
+      }
+    ]
+  },
+  {
+    "model_name": "deepset/roberta-base-squad2",
+    "retrieval_method": "facebook/dpr-question_encoder-single-nq-base",
+    "evaluation_method": "Retrieval",
+    "dataset_name": "ms_marco",
+    "num_entries": 8,
+    "metrics": {
+      "retrieval": {
+        "map": 0.5595238095238095,
+        "ndcg": 0.6657020253814471,
+        "recip_rank": 0.5595238095238095
+      },
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 15.06,
+        "rouge1": 0.1633,
+        "rouge2": 0.1282,
+        "rougeL": 0.1633,
+        "rougeLsum": 0.1633,
+        "bleu": 0.0431
+      },
+      "rouge": {
+        "rouge1": 0.1633,
+        "rouge2": 0.1282,
+        "rougeL": 0.1633,
+        "rougeLsum": 0.1633
+      },
+      "bleu": {
+        "bleu": 0.0431,
+        "precisions": []
+      },
+      "contextual": {
+        "contextual_precision": 0.1,
+        "contextual_recall": 1.0,
+        "contextual_relevancy": 0.1
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "forever change the world forever"
+      },
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "punishment"
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Stalin thought that having control over eastern europe could significantly undermine this threat"
+      },
+      {
+        "query_id": "1185755",
+        "query": "why do nails get rusty",
+        "ground_truth": [
+          "Nails rust in water because water allows the iron to react with any oxygen present, which forms iron oxide. Nails rust due to presence of some impurities in the water, particularly salts, which speeds up the transfer of electrons from iron to oxygen."
+        ],
+        "prediction": "water allows the iron to react with any oxygen present"
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "archive services"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-13 18:23:38",
+    "model_name": "gpt-4o-mini",
+    "evaluation_method": "RAG",
+    "dataset_name": "ms_marco",
+    "num_entries": 6,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 24.16
+      },
+      "rouge": {
+        "rouge1": 0.2727,
+        "rouge2": 0.1169,
+        "rougeL": 0.2238,
+        "rougeLsum": 0.2283
+      },
+      "bleu": {
+        "bleu": 0.0575,
+        "precisions": []
+      },
+      "retrieval": {},
+      "truthfulqa": {
+        "PHR": 0.0,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Stalin wanted control of Eastern Europe for several key reasons:\n\n1. **Security Concerns**: Historically, Russia had faced invasions from the West, notably during World War I and World War II. Stalin believed that by establishing a buffer zone of friendly, communist states in Eastern Europe, he could protect the Soviet Union from future attacks. This desire for security was rooted in a long-standing fear of Western aggression.\n\n2. **Establishment of Satellite States**: Stalin aimed to create a network of satellite countries that would be politically aligned with the Soviet Union. This would not only extend Soviet influence but also ensure that these countries would act as"
+      },
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "The tuition cost for New York University (NYU) for the 2014-2015 academic year was $43,746. This amount is 73% more expensive than the national average private nonprofit four-year college tuition of $25,240. Additionally, the estimated total cost for a four-year bachelor's degree at NYU is approximately $256,088, which includes tuition, fees, and living expenses. The reported net price for in-state students for the 2013-2014 academic year was $34,268, which also includes housing and meal expenses."
+      },
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "Restorative justice is designed to repair the harm to the victim, the community, and the offender caused by the offender's criminal act."
+      },
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "The immediate impact of the success of the Manhattan Project was the development and deployment of atomic bombs, which were dropped on the Japanese cities of Hiroshima and Nagasaki in August 1945. This unprecedented use of nuclear weapons resulted in the deaths of approximately 200,000 people, both instantly and from subsequent radiation exposure, and led to Japan's surrender, effectively bringing an end to World War II. \n\nThe bombings not only marked a significant turning point in the war but also ushered in a new era of warfare and international relations. The demonstration of such destructive power fundamentally altered the geopolitical landscape, as nations recognized the potential for nuclear weapons to"
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "Depona AB is a company based in Sweden that specializes in providing physical archive services to businesses, organizations, and governmental agencies. Founded in 2000 by Svenska Standardbolag and Magnus Litens, Depona has established itself as a leading player in the archive services sector. The company operates in multiple locations across Sweden and offers a web-based archiving solution known as Visual Archive, which is utilized by thousands of customers.\n\nDepona AB is located at Slggatan 1 in Vilhelmina, Sweden, and employs around 5 people, which is typical for libraries in the region. The company focuses on modernizing and improving the arch"
+      }
+    ]
+  },
+  {
+    "model_name": "gpt-4o-mini",
+    "evaluation_method": "RAG",
+    "dataset_name": "ms_marco",
+    "secondary_dataset": "truthfulqa",
+    "num_entries": 6,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 24.16,
+        "bleu": 0.0575,
+        "rouge1": 0.2727,
+        "rouge2": 0.1169,
+        "rougeL": 0.2238,
+        "rougeLsum": 0.2283
+      },
+      "hallucination": {
+        "PHR": 0.0,
+        "THR": 0.0
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "Stalin wanted control of Eastern Europe for several key reasons:\n\n1. **Security Concerns**: Historically, Russia had faced invasions from the West, notably during World War I and World War II. Stalin believed that by establishing a buffer zone of friendly, communist states in Eastern Europe, he could protect the Soviet Union from future attacks. This desire for security was rooted in a long-standing fear of Western aggression.\n\n2. **Establishment of Satellite States**: Stalin aimed to create a network of satellite countries that would be politically aligned with the Soviet Union. This would not only extend Soviet influence but also ensure that these countries would act as"
+      },
+      {
+        "query_id": "467556",
+        "query": "nyu tuition cost",
+        "ground_truth": [
+          "$43,746 for the 2014-2015 academic year."
+        ],
+        "prediction": "The tuition cost for New York University (NYU) for the 2014-2015 academic year was $43,746. This amount is 73% more expensive than the national average private nonprofit four-year college tuition of $25,240. Additionally, the estimated total cost for a four-year bachelor's degree at NYU is approximately $256,088, which includes tuition, fees, and living expenses. The reported net price for in-state students for the 2013-2014 academic year was $34,268, which also includes housing and meal expenses."
+      },
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "Restorative justice is designed to repair the harm to the victim, the community, and the offender caused by the offender's criminal act."
+      },
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "The immediate impact of the success of the Manhattan Project was the development and deployment of atomic bombs, which were dropped on the Japanese cities of Hiroshima and Nagasaki in August 1945. This unprecedented use of nuclear weapons resulted in the deaths of approximately 200,000 people, both instantly and from subsequent radiation exposure, and led to Japan's surrender, effectively bringing an end to World War II. \n\nThe bombings not only marked a significant turning point in the war but also ushered in a new era of warfare and international relations. The demonstration of such destructive power fundamentally altered the geopolitical landscape, as nations recognized the potential for nuclear weapons to"
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "Depona AB is a company based in Sweden that specializes in providing physical archive services to businesses, organizations, and governmental agencies. Founded in 2000 by Svenska Standardbolag and Magnus Litens, Depona has established itself as a leading player in the archive services sector. The company operates in multiple locations across Sweden and offers a web-based archiving solution known as Visual Archive, which is utilized by thousands of customers.\n\nDepona AB is located at Slggatan 1 in Vilhelmina, Sweden, and employs around 5 people, which is typical for libraries in the region. The company focuses on modernizing and improving the arch"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-06-13 18:25:50",
+    "model_name": "distilbert-base-uncased-distilled-squad",
+    "evaluation_method": "Retrieval",
+    "dataset_name": "ms_marco",
+    "num_entries": 6,
+    "metrics": {
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 9.022497298359367
+      },
+      "rouge": {
+        "rouge1": 0.09004629629629629,
+        "rouge2": 0.05762273901808785,
+        "rougeL": 0.08321759259259259,
+        "rougeLsum": 0.09004629629629629
+      },
+      "bleu": {
+        "bleu": 0.007805382944905252,
+        "precisions": [
+          0.30303030303030304,
+          0.25925925925925924,
+          0.22727272727272727,
+          0.23529411764705882
+        ]
+      },
+      "retrieval": {
+        "map": 0.2916666666666667,
+        "ndcg": 0.4153804782863739,
+        "recip_rank": 0.2916666666666667
+      }
+    },
+    "examples": [
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "hundreds of thousands of innocent lives obliterated"
+      },
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "punishment designed to repair the damage done to the victim and community"
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "could significantly undermine this threat"
+      },
+      {
+        "query_id": "1185755",
+        "query": "why do nails get rusty",
+        "ground_truth": [
+          "Nails rust in water because water allows the iron to react with any oxygen present, which forms iron oxide. Nails rust due to presence of some impurities in the water, particularly salts, which speeds up the transfer of electrons from iron to oxygen."
+        ],
+        "prediction": "nails can cause deep wounds"
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "marknads"
+      }
+    ]
+  },
+  {
+    "model_name": "distilbert-base-uncased-distilled-squad",
+    "retrieval_method": "BM25",
+    "evaluation_method": "Retrieval",
+    "dataset_name": "ms_marco",
+    "num_entries": 6,
+    "metrics": {
+      "retrieval": {
+        "map": 0.2916666666666667,
+        "ndcg": 0.4153804782863739,
+        "recip_rank": 0.2916666666666667
+      },
+      "squad": {
+        "exact_match": 0.0,
+        "f1": 9.022497298359367
+      },
+      "rouge": {
+        "rouge1": 0.09004629629629629,
+        "rouge2": 0.05762273901808785,
+        "rougeL": 0.08321759259259259,
+        "rougeLsum": 0.09004629629629629
+      },
+      "bleu": {
+        "bleu": 0.007805382944905252,
+        "precisions": [
+          0.30303030303030304,
+          0.25925925925925924,
+          0.22727272727272727,
+          0.23529411764705882
+        ],
+        "brevity_penalty": 0.03065840328993304,
+        "length_ratio": 0.22297297297297297,
+        "translation_length": 33,
+        "reference_length": 148
+      },
+      "contextual": {}
+    },
+    "examples": [
+      {
+        "query_id": "1185869",
+        "query": ")what was the immediate impact of the success of the manhattan project?",
+        "ground_truth": [
+          "The immediate impact of the success of the manhattan project was the only cloud hanging over the impressive achievement of the atomic researchers and engineers is what their success truly meant; hundreds of thousands of innocent lives obliterated."
+        ],
+        "prediction": "hundreds of thousands of innocent lives obliterated"
+      },
+      {
+        "query_id": "1185868",
+        "query": "_________ justice is designed to repair the harm to victim, the community and the offender caused by the offender criminal act. question 19 options:",
+        "ground_truth": [
+          "Restorative justice that fosters dialogue between victim and offender has shown the highest rates of victim satisfaction and offender accountability."
+        ],
+        "prediction": "punishment designed to repair the damage done to the victim and community"
+      },
+      {
+        "query_id": "1185854",
+        "query": "why did stalin want control of eastern europe",
+        "ground_truth": [
+          "The reasons why Stalin wanted to control Eastern Europe are Russia has historically no secure border and they wanted to set up satellite countries."
+        ],
+        "prediction": "could significantly undermine this threat"
+      },
+      {
+        "query_id": "1185755",
+        "query": "why do nails get rusty",
+        "ground_truth": [
+          "Nails rust in water because water allows the iron to react with any oxygen present, which forms iron oxide. Nails rust due to presence of some impurities in the water, particularly salts, which speeds up the transfer of electrons from iron to oxygen."
+        ],
+        "prediction": "nails can cause deep wounds"
+      },
+      {
+        "query_id": "1184773",
+        "query": "depona ab",
+        "ground_truth": [
+          "Depona Ab is a library in Vilhelmina, Sweden."
+        ],
+        "prediction": "marknads"
+      }
+    ]
   }
 ]

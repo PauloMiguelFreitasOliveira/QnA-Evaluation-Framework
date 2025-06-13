@@ -4,7 +4,7 @@ import sys
 from datetime import datetime
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 
 def save_evaluation_results(
     model_name,
@@ -84,33 +84,4 @@ def save_evaluation_results(
         existing_results.append(new_entry)
         with open(results_path, "w", encoding="utf-8") as f:
             json.dump(existing_results, f, indent=4)
-        print(f"✅ Saved evaluation results to {results_path}")
-    else:
-        print("⚠️ Duplicate evaluation detected, not saving.")
-
-    # Print summary to terminal
-    print("\n---- Evaluation Summary ----")
-    print(f"Model:      {model_name}")
-    print(f"Dataset:    {dataset_name}")
-    print(f"Method:     {evaluation_method}")
-    print(f"Entries run:{num_entries}")
-    print("\n📊 Squad Metrics:")
-    print(f"  Exact Match: {squad_results.get('exact_match')}")
-    print(f"  F1:          {squad_results.get('f1')}")
-    print("\n📊 Rouge Metrics:")
-    for k, v in rouge_results.items():
-        print(f"  {k}: {v}")
-    print(f"\n📊 BLEU: {bleu_trimmed['bleu']}")
-    if mean_metrics:
-        print("\n📊 Retrieval Metrics:")
-        for k, v in mean_metrics.items():
-            print(f"  {k}: {v}")
-    if contextual_results:
-        print("\n📊 Contextual Metrics:")
-        for k, v in contextual_results.items():
-            print(f"  {k}: {v}")
-    if truth_metrics:
-        print("\n📊 TruthfulQA (hallucination) Metrics:")
-        for k, v in truth_metrics.items():
-            print(f"  {k}: {v}")
-    print("------------------------------\n")
+        #print(f"✅ Saved evaluation results to {results_path}")

@@ -10,10 +10,71 @@ import os
 import sys
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
+PROCESS_EXPLANATIONS = {
+    "Loading dataset": "Loading the evaluation dataset into memory, parsing all questions and context passages, and checking for consistency.",
+    "Loading primary dataset": "Loading the evaluation dataset from memory, parsing all questions and context passages, and checking for consistency.",
+    "Loading secondary dataset": "Loading the hallucination dataset from memory, parsing all questions, and checking for consistency.",
+    "Retrieving top-K contexts": "For each question, the retriever model selects the top-K most relevant context passages out of the whole context pool. This step is crucial for downstream QA accuracy.",
+    "Contexts retrieved": "The retriever has selected the most relevant passages for every question. These will be provided to the reader/generative model.",
+    "Evaluating retrieval metrics": "Now, we calculate information retrieval metrics such as MAP (Mean Average Precision), nDCG (Normalized Discounted Cumulative Gain), and MRR (Mean Reciprocal Rank). These metrics measure how well the retriever surfaced relevant contexts.",
+    "Finished retrieval metrics": "All retrieval quality metrics have been computed.",
+    "Loading reader model": "The system is now loading the extractive QA (reader) model. This could be a large neural network that will generate answers to each question based on the top retrieved contexts.",
+    "Extracting answers with reader": "The reader model processes each question and its retrieved contexts, generating the most likely answer span(s) for each query.",
+    "Evaluating QA metrics": "SQuAD-style evaluation: Computing Exact Match and F1, as well as ROUGE and BLEU metrics, comparing the model's answers to the ground truth from the dataset.",
+    "Finished all QA evaluations": "All question answering metrics have been computed.",
+    "Saving results": "Writing the evaluation summary and detailed results to disk for later analysis and dashboard display.",
+    "Generating primary answers": "The selected generative model is generating answers for the primary dataset's queries.",
+    "Generating secondary predictions (hallucination eval)": "The model is being tested on a secondary dataset (TruthfulQA) to assess factual consistency and hallucination levels.",
+    "Judging hallucinations": "A fact-checking judge model is evaluating if each generated answer is fully supported by the answer list or likely hallucinated.",
+    "Preparing examples and output": "The evaluation is compiling sample questions, model answers, and ground truths for you to inspect.",
+    "Preparing output": "Organizing outputs for display and saving.",
+    "Evaluation Complete": "Evaluation completed successfully. Results and logs are now available.",
+}
+METRIC_EXPLANATIONS = {
+    "Exact Match": "Percentage of answers that exactly match the ground truth.",
+    "F1": "The harmonic mean of precision and recall for the predicted answers.",
+    "ROUGE-L": "Longest Common Subsequence metric, measuring overlap between prediction and reference.",
+    "ROUGE1": "Overlap of unigrams between prediction and ground truth.",
+    "ROUGE2": "Overlap of bigrams between prediction and ground truth.",
+    "ROUGEL": "Longest Common Subsequence, another variant.",
+    "ROUGELSUM": "Summarization variant of ROUGE-L.",
+    "BLEU": "Bilingual Evaluation Understudy; measures n-gram overlap between prediction and ground truth.",
+    "MAP": "Mean Average Precision: measures the precision of the retriever at all ranks.",
+    "nDCG": "Normalized Discounted Cumulative Gain: rewards higher-ranked relevant results.",
+    "Prec. @ K": "Average precision of the top-K retrieved passages.",
+    "PHR": "Partial Hallucination Rate: % of answers partially supported by the context.",
+    "THR": "Total Hallucination Rate: % of answers completely unsupported by the context.",
+}
+
+
+def display_metrics_with_explanations(metrics_dict):
+    for metric, value in metrics_dict.items():
+        # Try to map to a friendly name
+        label = metric.replace("_", " ").title()
+        # Use upper-case versions as well for BLEU, ROUGE, etc
+        if label.upper() in METRIC_EXPLANATIONS:
+            expl = METRIC_EXPLANATIONS[label.upper()]
+        else:
+            expl = METRIC_EXPLANATIONS.get(label, "")
+        with st.expander(f"{label}: {value}"):
+            st.write(expl)
+
 
 def safe_avg_precision(precisions):
     return sum(precisions) / len(precisions) if precisions else 0
+
+def is_noisy(line):
+    # Add patterns as needed
+    noise_patterns = [
+        "This IS expected",
+        "This IS NOT expected",
+        "Some weights of the model checkpoint",
+        "Device set to use cpu",
+        "Downloading",
+        "Loading weights",
+    ]
+    return any(pat in line for pat in noise_patterns)
 
 # Paths for your evaluation scripts
 EVAL_SCRIPTS = {
@@ -37,7 +98,7 @@ def run_command(cmd, out_q):
     out_q.put(None)
 
 st.set_page_config(layout="wide")
-tabs = st.tabs(["🛠️ Run Evaluation", "📊 Results"])
+tabs = st.tabs(["🛠️ Run Evaluation", "🔄 Process", "📊 Results"])
 
 # ─── Tab 1: Run Evaluation ────────────────────────────────────────────────────
 with tabs[0]:
@@ -220,7 +281,7 @@ with tabs[0]:
         disp_cmd = ' '.join(cmd)
         if eval_type == "Retrieval" and 'env_vars' in locals() and env_vars is not None and lower_ret in ("bm25", "dpr", "hybrid"):
             disp_cmd = f"NUM_EXAMPLES={limit} " + disp_cmd
-        st.markdown(f"**Executing:** `{ disp_cmd }`")
+        #st.markdown(f"**Executing:** `{ disp_cmd }`")
 
         # Captura em tempo real
         popen_env = env_vars if eval_type == "Retrieval" and env_vars is not None else None
@@ -233,10 +294,30 @@ with tabs[0]:
             encoding="utf-8",
             errors="replace",
         )
+        
+        def is_progress_json(line):
+            try:
+                j = json.loads(line)
+                return "process_stage" in j and "progress" in j and len(j) == 2
+            except Exception:
+                return False
+
+        def is_final_result_json(line):
+            try:
+                j = json.loads(line)
+                return "metrics" in j
+            except Exception:
+                return False
+
         prog = st.progress(0, text="Executing...")
         log_box = st.empty()
         logs = []
         count = 0
+        current_progress = 0
+        final_json = None
+
+        st.session_state["process_log"] = []
+        st.session_state["process_done"] = False
 
         while True:
             line = process.stdout.readline()
@@ -244,9 +325,29 @@ with tabs[0]:
                 break
             if line:
                 logs.append(line)
-                count += 1
-                log_box.text("".join(logs[-10:]))
-                prog.progress(min(count / 50, 1.0))
+                if is_progress_json(line):
+                    progress_obj = json.loads(line)
+                    st.session_state["process_log"].append(progress_obj)
+                    # Update the progress bar text and percent
+                    prog.progress(progress_obj["progress"], text=progress_obj["process_stage"])
+                    continue
+                if is_final_result_json(line):
+                    # Maybe store it for use, but skip in the logs
+                    final_json = line.strip()
+                    continue
+
+                # 4. Otherwise, show it in the logs if it's not noise
+                if not is_noisy(line):
+                    # Filtered log lines only (not progress/final)
+                    cleaned_logs = [
+                        l for l in logs[-20:]
+                        if not (is_progress_json(l) or is_final_result_json(l))
+                    ]
+                    log_box.text("".join(cleaned_logs[-10:]))
+
+
+        st.session_state["process_done"] = True
+
 
         ret = process.poll()
         if ret == 0:
@@ -256,17 +357,77 @@ with tabs[0]:
             for line in reversed(logs):
                 stripped = line.strip()
                 if stripped.startswith("{") and stripped.endswith("}"):
-                    json_candidate = stripped
-                    break
+                    try:
+                        j = json.loads(stripped)
+                        # Accept JSONs with metrics for all evaluation types
+                        if "metrics" in j:
+                            json_candidate = stripped
+                            break
+                    except Exception:
+                        continue
 
             if json_candidate:
                 try:
                     out = json.loads(json_candidate)
                     st.subheader("📈 Evaluation Results")
                     st.json(out, expanded=False)
-                    squad = out.get("metrics", {}).get("squad", {})
-                    st.metric("Exact Match", squad.get("exact_match"))
-                    st.metric("F1 Score", squad.get("f1"))
+                    metrics = out.get("metrics", {})
+
+                    # --- SQuAD (F1, EM) ---
+                    if "squad" in metrics:
+                        st.subheader("SQuAD-style Metrics")
+                        squad_metrics = metrics["squad"]
+                        for k in ["exact_match", "f1"]:
+                            val = squad_metrics.get(k)
+                            if val is not None:
+                                label = k.replace("_", " ").title()
+                                with st.expander(f"{label}: {val}"):
+                                    st.write(METRIC_EXPLANATIONS.get(label, ""))
+
+                    # --- ROUGE ---
+                    rouge_metrics = metrics.get("rouge")
+                    if not rouge_metrics and "squad" in metrics:
+                        rouge_metrics = {k: metrics["squad"][k] for k in ["rouge1", "rouge2", "rougeL", "rougeLsum"] if k in metrics["squad"]}
+                    if rouge_metrics:
+                        st.subheader("ROUGE Metrics")
+                        for k, val in rouge_metrics.items():
+                            label = k.replace("_", "").upper()
+                            with st.expander(f"{label}: {val}"):
+                                st.write(METRIC_EXPLANATIONS.get(label, ""))
+
+                    # --- BLEU ---
+                    bleu_val = metrics.get("bleu")
+                    if not bleu_val and "squad" in metrics:
+                        bleu_val = metrics["squad"].get("bleu")
+                    if bleu_val is not None:
+                        st.subheader("BLEU Metric")
+                        bleu_score = bleu_val.get("bleu", 0) if isinstance(bleu_val, dict) else bleu_val
+                        with st.expander(f"BLEU: {bleu_score}"):
+                            st.write(METRIC_EXPLANATIONS.get("BLEU", ""))
+
+                    # --- Hallucination ---
+                    if "hallucination" in metrics:
+                        st.subheader("Hallucination Metrics")
+                        for k, val in metrics["hallucination"].items():
+                            label = k.upper()
+                            with st.expander(f"{label}: {val}"):
+                                st.write(METRIC_EXPLANATIONS.get(label, ""))
+                    if "truthfulqa" in metrics:
+                        st.subheader("TruthfulQA (Hallucination) Metrics")
+                        for k, val in metrics["truthfulqa"].items():
+                            label = k.upper()
+                            with st.expander(f"{label}: {val}"):
+                                st.write(METRIC_EXPLANATIONS.get(label, ""))
+
+                    # --- Retrieval ---
+                    if "retrieval" in metrics:
+                        st.subheader("Retrieval Metrics")
+                        for k, val in metrics["retrieval"].items():
+                            label = k.upper()
+                            with st.expander(f"{label}: {val}"):
+                                st.write(METRIC_EXPLANATIONS.get(label, ""))
+
+                    # Add to persistent results history
                     append_to_results(out)
                 except Exception as e:
                     st.warning(f"Could not parse output as JSON: {e}\nRaw line: {json_candidate}")
@@ -277,12 +438,33 @@ with tabs[0]:
             st.error("❌ Error during execution:")
             st.code("".join(logs[-10:]), language="text")
 
-        prog.empty()
-        log_box.empty()
 
-# ─── Tab 2: Results ───────────────────────────────────────────────────────────
-with tabs[1]:
+# ─── Tab 2: Process ───────────────────────────────────────────────────────────
+
+with tabs[1]:  # "🔄 Process"
+    st.header("🔄 Evaluation Process")
+    process_log = st.session_state.get("process_log", [])
+    process_done = st.session_state.get("process_done", False)
+
+    if not process_log:
+        st.info("No evaluation in progress yet. Start a new evaluation to see process here.")
+    else:
+        for step in process_log:
+            stage = step.get("process_stage", "Unknown Stage")
+            progress = step.get("progress", 0)
+            with st.expander(f"{stage} ({int(progress*100)}%)", expanded=True if not process_done else False):
+                st.progress(progress)
+                st.write(PROCESS_EXPLANATIONS.get(stage, ""))
+        if process_done:
+            st.success("✅ Evaluation finished.")
+
+# ─── Tab 3: Results ───────────────────────────────────────────────────────────
+with tabs[2]:
     st.header("📚 QnA Evaluation Dashboard")
+
+    with st.expander("ℹ️ Click for metric definitions"):
+        for k, v in METRIC_EXPLANATIONS.items():
+            st.markdown(f"**{k}:** {v}")
 
     # Carrega resultados
     results_file = os.path.join(os.path.dirname(__file__), '..', 'qna_eval', 'results', 'evaluation_results.json')

@@ -5,7 +5,6 @@ import random
 import subprocess
 import torch
 import sys
-from tqdm import tqdm
 from dotenv import load_dotenv
 from openai import OpenAI
 from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForCausalLM, AutoConfig
@@ -54,7 +53,7 @@ def load_local_generator(model_name: str):
 def generate_openai_multisample(model_name, queries, prompt_tpl, n_samples, temp):
     """One-shot n-sample generation via OpenAI’s `n` parameter."""
     outs = []
-    for ex in tqdm(queries, desc="Generating (OpenAI-multi)"):
+    for ex in queries:
         prompt = prompt_tpl.format(question=ex["query"])
         resp = client.chat.completions.create(
             model=model_name,
@@ -83,7 +82,7 @@ def generate_ollama_predictions(
     Capture raw bytes and decode with utf-8 (replacing invalid sequences).
     """
     preds = []
-    for ex in tqdm(queries, desc=f"Generating (Ollama:{model_name})"):
+    for ex in queries:
         prompt = prompt_tpl.format(question=ex["query"]).strip()
         cmd = [
             OLLAMA_CMD,
@@ -124,6 +123,11 @@ def build_ground_truth(queries):
     """returns a dictionary to be used in evaluate_extractive_model"""
     return {ex["query_id"]: ex.get("answers", []) for ex in queries}
 
+def print_progress(stage, progress):
+    sys.stdout.flush()
+    print(json.dumps({"process_stage": stage, "progress": progress}))
+    sys.stdout.flush()
+
 
 def main():
     p = argparse.ArgumentParser()
@@ -140,6 +144,8 @@ def main():
     # ── Step 1: Primary QA ────────────────────────────────────────────────────────
     ds       = load_dataset_file(args.primary_dataset, args.limit)
     prim_qs  = ds["queries"]
+
+    print_progress("Generating primary answers", 0.15)
     if args.backend == "openai":
         prim_preds = generate_openai_multisample(args.model_name, prim_qs, prompt_tpl, 1, temp=0.0)
     elif args.backend == "ollama":
@@ -149,13 +155,17 @@ def main():
         prim_preds = [
             {"query_id": ex["query_id"],
              "answer": local_pipe(prompt_tpl.format(question=ex["query"]))[0].get("generated_text","").strip()}
-            for ex in tqdm(prim_qs, desc="Generating (HF)")]
+            for ex in (prim_qs)]
+    print_progress("Evaluating QA metrics", 0.25)
     prim_truth   = build_ground_truth(prim_qs)
     prim_metrics = evaluate_extractive_model(prim_preds, prim_truth)
 
     # ── Step 2: Hallucination via fixed judge ────────────────────────────────────
+    print_progress("Loading secondary dataset", 0.30)
     sec_limit = max(1, args.limit // args.n_samples)
     sec_qs    = load_secondary_dataset(args.secondary_dataset, sec_limit)
+
+    print_progress("Generating secondary predictions (hallucination eval)", 0.35)
     if args.backend == "openai":
         sec_preds = generate_openai_multisample(
             args.model_name, sec_qs, prompt_tpl, args.n_samples, temp=0.7
@@ -175,6 +185,7 @@ def main():
         )
 
     # always use the *fixed* judge  
+    print_progress("Judging hallucinations", 0.50)
     judgement = judge_with_llm(
         client,
         JUDGE_MODEL,
@@ -184,6 +195,7 @@ def main():
     )
 
     # pick 5 random examples to save/display
+    print_progress("Preparing examples and output", 0.80)
     idxs = random.sample(range(len(prim_qs)), k=min(5,len(prim_qs)))
     examples = [{
         "query_id":   prim_qs[i]["query_id"],
@@ -205,23 +217,24 @@ def main():
         },
         "examples": examples
     }
-    print(json.dumps(out))
+    print_progress("Saving results", 0.90)
+    print(json.dumps(out, ensure_ascii=False))
 
 
     save_evaluation_results(
-      model_name=args.model_name,
-      evaluation_method="Generative",
-      dataset_name=args.primary_dataset,
-      squad_results= {"exact_match": prim_metrics["exact_match"],
-                      "f1":          prim_metrics["f1"]},
-      rouge_results={k: prim_metrics[k] for k in ["rouge1","rouge2","rougeL","rougeLsum"]},
-      bleu_results={"bleu": prim_metrics["bleu"], "precisions":[]},
-      mean_metrics={},
-      contextual_results=None,
-      truth_metrics=judgement,
-      examples=examples,
-      num_entries=len(prim_qs)
+        model_name=args.model_name,
+        evaluation_method="Generative",
+        dataset_name=args.primary_dataset,
+        squad_results = {k: prim_metrics.get(k, 0) for k in ["exact_match", "f1"]},
+        rouge_results = {k: prim_metrics.get(k, 0) for k in ["rouge1", "rouge2", "rougeL", "rougeLsum"]},
+        bleu_results  = {"bleu": prim_metrics.get("bleu", 0), "precisions":[]},
+        mean_metrics={},
+        contextual_results=None,
+        truth_metrics=judgement,
+        examples=examples,
+        num_entries=len(prim_qs)
     )
+    print_progress("Evaluation Complete", 1.0)
 
 if __name__ == "__main__":
     main()

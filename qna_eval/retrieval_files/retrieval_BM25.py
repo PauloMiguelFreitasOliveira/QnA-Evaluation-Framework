@@ -1,34 +1,33 @@
-from transformers import pipeline
-from datasets import load_dataset
-import evaluate
-import pandas as pd
-import matplotlib.pyplot as plt
-import plotly.express as px
-from rank_bm25 import BM25Okapi
-import pytrec_eval
-import torch
-import numpy as np
-import json
-import sys
 import os
+import sys
+import json
+import numpy as np
+import torch
+from transformers import pipeline
+from rank_bm25 import BM25Okapi
+import evaluate
+import pytrec_eval
 
-# Adds the parent directory to the Python path so it can find logging_utils
+# Add parent dir for save_evaluation_results
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 sys.path.append(ROOT_DIR)
 from logging_utils.save_results import save_evaluation_results
 
-
+def print_progress(stage, progress):
+    sys.stdout.flush()
+    print(json.dumps({"process_stage": stage, "progress": progress}))
+    sys.stdout.flush()
 
 dataset_path = os.path.join(ROOT_DIR, "datasets", "ms_marco.json")
 with open(dataset_path, "r", encoding="utf-8") as f:
     ms_marco_data = json.load(f)
 
-NUM_EXAMPLES = int(os.getenv("NUM_EXAMPLES", 10000))
-
+NUM_EXAMPLES = int(os.getenv("NUM_EXAMPLES", 100))
 ms_marco_data = ms_marco_data[:NUM_EXAMPLES]
 
-query_passage_pairs = []
+print_progress("Loading dataset", 0.05)
 
+query_passage_pairs = []
 for entry in ms_marco_data:
     query_passage_pairs.append({     
         "query_id": entry["query_id"],
@@ -37,7 +36,6 @@ for entry in ms_marco_data:
         "candidate_passages": [c["passage_text"] for c in entry["candidates"]],
         "is_selected": [c["is_selected"] for c in entry["candidates"]]
     })
-
 
 def bm25_rerank(query, passages):
     tokenized_passages = [p.split() for p in passages]
@@ -54,50 +52,45 @@ squad_metric = evaluate.load("squad")
 rouge_metric = evaluate.load("rouge")
 bleu_metric = evaluate.load("bleu")
 
-references = []
-predictions = []
-qrel = {}
-run = {}
+references, predictions, qrel, run = [], [], {}, {}
 
+print_progress("Retrieving top-K contexts", 0.15)
 
-
-# Evaluation loop
 for entry in query_passage_pairs:
     question = entry["query"]
     passages = entry["candidate_passages"]
     query_id = str(entry["query_id"])
-    true_answer = entry["answers"][0] if entry["answers"] else ""
 
     bm25_scores = bm25_rerank(question, passages)
-
-    # Pick the top passage based on BM25 score
     best_idx = np.argmax(bm25_scores)
     top_context = passages[best_idx]
-
-    if query_id == "some_specific_query_id":
-        print("\nQuestion:", question)
-        ranked = sorted(zip(passages, bm25_scores), key=lambda x: x[1], reverse=True)
-        for i, (p, score) in enumerate(ranked[:5]):
-            print(f"Rank {i+1} | Score: {score:.2f} | Passage: {p[:100]}")
-
 
     # Get model answer
     result = qa_pipeline(question=question, context=top_context)
     predicted_answer = result["answer"]
 
-    # Append for metric calculation
+    # For metrics
     references.append({"id": query_id, "answers": {"text": entry["answers"], "answer_start": [0]}})
     predictions.append({"id": query_id, "prediction_text": predicted_answer})
 
-    # Build qrel and run for pytrec_eval (top10 ranking)
+    # For retrieval metrics
     qrel[query_id] = {str(i): entry["is_selected"][i] for i in range(len(passages))}
     run[query_id] = {str(i): float(bm25_scores[i]) for i in range(len(passages))}
 
-assert len(bm25_scores) == len(passages)
-assert not any(np.isnan(bm25_scores))
+print_progress("Contexts retrieved", 0.30)
+print_progress("Evaluating retrieval metrics", 0.50)
 
+evaluator = pytrec_eval.RelevanceEvaluator(qrel, {'map', 'ndcg', 'recip_rank'})
+retrieval_metrics = evaluator.evaluate(run)
+mean_metrics = {
+    metric: np.mean([query_measures[metric] for query_measures in retrieval_metrics.values()])
+    for metric in ['map', 'ndcg', 'recip_rank']
+}
 
-# Metric results
+print_progress("Loading reader model", 0.65)
+print_progress("Extracting answers with reader", 0.70)
+print_progress("Evaluating QA metrics", 0.85)
+
 squad_results = squad_metric.compute(predictions=predictions, references=references)
 rouge_results = rouge_metric.compute(
     predictions=[pred["prediction_text"] for pred in predictions],
@@ -108,44 +101,46 @@ bleu_results = bleu_metric.compute(
     references=[[ref["answers"]["text"][0]] for ref in references]
 )
 
-print(f"\n🎯 QA Metrics")
-print(f"Exact Match: {squad_results['exact_match']}")
-print(f"F1 Score: {squad_results['f1']}")
-print(f"ROUGE-l F1 Score: {rouge_results['rouge1'] :.4f}")
-print(f"BLEU Score: {bleu_results['bleu']}")
+print_progress("Saving results", 0.98)
 
-# Retrieval metrics
-evaluator = pytrec_eval.RelevanceEvaluator(qrel, {'map', 'ndcg', 'recip_rank'})
-retrieval_metrics = evaluator.evaluate(run)
+# Prepare for JSON output as expected by frontend
+examples = []
+for i in range(min(5, len(query_passage_pairs))):
+    ex = query_passage_pairs[i]
+    examples.append({
+        "query_id": ex["query_id"],
+        "query": ex["query"],
+        "ground_truth": ex["answers"],
+        "prediction": predictions[i]["prediction_text"]
+    })
 
-mean_metrics = {
-    metric: np.mean([query_measures[metric] for query_measures in retrieval_metrics.values()])
-    for metric in ['map', 'ndcg', 'recip_rank']
+output_json = {
+    "model_name": model_name,
+    "retrieval_method": "BM25",
+    "evaluation_method": "Retrieval",
+    "dataset_name": "ms_marco",
+    "num_entries": len(query_passage_pairs),
+    "metrics": {
+        "retrieval": mean_metrics,
+        "squad": squad_results,
+        "rouge": rouge_results,
+        "bleu": bleu_results,
+        "contextual": {}
+    },
+    "examples": examples
 }
-
-print(f"\n📊 BM25 Ranking Evaluation")
-print(f"Mean Average Precision (MAP):     {mean_metrics['map']:.4f}")
-print(f"Normalized DCG (NDCG):            {mean_metrics['ndcg']:.4f}")
-print(f"Mean Reciprocal Rank (MRR):       {mean_metrics['recip_rank']:.4f}")    
+print(json.dumps(output_json, ensure_ascii=False))
 
 save_evaluation_results(
     model_name=model_name,
-    evaluation_method="BM25",
+    evaluation_method="Retrieval",
     dataset_name="ms_marco",
     squad_results=squad_results,
     rouge_results=rouge_results,
     bleu_results=bleu_results,
-    mean_metrics=mean_metrics
+    mean_metrics=mean_metrics,
+    examples=examples,
+    num_entries=len(query_passage_pairs)
 )
 
-query = "capital of France"
-passages = [
-    "Paris is the capital of France.",
-    "France has many beautiful cities including Lyon and Marseille.",
-    "The Eiffel Tower is a famous landmark."
-]
-
-scores = bm25_rerank(query, passages)
-
-print(scores)
-
+print_progress("Evaluation Complete", 1.0)

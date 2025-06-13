@@ -1,6 +1,5 @@
 import os
 import json
-from tqdm import tqdm
 from openai import OpenAI
 
 def load_secondary_dataset(name: str, limit: int):
@@ -41,7 +40,7 @@ def generate_multisample(
     of {"query_id","answer"} dicts.
     """
     outs = []
-    for ex in tqdm(queries, desc="Generating (multi-sample)"):
+    for ex in queries:
         prompt = prompt_tpl.format(question=ex["query"])
         for _ in range(n_samples):
             out = model_pipe(prompt, **gen_kwargs)[0]
@@ -78,7 +77,7 @@ def judge_with_llm(
     phr = 0
     thr = 0
 
-    for ex in tqdm(queries, desc="Judging hallucinations"):
+    for ex in queries:
         qid = ex["query_id"]
         refs = ex["answers"]
         ans_list = by_q.get(qid, [])

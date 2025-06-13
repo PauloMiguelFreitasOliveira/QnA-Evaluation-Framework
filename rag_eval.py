@@ -4,7 +4,7 @@ import random
 import json
 import subprocess
 import torch
-from tqdm import tqdm
+import sys
 from dotenv import load_dotenv
 from openai import OpenAI
 from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForCausalLM, AutoConfig
@@ -14,7 +14,6 @@ from qna_eval.retriever import retrieve_top_k
 from qna_eval.extractive_eval import evaluate_extractive_model
 from logging_utils.save_results import save_evaluation_results
 
-# Fixed retriever model for ranking documents
 RETRIEVER_MODEL = "facebook/dpr-question_encoder-single-nq-base"
 JUDGE_MODEL = "gpt-4o-mini"
 OLLAMA_CMD = "ollama"
@@ -25,11 +24,14 @@ if not OPENAI_API_KEY:
     raise RuntimeError("Missing OPENAI_API_KEY in environment")
 client = OpenAI(api_key=OPENAI_API_KEY)
 
+def print_progress(stage, progress):
+    sys.stdout.flush()
+    print(json.dumps({"process_stage": stage, "progress": progress}))
+    sys.stdout.flush()
 
 def is_seq2seq(model_name):
     cfg = AutoConfig.from_pretrained(model_name)
     return cfg.is_encoder_decoder
-
 
 def load_local_generator(model_name: str):
     tok = AutoTokenizer.from_pretrained(model_name)
@@ -48,10 +50,9 @@ def load_local_generator(model_name: str):
         pad_token_id=tok.eos_token_id
     )
 
-
 def generate_openai(model_name: str, prompts: list[tuple[str, str]], n_samples: int = 1, temp: float = 0.0):
     outs = []
-    for qid, prompt in tqdm(prompts, desc="Generating (OpenAI)"):
+    for qid, prompt in prompts:
         resp = client.chat.completions.create(
             model=model_name,
             messages=[{"role": "user", "content": prompt}],
@@ -63,40 +64,33 @@ def generate_openai(model_name: str, prompts: list[tuple[str, str]], n_samples: 
             outs.append({"query_id": qid, "answer": choice.message.content.strip()})
     return outs
 
-
 def generate_ollama(model_name: str, prompts: list[tuple[str, str]]):
     preds = []
-    for qid, prompt in tqdm(prompts, desc=f"Generating (Ollama:{model_name})"):
+    for qid, prompt in prompts:
         cmd = [OLLAMA_CMD, "run", model_name, prompt]
         proc = subprocess.run(cmd, capture_output=True, text=False, check=True)
         ans = (proc.stdout or b"").decode("utf-8", errors="replace").strip()
         preds.append({"query_id": qid, "answer": ans})
     return preds
 
-
 def build_prompt(contexts: list[str], question: str) -> str:
     context_block = "\n".join(contexts)
     return f"{context_block}\n\nQuestion: {question}\nAnswer:"
 
-
 def build_ground_truth(queries):
     return {ex["query_id"]: ex.get("answers", []) for ex in queries}
-
 
 def judge_with_context(client: OpenAI, model_name: str, retrieved: list[dict], predictions: list[dict]):
     by_qid = {}
     for p in predictions:
         by_qid.setdefault(p["query_id"], []).append(p["answer"])
-
     total_q = len(retrieved)
     phr = thr = 0
-
-    for item in tqdm(retrieved, desc="Judging hallucinations"):
+    for item in retrieved:
         qid = item["query_id"]
         question = item["query"]
         context_block = "\n".join(item["top_passages"])
         answers = by_qid.get(qid, [])
-
         flags = []
         for ans in answers:
             messages = [
@@ -124,14 +118,11 @@ def judge_with_context(client: OpenAI, model_name: str, retrieved: list[dict], p
             )
             verdict = resp.choices[0].message.content.strip().upper()
             flags.append(verdict.startswith("SUPPORT"))
-
         if any(not f for f in flags):
             phr += 1
         if all(not f for f in flags):
             thr += 1
-
     return {"PHR": round(phr / total_q, 4), "THR": round(thr / total_q, 4)}
-
 
 def main():
     p = argparse.ArgumentParser(description="Run Retrieval-Augmented Generation evaluation")
@@ -144,18 +135,21 @@ def main():
     p.add_argument("--backend", choices=["openai", "ollama", "hf"], default="openai")
     args = p.parse_args()
 
-    # Load dataset and retrieve contexts
+    print_progress("Loading dataset", 0.05)
     ds = load_dataset_file(args.dataset, args.limit, args.top_k)
     queries = ds["queries"]
     context_pool = ds.get("context_pool")
 
+    print_progress("Retrieving top-K contexts", 0.10)
     retrieved = retrieve_top_k(RETRIEVER_MODEL, queries, top_k=args.top_k, context_pool=context_pool)
 
+    print_progress("Building prompts", 0.20)
     prompts = [
         (item["query_id"], build_prompt(item["top_passages"], item["query"]))
         for item in retrieved
     ]
 
+    print_progress("Generating answers", 0.30)
     if args.backend == "openai":
         preds = generate_openai(args.model_name, prompts, n_samples=1, temp=0.0)
     elif args.backend == "ollama":
@@ -167,15 +161,17 @@ def main():
                 "query_id": qid,
                 "answer": local_pipe(prompt)[0].get("generated_text", "").strip(),
             }
-            for qid, prompt in tqdm(prompts, desc="Generating (HF)")
+            for qid, prompt in prompts
         ]
 
+    print_progress("Evaluating QA metrics", 0.45)
     ground_truth = build_ground_truth(queries)
     qa_metrics = evaluate_extractive_model(preds, ground_truth)
 
-    # Hallucination
+    print_progress("Judging hallucinations", 0.60)
     judgement = judge_with_context(client, JUDGE_MODEL, retrieved, preds)
 
+    print_progress("Preparing output", 0.80)
     idxs = random.sample(range(len(retrieved)), k=min(5, len(retrieved)))
     examples = [
         {
@@ -192,30 +188,30 @@ def main():
         "evaluation_method": "RAG",
         "dataset_name": args.dataset,
         "secondary_dataset": args.secondary_dataset,
-        "num_primary": len(retrieved),
-        "num_secondary": None,  # For RAG, you may not have a secondary, but keep key for UI consistency
+        "num_entries": len(retrieved),
         "metrics": {
             "squad": qa_metrics,
             "hallucination": judgement
         },
         "examples": examples,
     }
-    print(json.dumps(out, indent=2, ensure_ascii=False))
+    print_progress("Saving results", 0.90)
+    print(json.dumps(out, ensure_ascii=False))
 
     save_evaluation_results(
         model_name=args.model_name,
         evaluation_method="RAG",
         dataset_name=args.dataset,
-        squad_results={"exact_match": qa_metrics["exact_match"], "f1": qa_metrics["f1"]},
-        rouge_results={k: qa_metrics[k] for k in ["rouge1", "rouge2", "rougeL", "rougeLsum"]},
-        bleu_results={"bleu": qa_metrics["bleu"], "precisions": []},
+        squad_results={"exact_match": qa_metrics.get("exact_match", 0.0), "f1": qa_metrics.get("f1", 0.0)},
+        rouge_results={k: qa_metrics.get(k, 0.0) for k in ["rouge1", "rouge2", "rougeL", "rougeLsum"]},
+        bleu_results={"bleu": qa_metrics.get("bleu", 0.0), "precisions": []},
         mean_metrics={},
         contextual_results=None,
         truth_metrics=judgement,
         examples=examples,
         num_entries=len(retrieved),
     )
-
+    print_progress("Evaluation Complete", 1.0)
 
 if __name__ == "__main__":
     main()
