@@ -8,73 +8,19 @@ import threading
 import queue
 import os
 import sys
+from frontend_utils import (
+    PROCESS_EXPLANATIONS,
+    display_metrics_with_explanations,
+    safe_avg_precision,
+    is_noisy,
+    append_to_results,
+    is_progress_json,
+    is_final_result_json,
+    METRIC_EXPLANATIONS,
+)
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-PROCESS_EXPLANATIONS = {
-    "Loading dataset": "Loading the evaluation dataset into memory, parsing all questions and context passages, and checking for consistency.",
-    "Loading primary dataset": "Loading the evaluation dataset from memory, parsing all questions and context passages, and checking for consistency.",
-    "Loading secondary dataset": "Loading the hallucination dataset from memory, parsing all questions, and checking for consistency.",
-    "Retrieving top-K contexts": "For each question, the retriever model selects the top-K most relevant context passages out of the whole context pool. This step is crucial for downstream QA accuracy.",
-    "Contexts retrieved": "The retriever has selected the most relevant passages for every question. These will be provided to the reader/generative model.",
-    "Evaluating retrieval metrics": "Now, we calculate information retrieval metrics such as MAP (Mean Average Precision), nDCG (Normalized Discounted Cumulative Gain), and MRR (Mean Reciprocal Rank). These metrics measure how well the retriever surfaced relevant contexts.",
-    "Finished retrieval metrics": "All retrieval quality metrics have been computed.",
-    "Loading reader model": "The system is now loading the extractive QA (reader) model. This could be a large neural network that will generate answers to each question based on the top retrieved contexts.",
-    "Extracting answers with reader": "The reader model processes each question and its retrieved contexts, generating the most likely answer span(s) for each query.",
-    "Evaluating QA metrics": "SQuAD-style evaluation: Computing Exact Match and F1, as well as ROUGE and BLEU metrics, comparing the model's answers to the ground truth from the dataset.",
-    "Finished all QA evaluations": "All question answering metrics have been computed.",
-    "Saving results": "Writing the evaluation summary and detailed results to disk for later analysis and dashboard display.",
-    "Generating primary answers": "The selected generative model is generating answers for the primary dataset's queries.",
-    "Generating secondary predictions (hallucination eval)": "The model is being tested on a secondary dataset (TruthfulQA) to assess factual consistency and hallucination levels.",
-    "Judging hallucinations": "A fact-checking judge model is evaluating if each generated answer is fully supported by the answer list or likely hallucinated.",
-    "Preparing examples and output": "The evaluation is compiling sample questions, model answers, and ground truths for you to inspect.",
-    "Preparing output": "Organizing outputs for display and saving.",
-    "Evaluation Complete": "Evaluation completed successfully. Results and logs are now available.",
-}
-METRIC_EXPLANATIONS = {
-    "Exact Match": "Percentage of answers that exactly match the ground truth.",
-    "F1": "The harmonic mean of precision and recall for the predicted answers.",
-    "ROUGE-L": "Longest Common Subsequence metric, measuring overlap between prediction and reference.",
-    "ROUGE1": "Overlap of unigrams between prediction and ground truth.",
-    "ROUGE2": "Overlap of bigrams between prediction and ground truth.",
-    "ROUGEL": "Longest Common Subsequence, another variant.",
-    "ROUGELSUM": "Summarization variant of ROUGE-L.",
-    "BLEU": "Bilingual Evaluation Understudy; measures n-gram overlap between prediction and ground truth.",
-    "MAP": "Mean Average Precision: measures the precision of the retriever at all ranks.",
-    "nDCG": "Normalized Discounted Cumulative Gain: rewards higher-ranked relevant results.",
-    "Prec. @ K": "Average precision of the top-K retrieved passages.",
-    "PHR": "Partial Hallucination Rate: % of answers partially supported by the context.",
-    "THR": "Total Hallucination Rate: % of answers completely unsupported by the context.",
-}
-
-
-def display_metrics_with_explanations(metrics_dict):
-    for metric, value in metrics_dict.items():
-        # Try to map to a friendly name
-        label = metric.replace("_", " ").title()
-        # Use upper-case versions as well for BLEU, ROUGE, etc
-        if label.upper() in METRIC_EXPLANATIONS:
-            expl = METRIC_EXPLANATIONS[label.upper()]
-        else:
-            expl = METRIC_EXPLANATIONS.get(label, "")
-        with st.expander(f"{label}: {value}"):
-            st.write(expl)
-
-
-def safe_avg_precision(precisions):
-    return sum(precisions) / len(precisions) if precisions else 0
-
-def is_noisy(line):
-    # Add patterns as needed
-    noise_patterns = [
-        "This IS expected",
-        "This IS NOT expected",
-        "Some weights of the model checkpoint",
-        "Device set to use cpu",
-        "Downloading",
-        "Loading weights",
-    ]
-    return any(pat in line for pat in noise_patterns)
 
 # Paths for your evaluation scripts
 EVAL_SCRIPTS = {
@@ -376,13 +322,7 @@ with tabs[0]:
                     # --- SQuAD (F1, EM) ---
                     if "squad" in metrics:
                         st.subheader("SQuAD-style Metrics")
-                        squad_metrics = metrics["squad"]
-                        for k in ["exact_match", "f1"]:
-                            val = squad_metrics.get(k)
-                            if val is not None:
-                                label = k.replace("_", " ").title()
-                                with st.expander(f"{label}: {val}"):
-                                    st.write(METRIC_EXPLANATIONS.get(label, ""))
+                        display_metrics_with_explanations(metrics["squad"])
 
                     # --- ROUGE ---
                     rouge_metrics = metrics.get("rouge")
@@ -390,10 +330,7 @@ with tabs[0]:
                         rouge_metrics = {k: metrics["squad"][k] for k in ["rouge1", "rouge2", "rougeL", "rougeLsum"] if k in metrics["squad"]}
                     if rouge_metrics:
                         st.subheader("ROUGE Metrics")
-                        for k, val in rouge_metrics.items():
-                            label = k.replace("_", "").upper()
-                            with st.expander(f"{label}: {val}"):
-                                st.write(METRIC_EXPLANATIONS.get(label, ""))
+                        display_metrics_with_explanations(rouge_metrics)
 
                     # --- BLEU ---
                     bleu_val = metrics.get("bleu")
@@ -401,32 +338,24 @@ with tabs[0]:
                         bleu_val = metrics["squad"].get("bleu")
                     if bleu_val is not None:
                         st.subheader("BLEU Metric")
-                        bleu_score = bleu_val.get("bleu", 0) if isinstance(bleu_val, dict) else bleu_val
-                        with st.expander(f"BLEU: {bleu_score}"):
-                            st.write(METRIC_EXPLANATIONS.get("BLEU", ""))
+                        # Accept either dict or scalar
+                        if isinstance(bleu_val, dict):
+                            display_metrics_with_explanations(bleu_val)
+                        else:
+                            display_metrics_with_explanations({"BLEU": bleu_val})
 
                     # --- Hallucination ---
                     if "hallucination" in metrics:
                         st.subheader("Hallucination Metrics")
-                        for k, val in metrics["hallucination"].items():
-                            label = k.upper()
-                            with st.expander(f"{label}: {val}"):
-                                st.write(METRIC_EXPLANATIONS.get(label, ""))
+                        display_metrics_with_explanations(metrics["hallucination"])
                     if "truthfulqa" in metrics:
                         st.subheader("TruthfulQA (Hallucination) Metrics")
-                        for k, val in metrics["truthfulqa"].items():
-                            label = k.upper()
-                            with st.expander(f"{label}: {val}"):
-                                st.write(METRIC_EXPLANATIONS.get(label, ""))
+                        display_metrics_with_explanations(metrics["truthfulqa"])
 
                     # --- Retrieval ---
                     if "retrieval" in metrics:
                         st.subheader("Retrieval Metrics")
-                        for k, val in metrics["retrieval"].items():
-                            label = k.upper()
-                            with st.expander(f"{label}: {val}"):
-                                st.write(METRIC_EXPLANATIONS.get(label, ""))
-
+                        display_metrics_with_explanations(metrics["retrieval"])
                     # Add to persistent results history
                     append_to_results(out)
                 except Exception as e:
