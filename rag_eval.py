@@ -198,19 +198,6 @@ def main():
     print_progress("Saving results", 0.90)
     print(json.dumps(out, ensure_ascii=False))
 
-    save_evaluation_results(
-        model_name=args.model_name,
-        evaluation_method="RAG",
-        dataset_name=args.dataset,
-        squad_results={"exact_match": qa_metrics.get("exact_match", 0.0), "f1": qa_metrics.get("f1", 0.0)},
-        rouge_results={k: qa_metrics.get(k, 0.0) for k in ["rouge1", "rouge2", "rougeL", "rougeLsum"]},
-        bleu_results={"bleu": qa_metrics.get("bleu", 0.0), "precisions": []},
-        mean_metrics={},
-        contextual_results=None,
-        truth_metrics=judgement,
-        examples=examples,
-        num_entries=len(retrieved),
-    )
     print_progress("Evaluation Complete", 1.0)
 
 if __name__ == "__main__":

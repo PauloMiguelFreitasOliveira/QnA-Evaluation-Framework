@@ -7,8 +7,8 @@ import streamlit as st
 
 PROCESS_EXPLANATIONS = {
     "Loading dataset": (
-        "Loading the evaluation dataset into memory. This involves reading all questions and their corresponding context passages, "
-        "validating data structure, and ensuring the dataset is ready for evaluation."
+        "Loading the evaluation dataset into memory. Reads all questions and their corresponding context passages, "
+        "validates data structure, and ensures the dataset is ready for evaluation."
     ),
     "Loading primary dataset": (
         "Loading the main evaluation dataset, which contains the primary set of questions and context passages that will be used "
