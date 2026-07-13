@@ -1,4 +1,85 @@
-This project provides a small framework to evaluate both retrieval based and generative question answering models.
+# LLM Question Answering Evaluation Framework
+
+A modular framework for evaluating and benchmarking Question Answering (QA) systems built on Large Language Models (LLMs).
+
+This project was developed as part of my Master's Dissertation in Computer Engineering and provides a unified environment for comparing Retrieval-Augmented Generation (RAG), Extractive QA, and Generative QA approaches using multiple evaluation metrics.
+
+---
+
+## Features
+
+- Modular evaluation pipeline
+- Retrieval benchmarking (BM25, DPR and Hybrid Retrieval)
+- Extractive Question Answering evaluation
+- Generative Question Answering evaluation
+- Retrieval-Augmented Generation (RAG) evaluation
+- Hallucination-aware evaluation
+- Interactive Streamlit interface
+- Automated experiment execution and result comparison
+
+---
+
+## Technologies
+
+- Python
+- Streamlit
+- LangChain
+- Hugging Face Transformers
+- OpenAI
+- FAISS
+- DPR
+- BM25
+- Pandas
+- JSON
+
+---
+
+## Project Structure
+
+```
+Dataset
+      │
+      ▼
+Retriever
+      │
+      ▼
+Reader / LLM
+      │
+      ▼
+Evaluation Pipeline
+      │
+      ▼
+Metrics & Analysis
+```
+
+---
+
+## Motivation
+
+Evaluating Large Language Models consistently is a challenging task due to the variety of architectures, retrieval methods and evaluation metrics available.
+
+This framework provides a reusable and extensible environment for benchmarking different QA systems using standardized datasets and evaluation metrics, making it easier to compare model performance and support research or enterprise AI development.
+
+---
+
+## Learning Outcomes
+
+Through this project I gained practical experience with:
+
+- Large Language Models (LLMs)
+- Retrieval-Augmented Generation (RAG)
+- Semantic Search
+- AI Evaluation Metrics
+- Prompt Engineering
+- Python Software Engineering
+- Streamlit Applications
+- Experimental AI Research
+
+---
+
+## Author
+
+Paulo Oliveira
 
 ## Installation
 
